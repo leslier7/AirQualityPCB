@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Sensors")
-		(date "2026-03-20")
-		(rev "v0.1")
+		(date "2026-03-22")
+		(rev "v1.0")
 		(company "Cornell University")
 		(comment 1 "Robbie Leslie")
 		(comment 2 "Designed by")
@@ -414,26 +414,31 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:Opamp_Dual"
+		(symbol "Device:D_Zener"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U"
-				(at 0 5.08 0)
+			(property "Reference" "D"
+				(at 0 2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
-			(property "Value" "Opamp_Dual"
-				(at 0 -5.08 0)
+			(property "Value" "D_Zener"
+				(at 0 -2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
 			(property "Footprint" ""
@@ -454,7 +459,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Dual operational amplifier"
+			(property "Description" "Zener diode"
 				(at 0 0 0)
 				(effects
 					(font
@@ -463,7 +468,7 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(property "ki_keywords" "diode"
 				(at 0 0 0)
 				(effects
 					(font
@@ -472,7 +477,7 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -481,74 +486,56 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Device" "SUBCKT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "dual opamp"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* MSOP*3x3mm*P0.65mm* SSOP*2.95x2.8mm*P0.65mm* TSSOP*3x3mm*P0.65mm* VSSOP*P0.5mm* TO?99*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Opamp_Dual_1_1"
+			(symbol "D_Zener_0_1"
 				(polyline
 					(pts
-						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -0.762 1.27)
 					)
 					(stroke
 						(width 0.254)
 						(type default)
 					)
 					(fill
-						(type background)
+						(type none)
 					)
 				)
-				(pin input line
-					(at -7.62 2.54 0)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Zener_1_1"
+				(pin passive line
+					(at -3.81 0 0)
 					(length 2.54)
-					(name "+"
+					(name "K"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "3"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -556,10 +543,10 @@
 						)
 					)
 				)
-				(pin input line
-					(at -7.62 -2.54 0)
+				(pin passive line
+					(at 3.81 0 180)
 					(length 2.54)
-					(name "-"
+					(name "A"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -574,8 +561,121 @@
 						)
 					)
 				)
-				(pin output line
-					(at 7.62 0 180)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:FerriteBead"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "FB"
+				(at -3.81 0.635 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "FerriteBead"
+				(at 3.81 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Ferrite bead"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "L ferrite bead inductor filter"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Inductor_* L_* *Ferrite*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "FerriteBead_0_1"
+				(polyline
+					(pts
+						(xy -2.7686 0.4064) (xy -1.7018 2.2606) (xy 2.7686 -0.3048) (xy 1.6764 -2.159) (xy -2.7686 0.4064)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27) (xy 0 1.2954)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 -1.2192)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "FerriteBead_1_1"
+				(pin passive line
+					(at 0 3.81 270)
 					(length 2.54)
 					(name "~"
 						(effects
@@ -592,58 +692,8 @@
 						)
 					)
 				)
-			)
-			(symbol "Opamp_Dual_2_1"
-				(polyline
-					(pts
-						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin input line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 7.62 0 180)
+				(pin passive line
+					(at 0 -3.81 90)
 					(length 2.54)
 					(name "~"
 						(effects
@@ -652,7 +702,7 @@
 							)
 						)
 					)
-					(number "7"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -661,18 +711,116 @@
 					)
 				)
 			)
-			(symbol "Opamp_Dual_3_1"
-				(pin power_in line
-					(at -2.54 7.62 270)
-					(length 3.81)
-					(name "V+"
+			(embedded_fonts no)
+		)
+		(symbol "Device:Fuse"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Fuse"
+				(at -1.905 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Fuse"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "fuse"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*Fuse*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Fuse_0_1"
+				(rectangle
+					(start -0.762 -2.54)
+					(end 0.762 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Fuse_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "8"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -680,17 +828,17 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at -2.54 -7.62 90)
-					(length 3.81)
-					(name "V-"
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "4"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -815,6 +963,212 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "INIR2-ME5:INIR2-ME5"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 21.59 15.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "INIR2-ME5"
+				(at 21.59 12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "INIR2ME5"
+				(at 21.59 -87.3 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.sgxsensortech.com/content/uploads/2016/06/DS-0229-INIR-Datasheet-V9.pdf"
+				(at 21.59 -187.3 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "Air Quality Sensors Integrated Infra Red - gen2 - Methane - 0-5%(EX-d)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "16.6"
+				(at 21.59 -387.3 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "523-INIR2-ME5"
+				(at 21.59 -487.3 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Amphenol-SGX-Sensortech/INIR2-ME5?qs=vvQtp7zwQdOeIK%2FPJM0gvQ%3D%3D"
+				(at 21.59 -587.3 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Amphenol"
+				(at 21.59 -687.3 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "INIR2-ME5"
+				(at 21.59 -787.3 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "INIR2-ME5_1_1"
+				(rectangle
+					(start 5.08 10.16)
+					(end 20.32 -12.7)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 15.24 270)
+					(length 5.08)
+					(name "RXD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -17.78 90)
+					(length 5.08)
+					(name "TXD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 3.81 180)
+					(length 5.08)
+					(name "VIN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -5.08 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1409,6 +1763,293 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Sensors:MCP6042"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "MCP6042"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Dual operational amplifier"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Name" "kicad_builtin_opamp_dual"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "SUBCKT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "dual opamp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* MSOP*3x3mm*P0.65mm* SSOP*2.95x2.8mm*P0.65mm* TSSOP*3x3mm*P0.65mm* VSSOP*P0.5mm* TO?99*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MCP6042_1_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "MCP6042_2_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "MCP6042_3_1"
+				(pin power_in line
+					(at -2.54 7.62 270)
+					(length 3.81)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -2.54 -7.62 90)
+					(length 3.81)
+					(name "V-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:+3.3V"
 			(power)
 			(pin_numbers
@@ -1652,8 +2293,7 @@
 		(effects
 			(font
 				(size 1.778 1.778)
-				(thickness 0.3556)
-				(bold yes)
+				(thickness 0.2223)
 			)
 		)
 		(uuid "22d323bd-2c15-44b0-b743-e9eb8b97cb8a")
@@ -1680,16 +2320,16 @@
 		)
 		(uuid "4649d659-901c-4992-9982-e8f5a2a63187")
 	)
-	(text "TODO pick this"
+	(text "CH4"
 		(exclude_from_sim no)
-		(at 223.266 80.01 0)
+		(at 153.67 123.444 0)
 		(effects
 			(font
-				(size 1.27 1.27)
-				(thickness 0.1588)
+				(size 1.778 1.778)
+				(thickness 0.2223)
 			)
 		)
-		(uuid "59a3fbb3-6b9c-49aa-bba7-79386dd783a7")
+		(uuid "5828b25b-2253-4581-a6a0-80370c13a1a0")
 	)
 	(text "Addr: 0x77"
 		(exclude_from_sim no)
@@ -1701,16 +2341,16 @@
 		)
 		(uuid "63f2a357-423a-449b-998b-fada5464c295")
 	)
-	(text "TODO pick this"
+	(text "VOCs"
 		(exclude_from_sim no)
-		(at 223.266 17.78 0)
+		(at 36.322 25.654 0)
 		(effects
 			(font
-				(size 1.27 1.27)
-				(thickness 0.1588)
+				(size 1.778 1.778)
+				(thickness 0.2223)
 			)
 		)
-		(uuid "923f345f-55a8-4e03-80c8-416949594b05")
+		(uuid "e056ddef-4042-44c2-be35-f995ca49db4a")
 	)
 	(junction
 		(at 147.32 44.45)
@@ -1743,12 +2383,6 @@
 		(uuid "203a05de-8ab4-4f16-9cde-269b37ec12e7")
 	)
 	(junction
-		(at 229.87 147.32)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2294bc7a-29cd-4236-97ba-6f4125d6e197")
-	)
-	(junction
 		(at 54.61 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1765,6 +2399,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6a17bd67-0df3-455a-9a33-dd0b3c519aac")
+	)
+	(junction
+		(at 175.26 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7854a3ed-86d0-418d-840d-cf4819571de4")
 	)
 	(junction
 		(at 212.09 41.91)
@@ -1820,6 +2460,12 @@
 		(color 0 0 0 0)
 		(uuid "d5474073-c306-4479-b83e-12c6c1e729ff")
 	)
+	(junction
+		(at 193.04 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f68ca5ea-3f88-4bcc-a9af-1e1695a53c07")
+	)
 	(wire
 		(pts
 			(xy 212.09 91.44) (xy 219.71 91.44)
@@ -1839,6 +2485,16 @@
 			(type default)
 		)
 		(uuid "059e5e2f-ac93-4cc3-aafb-9e29f4c31fea")
+	)
+	(wire
+		(pts
+			(xy 128.27 133.35) (xy 104.14 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06507e4b-74e1-4047-933f-111288819495")
 	)
 	(wire
 		(pts
@@ -1932,6 +2588,16 @@
 	)
 	(wire
 		(pts
+			(xy 186.69 146.05) (xy 193.04 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20f57aec-60d6-4105-938f-a03cbbf37e4c")
+	)
+	(wire
+		(pts
 			(xy 162.56 101.6) (xy 157.48 101.6)
 		)
 		(stroke
@@ -1979,16 +2645,6 @@
 			(type default)
 		)
 		(uuid "27901595-4026-4209-ba2a-34619878758b")
-	)
-	(wire
-		(pts
-			(xy 229.87 147.32) (xy 242.57 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2950cb91-2a65-4672-ab98-077ffcbcb8ce")
 	)
 	(wire
 		(pts
@@ -2052,6 +2708,16 @@
 	)
 	(wire
 		(pts
+			(xy 175.26 146.05) (xy 179.07 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3aa6e8da-2652-43e2-8bdb-f8844a76c364")
+	)
+	(wire
+		(pts
 			(xy 212.09 104.14) (xy 212.09 114.3)
 		)
 		(stroke
@@ -2072,6 +2738,16 @@
 	)
 	(wire
 		(pts
+			(xy 104.14 133.35) (xy 104.14 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "423283dd-3826-4cb2-a7ff-639c5fe3f7ed")
+	)
+	(wire
+		(pts
 			(xy 212.09 114.3) (xy 215.9 114.3)
 		)
 		(stroke
@@ -2079,6 +2755,16 @@
 			(type default)
 		)
 		(uuid "439ebf61-1f42-4ce0-9a37-dc7fd4af37fd")
+	)
+	(wire
+		(pts
+			(xy 160.02 154.94) (xy 163.83 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4be34a66-f1f7-42cc-9d86-8cf4b752fa24")
 	)
 	(wire
 		(pts
@@ -2182,6 +2868,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 154.94) (xy 163.83 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62e97d17-cc5d-4cb4-8685-6a403547ddd9")
+	)
+	(wire
+		(pts
 			(xy 127 104.14) (xy 120.65 104.14)
 		)
 		(stroke
@@ -2219,6 +2915,16 @@
 			(type default)
 		)
 		(uuid "6d8b31d6-a55e-4071-82b7-6f2926ce9029")
+	)
+	(wire
+		(pts
+			(xy 160.02 146.05) (xy 165.1 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77183811-ccff-42e6-8ccd-b6a9d5cde5cd")
 	)
 	(wire
 		(pts
@@ -2309,6 +3015,16 @@
 			(type default)
 		)
 		(uuid "984fa69a-799d-4686-85bb-271ca26ad47c")
+	)
+	(wire
+		(pts
+			(xy 128.27 144.78) (xy 128.27 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "987352f0-23ad-490c-85b3-baa01f01a7ac")
 	)
 	(wire
 		(pts
@@ -2432,6 +3148,16 @@
 	)
 	(wire
 		(pts
+			(xy 104.14 147.32) (xy 107.95 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bdcf95f5-0526-4828-ae19-1a2da56cce28")
+	)
+	(wire
+		(pts
 			(xy 208.28 57.15) (xy 212.09 57.15)
 		)
 		(stroke
@@ -2459,16 +3185,6 @@
 			(type default)
 		)
 		(uuid "c83d8aa5-a555-4b8f-bb3f-674f055fdd1e")
-	)
-	(wire
-		(pts
-			(xy 229.87 144.78) (xy 229.87 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c8baa0b7-82d3-458e-82b6-f73f91770cce")
 	)
 	(wire
 		(pts
@@ -2502,6 +3218,16 @@
 	)
 	(wire
 		(pts
+			(xy 175.26 146.05) (xy 175.26 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d123d5cc-de7e-41f6-a5d9-c22360c0e0e7")
+	)
+	(wire
+		(pts
 			(xy 57.15 33.02) (xy 66.04 33.02)
 		)
 		(stroke
@@ -2509,6 +3235,26 @@
 			(type default)
 		)
 		(uuid "d5b35066-00ad-4f70-81bb-0b851994d3a0")
+	)
+	(wire
+		(pts
+			(xy 193.04 146.05) (xy 193.04 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d76c0282-659c-4cf8-ad62-dbac4d8b2335")
+	)
+	(wire
+		(pts
+			(xy 123.19 144.78) (xy 128.27 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dcd99e8f-3267-4597-931b-2035760b0047")
 	)
 	(wire
 		(pts
@@ -2552,7 +3298,7 @@
 	)
 	(wire
 		(pts
-			(xy 229.87 147.32) (xy 229.87 148.59)
+			(xy 212.09 146.05) (xy 212.09 149.86)
 		)
 		(stroke
 			(width 0)
@@ -2622,6 +3368,16 @@
 	)
 	(wire
 		(pts
+			(xy 172.72 146.05) (xy 175.26 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1f550be-de52-4dd6-9a61-2518ddadbb20")
+	)
+	(wire
+		(pts
 			(xy 147.32 90.17) (xy 147.32 93.98)
 		)
 		(stroke
@@ -2682,6 +3438,16 @@
 	)
 	(wire
 		(pts
+			(xy 134.62 149.86) (xy 123.19 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcd40e33-df4a-45ba-9468-0eb0d0738d06")
+	)
+	(wire
+		(pts
 			(xy 205.74 41.91) (xy 212.09 41.91)
 		)
 		(stroke
@@ -2711,6 +3477,16 @@
 			(justify left bottom)
 		)
 		(uuid "41061634-8294-4416-b742-0705dedfcfe5")
+	)
+	(label "VCH4"
+		(at 104.14 147.32 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4408ace7-866a-42bf-8193-1813db0bfe35")
 	)
 	(label "VCH4"
 		(at 22.86 138.43 0)
@@ -2756,7 +3532,7 @@
 		(uuid "76ef7842-1efa-4a1d-9d62-19ad53265813")
 	)
 	(label "Vref"
-		(at 242.57 147.32 0)
+		(at 212.09 148.59 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2800,6 +3576,17 @@
 		)
 		(uuid "21015e02-1988-45dc-ae88-da515924f9ff")
 	)
+	(hierarchical_label "Sensor_RX"
+		(shape input)
+		(at 147.32 134.62 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4fe2471b-9d82-44e8-936b-542363ba00a7")
+	)
 	(hierarchical_label "SDA"
 		(shape input)
 		(at 62.23 143.51 0)
@@ -2810,6 +3597,17 @@
 			(justify left)
 		)
 		(uuid "7aba44ad-c3a9-4035-81a2-12525d0fd99d")
+	)
+	(hierarchical_label "Sensor_TX"
+		(shape input)
+		(at 147.32 167.64 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "89de6076-f48a-40c6-9ff0-ef0e12f8453b")
 	)
 	(hierarchical_label "SDA"
 		(shape input)
@@ -2843,7 +3641,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "02ba2afd-e7b4-4d66-84d7-d6ff06d54c8c")
-		(property "Reference" "R12"
+		(property "Reference" "R11"
 			(at 76.2 130.8099 0)
 			(effects
 				(font
@@ -2861,7 +3659,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 71.882 132.08 90)
 			(effects
 				(font
@@ -2888,6 +3686,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "RR1220P-103-D"
+			(at 73.66 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3e1418c6-f9dd-4c3a-8769-7a84488639f9")
 		)
@@ -2895,9 +3702,15 @@
 			(uuid "26298ae5-7bbf-4447-8a25-ac96cfbe0f9a")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R1")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R12")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -2913,7 +3726,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "06d9d8b4-31fc-4eff-987e-d1437d1052de")
-		(property "Reference" "C8"
+		(property "Reference" "C10"
 			(at 223.52 34.29 90)
 			(effects
 				(font
@@ -2929,7 +3742,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 227.33 40.9448 0)
 			(effects
 				(font
@@ -2956,6 +3769,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "C0805F104K1RACAUTO"
+			(at 223.52 41.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8338e131-6193-4aab-8436-cac65225a398")
 		)
@@ -2963,131 +3785,15 @@
 			(uuid "206df2d6-77dc-4338-aeba-c87a406e21d8")
 		)
 		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "C8")
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "C6")
 					(unit 1)
 				)
 			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Opamp_Dual")
-		(at 134.62 44.45 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0f6fa73b-030a-45a9-81d3-d72be65aff58")
-		(property "Reference" "U8"
-			(at 134.62 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MCP6042"
-			(at 134.62 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 134.62 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 134.62 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Dual operational amplifier"
-			(at 134.62 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 134.62 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_dual"
-			(at 134.62 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 134.62 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
-			(at 134.62 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "8"
-			(uuid "874e821a-9deb-40c7-ba20-f31ff2e6eb40")
-		)
-		(pin "2"
-			(uuid "ad560f2d-22cc-4ef7-9c43-467e8d533428")
-		)
-		(pin "4"
-			(uuid "3dcba0cb-9022-41e7-8ca0-e923f78e13d0")
-		)
-		(pin "6"
-			(uuid "6a421e6f-d3da-4da8-8102-a20b07ffd4ad")
-		)
-		(pin "5"
-			(uuid "eeb29af1-3dcb-4f9c-8396-58972c5a8c83")
-		)
-		(pin "7"
-			(uuid "91df09d7-519d-4dae-b8d2-19b4ef29ee86")
-		)
-		(pin "3"
-			(uuid "7d292676-f465-4534-8124-e32a86ca7365")
-		)
-		(pin "1"
-			(uuid "85d27a58-7b93-4deb-8eae-c86b500e01d0")
-		)
-		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "U8")
+					(reference "C10")
 					(unit 1)
 				)
 			)
@@ -3103,7 +3809,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "126539eb-0259-4c5f-8a49-9b1e2a694256")
-		(property "Reference" "#PWR018"
+		(property "Reference" "#PWR035"
 			(at 85.09 48.26 0)
 			(effects
 				(font
@@ -3151,10 +3857,148 @@
 			(uuid "44d857e8-70c3-4bea-bc0d-6f4f3b008fa3")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR018")
+					(reference "#PWR035")
 					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensors:MCP6042")
+		(at 223.52 116.84 0)
+		(mirror x)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "12e056ac-db29-4e7a-a54e-322d6c8b9f53")
+		(property "Reference" "U9"
+			(at 223.52 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6042"
+			(at 223.52 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual operational amplifier"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "MCP6042T-I/SN"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "8"
+			(uuid "3c01ef9b-5b19-46e7-9515-25d46be4cab2")
+		)
+		(pin "6"
+			(uuid "aacc6fbe-67fd-4a38-a2f2-eee8f814ce94")
+		)
+		(pin "5"
+			(uuid "1d40161e-444f-489e-b6ae-33a4790346bd")
+		)
+		(pin "2"
+			(uuid "37560345-3145-45ca-9e67-2c99ae1e4b94")
+		)
+		(pin "3"
+			(uuid "1ce832f7-a5ce-4f4c-80b6-a462df9d07c4")
+		)
+		(pin "1"
+			(uuid "95d7174f-851d-4737-8f5b-25afa881d072")
+		)
+		(pin "7"
+			(uuid "a5bb267c-87a1-4e4c-880e-ff4850dc52a5")
+		)
+		(pin "4"
+			(uuid "2e7b1e4b-1240-4043-b5ec-648021298690")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "U9")
+					(unit 2)
 				)
 			)
 		)
@@ -3169,7 +4013,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1546d70c-759b-4ef9-a169-b7747f074ea5")
-		(property "Reference" "C5"
+		(property "Reference" "C4"
 			(at 34.29 120.6499 0)
 			(effects
 				(font
@@ -3187,7 +4031,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 31.4452 125.73 0)
 			(effects
 				(font
@@ -3214,6 +4058,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "CL21A106KOQNNNE"
+			(at 30.48 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "fcad6336-e88b-4808-aab8-871ee811af93")
 		)
@@ -3221,148 +4074,98 @@
 			(uuid "7979efee-04af-493b-8719-5512c559e4a7")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "C1")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "C5")
+					(reference "C4")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Opamp_Dual")
-		(at 223.52 54.61 0)
-		(mirror x)
-		(unit 2)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "25ecebef-b9dd-4d81-be3d-791e3ea98887")
-		(property "Reference" "U8"
-			(at 223.52 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MCP6042"
-			(at 223.52 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 223.52 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 223.52 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Dual operational amplifier"
-			(at 223.52 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 223.52 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_dual"
-			(at 223.52 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 223.52 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
-			(at 223.52 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "8"
-			(uuid "874e821a-9deb-40c7-ba20-f31ff2e6eb40")
-		)
-		(pin "2"
-			(uuid "ad560f2d-22cc-4ef7-9c43-467e8d533428")
-		)
-		(pin "4"
-			(uuid "3dcba0cb-9022-41e7-8ca0-e923f78e13d0")
-		)
-		(pin "6"
-			(uuid "6a421e6f-d3da-4da8-8102-a20b07ffd4ad")
-		)
-		(pin "5"
-			(uuid "eeb29af1-3dcb-4f9c-8396-58972c5a8c83")
-		)
-		(pin "7"
-			(uuid "91df09d7-519d-4dae-b8d2-19b4ef29ee86")
-		)
-		(pin "3"
-			(uuid "7d292676-f465-4534-8124-e32a86ca7365")
-		)
-		(pin "1"
-			(uuid "85d27a58-7b93-4deb-8eae-c86b500e01d0")
-		)
-		(instances
-			(project ""
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "U8")
-					(unit 2)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Opamp_Dual")
-		(at 255.27 148.59 0)
-		(unit 3)
+		(lib_id "power:+3.3V")
+		(at 193.04 146.05 0)
+		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "2be06130-0707-41aa-af50-ad7ca734ba71")
-		(property "Reference" "U8"
-			(at 254 147.3199 0)
+		(uuid "229dfe6e-bceb-4356-bc4e-abb9cd29c4a1")
+		(property "Reference" "#PWR039"
+			(at 193.04 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 193.04 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 193.04 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 193.04 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cbe38bab-f878-41f3-8328-c5e5269ffd0c")
+		)
+		(instances
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "#PWR039")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 193.04 153.67 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2c5044d3-2ec9-4285-aa59-2d3410017dc8")
+		(property "Reference" "C9"
+			(at 196.85 152.3999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3370,8 +4173,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MCP6042"
-			(at 254 149.8599 0)
+		(property "Value" "10uF"
+			(at 196.85 154.9399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3379,8 +4182,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 255.27 148.59 0)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 194.0052 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3389,7 +4192,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 255.27 148.59 0)
+			(at 193.04 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3397,8 +4200,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Dual operational amplifier"
-			(at 255.27 148.59 0)
+		(property "Description" "Unpolarized capacitor"
+			(at 193.04 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3406,71 +4209,26 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 255.27 148.59 0)
+		(property "Manufacturer Part Number" "CL21A106KOQNNNE"
+			(at 193.04 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_dual"
-			(at 255.27 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 255.27 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
-			(at 255.27 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "8"
-			(uuid "874e821a-9deb-40c7-ba20-f31ff2e6eb40")
 		)
 		(pin "2"
-			(uuid "ad560f2d-22cc-4ef7-9c43-467e8d533428")
-		)
-		(pin "4"
-			(uuid "3dcba0cb-9022-41e7-8ca0-e923f78e13d0")
-		)
-		(pin "6"
-			(uuid "6a421e6f-d3da-4da8-8102-a20b07ffd4ad")
-		)
-		(pin "5"
-			(uuid "eeb29af1-3dcb-4f9c-8396-58972c5a8c83")
-		)
-		(pin "7"
-			(uuid "91df09d7-519d-4dae-b8d2-19b4ef29ee86")
-		)
-		(pin "3"
-			(uuid "7d292676-f465-4534-8124-e32a86ca7365")
+			(uuid "3d626ddd-b70d-469f-8ff5-e89476504139")
 		)
 		(pin "1"
-			(uuid "85d27a58-7b93-4deb-8eae-c86b500e01d0")
+			(uuid "a81b3101-aa84-4edd-909d-ba21b9e0fafc")
 		)
 		(instances
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "U8")
-					(unit 3)
+					(reference "C9")
+					(unit 1)
 				)
 			)
 		)
@@ -3485,7 +4243,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2d86e695-ca94-4a63-8133-bacc684dd4c1")
-		(property "Reference" "#PWR022"
+		(property "Reference" "#PWR028"
 			(at 41.91 123.19 0)
 			(effects
 				(font
@@ -3533,10 +4291,148 @@
 			(uuid "c15c2dd0-fbb5-4dea-8418-b2c69cbfbea2")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR022")
+					(reference "#PWR028")
 					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensors:MCP6042")
+		(at 236.22 148.59 180)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2f71190d-05bf-46ff-a19f-e1e205091627")
+		(property "Reference" "U7"
+			(at 235.966 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MCP6042"
+			(at 237.236 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 236.22 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 236.22 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual operational amplifier"
+			(at 236.22 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 236.22 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 236.22 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 236.22 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 236.22 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "MCP6042T-I/SN"
+			(at 236.22 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "40e529cc-ab2e-4d0e-9819-e83fa144b719")
+		)
+		(pin "1"
+			(uuid "e6e2d10c-88e7-4cd2-a590-7a01481c96ce")
+		)
+		(pin "6"
+			(uuid "573b4d81-31f8-4975-8939-66021a291776")
+		)
+		(pin "2"
+			(uuid "d6818e4e-e164-4477-aaad-39ceef48d786")
+		)
+		(pin "7"
+			(uuid "75b0387f-d5e9-407e-9bf9-1c9b489f6d92")
+		)
+		(pin "4"
+			(uuid "8bcda96e-6348-4c2f-bc91-26859d50d7f1")
+		)
+		(pin "3"
+			(uuid "80a7db10-e8aa-4d72-9d6b-db01f6572aa0")
+		)
+		(pin "8"
+			(uuid "3709a473-9afb-4801-ba07-1888b8ad8a69")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "U7")
+					(unit 3)
 				)
 			)
 		)
@@ -3551,7 +4447,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3069e643-1754-465a-9aa1-c55e3b8e28ca")
-		(property "Reference" "#PWR040"
+		(property "Reference" "#PWR049"
 			(at 270.51 144.78 0)
 			(effects
 				(font
@@ -3599,9 +4495,15 @@
 			(uuid "19824f27-21c2-4a34-aaa3-0d9b27291220")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR022")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR040")
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -3617,7 +4519,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3295fb07-96fa-4e51-9afd-9ad7c0391ec2")
-		(property "Reference" "#PWR05"
+		(property "Reference" "#PWR030"
 			(at 54.61 36.83 0)
 			(effects
 				(font
@@ -3665,134 +4567,16 @@
 			(uuid "c10ba408-28bc-407e-9f8c-443d73e29b6e")
 		)
 		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR05")
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Opamp_Dual")
-		(at 273.05 148.59 0)
-		(unit 3)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3412557c-ba5f-45e1-94cc-00a43ab03c2e")
-		(property "Reference" "U7"
-			(at 271.78 147.3199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MCP6042"
-			(at 271.78 149.8599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 273.05 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 273.05 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Dual operational amplifier"
-			(at 273.05 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 273.05 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_dual"
-			(at 273.05 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 273.05 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
-			(at 273.05 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "8"
-			(uuid "c8c7eb72-0ab8-4d2a-aaa3-f285068254c8")
-		)
-		(pin "2"
-			(uuid "ad560f2d-22cc-4ef7-9c43-467e8d533428")
-		)
-		(pin "4"
-			(uuid "01d1f5b8-131b-446d-989f-d81924a737dd")
-		)
-		(pin "6"
-			(uuid "6a421e6f-d3da-4da8-8102-a20b07ffd4ad")
-		)
-		(pin "5"
-			(uuid "eeb29af1-3dcb-4f9c-8396-58972c5a8c83")
-		)
-		(pin "7"
-			(uuid "91df09d7-519d-4dae-b8d2-19b4ef29ee86")
-		)
-		(pin "3"
-			(uuid "7d292676-f465-4534-8124-e32a86ca7365")
-		)
-		(pin "1"
-			(uuid "85d27a58-7b93-4deb-8eae-c86b500e01d0")
-		)
-		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "U7")
-					(unit 3)
+					(reference "#PWR030")
+					(unit 1)
 				)
 			)
 		)
@@ -3807,7 +4591,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3dbf6c05-e969-41ed-a7f6-25a9d4f09ac0")
-		(property "Reference" "R14"
+		(property "Reference" "R16"
 			(at 214.63 63.4999 0)
 			(effects
 				(font
@@ -3825,7 +4609,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 213.868 64.77 90)
 			(effects
 				(font
@@ -3852,6 +4636,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "RC0603FR-07100KL"
+			(at 212.09 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "296862a5-4520-4dcb-a19e-5e3146d5b6e8")
 		)
@@ -3859,9 +4652,15 @@
 			(uuid "b2d97c5b-e9d9-4a59-9570-592f12cdd1aa")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R6")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R14")
+					(reference "R16")
 					(unit 1)
 				)
 			)
@@ -3877,7 +4676,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "51d27e88-a8c9-4d10-bdeb-633b5dc5505e")
-		(property "Reference" "#PWR038"
+		(property "Reference" "#PWR041"
 			(at 200.66 57.15 0)
 			(effects
 				(font
@@ -3926,6 +4725,78 @@
 			(uuid "207cac59-62ed-4ac0-8d4e-bcc029fc99c0")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "#PWR041")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 175.26 157.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "546f7265-4d35-432f-8fd6-fb11891e3a48")
+		(property "Reference" "#PWR038"
+			(at 175.26 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 175.26 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 175.26 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 175.26 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 175.26 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6aee9ca5-24c2-4ecb-b936-ca2915728142")
+		)
+		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "#PWR038")
@@ -3935,8 +4806,80 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 238.76 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5a15b2d5-0847-44ae-8905-b47093a2a8a0")
+		(property "Reference" "#PWR045"
+			(at 238.76 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 238.76 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 238.76 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "952602c5-2e58-4998-8d38-29cde20d2f75")
+		)
+		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "#PWR045")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
-		(at 229.87 152.4 180)
+		(at 212.09 153.67 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3944,8 +4887,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5ce90cf5-1c42-49eb-be00-3964bf3382ec")
-		(property "Reference" "R16"
-			(at 232.41 151.1299 0)
+		(property "Reference" "R18"
+			(at 214.63 152.3999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3954,7 +4897,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 232.41 153.6699 0)
+			(at 214.63 154.9399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3962,8 +4905,8 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
-			(at 231.648 152.4 90)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 213.868 153.67 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3972,7 +4915,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 229.87 152.4 0)
+			(at 212.09 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3981,7 +4924,16 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 229.87 152.4 0)
+			(at 212.09 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "RC0603FR-07100KL"
+			(at 212.09 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3996,9 +4948,15 @@
 			(uuid "32868103-aa94-4697-9c05-62280a167fb1")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R8")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R16")
+					(reference "R18")
 					(unit 1)
 				)
 			)
@@ -4014,7 +4972,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6390ea0d-8b96-4bd5-93e5-f6d9e790fd92")
-		(property "Reference" "R17"
+		(property "Reference" "R13"
 			(at 201.93 35.56 90)
 			(effects
 				(font
@@ -4030,7 +4988,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 201.93 43.688 90)
 			(effects
 				(font
@@ -4057,6 +5015,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "ERA-3AEB151V"
+			(at 201.93 41.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "38532ee7-2e55-4a16-8cd5-fbb499d22b89")
 		)
@@ -4064,9 +5031,15 @@
 			(uuid "723a79ad-c71e-4298-a35b-a417b923385b")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R3")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R17")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -4082,7 +5055,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "640d900e-74f9-44a5-bd3e-b77046bca482")
-		(property "Reference" "#PWR037"
+		(property "Reference" "#PWR042"
 			(at 212.09 81.28 0)
 			(effects
 				(font
@@ -4130,9 +5103,81 @@
 			(uuid "d2a7027a-3c6c-45dc-8f18-2e4651f427a4")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR015")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR037")
+					(reference "#PWR042")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 193.04 157.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6fccca62-36a8-430c-977b-f6be17642871")
+		(property "Reference" "#PWR040"
+			(at 193.04 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 193.04 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 193.04 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 193.04 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b834cca7-b85c-454b-8cfe-f73c73d84256")
+		)
+		(instances
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -4148,7 +5193,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7192b796-6881-4a9d-9f2f-f89ef68867a3")
-		(property "Reference" "U9"
+		(property "Reference" "U5"
 			(at 44.0533 125.73 0)
 			(effects
 				(font
@@ -4193,6 +5238,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "ADS1015IDGSR"
+			(at 41.91 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "80ab686b-ed52-4aac-8618-a2aa88e0000d")
 		)
@@ -4224,9 +5278,15 @@
 			(uuid "122c9883-4ec4-4076-9379-7cd7f701ceae")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "U1")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "U9")
+					(reference "U5")
 					(unit 1)
 				)
 			)
@@ -4260,7 +5320,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 148.2852 39.37 0)
 			(effects
 				(font
@@ -4287,6 +5347,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "C0805F104K1RACAUTO"
+			(at 147.32 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ed301db4-1ec4-4eb0-a44e-d4c4487584f8")
 		)
@@ -4294,10 +5363,150 @@
 			(uuid "794917d9-514c-4fa1-8bb9-c7d2d2aa8fb5")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "C4")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "C7")
 					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensors:MCP6042")
+		(at 255.27 148.59 0)
+		(mirror x)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "752a8585-2040-4e48-a986-fdcd9329488b")
+		(property "Reference" "U9"
+			(at 251.46 147.3199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "MCP6042"
+			(at 251.46 149.8599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 255.27 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 255.27 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual operational amplifier"
+			(at 255.27 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 255.27 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 255.27 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 255.27 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 255.27 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "MCP6042T-I/SN"
+			(at 255.27 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "8"
+			(uuid "3c01ef9b-5b19-46e7-9515-25d46be4cab2")
+		)
+		(pin "6"
+			(uuid "aacc6fbe-67fd-4a38-a2f2-eee8f814ce94")
+		)
+		(pin "5"
+			(uuid "1d40161e-444f-489e-b6ae-33a4790346bd")
+		)
+		(pin "2"
+			(uuid "37560345-3145-45ca-9e67-2c99ae1e4b94")
+		)
+		(pin "3"
+			(uuid "1ce832f7-a5ce-4f4c-80b6-a462df9d07c4")
+		)
+		(pin "1"
+			(uuid "95d7174f-851d-4737-8f5b-25afa881d072")
+		)
+		(pin "7"
+			(uuid "a5bb267c-87a1-4e4c-880e-ff4850dc52a5")
+		)
+		(pin "4"
+			(uuid "2e7b1e4b-1240-4043-b5ec-648021298690")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "U9")
+					(unit 3)
 				)
 			)
 		)
@@ -4312,7 +5521,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "774229ee-ac93-4132-8efb-3e37d9a011a8")
-		(property "Reference" "#PWR06"
+		(property "Reference" "#PWR031"
 			(at 54.61 86.36 0)
 			(effects
 				(font
@@ -4360,26 +5569,32 @@
 			(uuid "ad0df466-db4a-4d03-8313-3e8cf7af254a")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR07")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR06")
+					(reference "#PWR031")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Opamp_Dual")
-		(at 134.62 106.68 0)
-		(mirror x)
+		(lib_id "Sensors:MCP6042")
+		(at 115.57 147.32 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "83ded3c4-bdf1-4ae3-9d29-051728a2b4fd")
+		(fields_autoplaced yes)
+		(uuid "7928a6f1-32fe-4c43-8dcf-9348b5231ace")
 		(property "Reference" "U7"
-			(at 134.62 116.84 0)
+			(at 115.57 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4387,7 +5602,7 @@
 			)
 		)
 		(property "Value" "MCP6042"
-			(at 134.62 114.3 0)
+			(at 115.57 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4395,7 +5610,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 134.62 106.68 0)
+			(at 115.57 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4404,7 +5619,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 134.62 106.68 0)
+			(at 115.57 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4413,7 +5628,7 @@
 			)
 		)
 		(property "Description" "Dual operational amplifier"
-			(at 134.62 106.68 0)
+			(at 115.57 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4422,7 +5637,7 @@
 			)
 		)
 		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 134.62 106.68 0)
+			(at 115.57 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4431,7 +5646,7 @@
 			)
 		)
 		(property "Sim.Name" "kicad_builtin_opamp_dual"
-			(at 134.62 106.68 0)
+			(at 115.57 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4440,7 +5655,7 @@
 			)
 		)
 		(property "Sim.Device" "SUBCKT"
-			(at 134.62 106.68 0)
+			(at 115.57 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4449,7 +5664,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
-			(at 134.62 106.68 0)
+			(at 115.57 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4457,34 +5672,115 @@
 				(hide yes)
 			)
 		)
-		(pin "8"
-			(uuid "874e821a-9deb-40c7-ba20-f31ff2e6eb40")
-		)
-		(pin "2"
-			(uuid "62d2077e-eee6-42fc-b75b-b5c6e234c49d")
-		)
-		(pin "4"
-			(uuid "3dcba0cb-9022-41e7-8ca0-e923f78e13d0")
-		)
-		(pin "6"
-			(uuid "6a421e6f-d3da-4da8-8102-a20b07ffd4ad")
+		(property "Manufacturer Part Number" "MCP6042T-I/SN"
+			(at 115.57 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
 		)
 		(pin "5"
-			(uuid "eeb29af1-3dcb-4f9c-8396-58972c5a8c83")
-		)
-		(pin "7"
-			(uuid "91df09d7-519d-4dae-b8d2-19b4ef29ee86")
-		)
-		(pin "3"
-			(uuid "8e65a8a8-edf8-44af-96bc-dfdc2ab79ce3")
+			(uuid "40e529cc-ab2e-4d0e-9819-e83fa144b719")
 		)
 		(pin "1"
-			(uuid "739a5d44-0c74-4b9a-bb50-617143576134")
+			(uuid "e6e2d10c-88e7-4cd2-a590-7a01481c96ce")
+		)
+		(pin "6"
+			(uuid "573b4d81-31f8-4975-8939-66021a291776")
+		)
+		(pin "2"
+			(uuid "d6818e4e-e164-4477-aaad-39ceef48d786")
+		)
+		(pin "7"
+			(uuid "75b0387f-d5e9-407e-9bf9-1c9b489f6d92")
+		)
+		(pin "4"
+			(uuid "8bcda96e-6348-4c2f-bc91-26859d50d7f1")
+		)
+		(pin "3"
+			(uuid "80a7db10-e8aa-4d72-9d6b-db01f6572aa0")
+		)
+		(pin "8"
+			(uuid "3709a473-9afb-4801-ba07-1888b8ad8a69")
 		)
 		(instances
-			(project "AirQualityPCB"
+			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 238.76 156.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "81c5c2e4-c6ad-482b-a8cb-71647ec25c76")
+		(property "Reference" "#PWR046"
+			(at 238.76 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 238.76 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 238.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7b4f2455-9166-48b5-beca-5b759a3ca3b0")
+		)
+		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR019")
+					(unit 1)
+				)
+			)
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "#PWR046")
 					(unit 1)
 				)
 			)
@@ -4500,7 +5796,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "848ffa02-56eb-4b57-89a3-ae8e4975394f")
-		(property "Reference" "C3"
+		(property "Reference" "C5"
 			(at 43.18 36.8299 0)
 			(effects
 				(font
@@ -4509,7 +5805,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "0.1uF"
 			(at 43.18 39.3699 0)
 			(effects
 				(font
@@ -4518,7 +5814,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 40.3352 41.91 0)
 			(effects
 				(font
@@ -4545,6 +5841,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "C0805F104K1RACAUTO"
+			(at 39.37 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e861d909-bb1b-4c9e-bf13-cd67de01bb91")
 		)
@@ -4552,9 +5857,122 @@
 			(uuid "de2e590d-4225-4df3-8cac-aa9f044875cc")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "C2")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "C3")
+					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "INIR2-ME5:INIR2-ME5")
+		(at 134.62 149.86 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8ac84a68-2372-4f00-b93a-7bd9f2fd2216")
+		(property "Reference" "U10"
+			(at 149.4633 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "INIR2-ME5"
+			(at 149.4633 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "INIR2ME5"
+			(at 156.21 237.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.sgxsensortech.com/content/uploads/2016/06/DS-0229-INIR-Datasheet-V9.pdf"
+			(at 156.21 337.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Air Quality Sensors Integrated Infra Red - gen2 - Methane - 0-5%(EX-d)"
+			(at 134.62 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "16.6"
+			(at 156.21 537.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "INIR2-ME5"
+			(at 156.21 937.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "86537ba0-b3c2-498a-8726-dec2a1585566")
+		)
+		(pin "4"
+			(uuid "6e9554c4-e8c9-4765-9c73-d033352f1032")
+		)
+		(pin "5"
+			(uuid "cf8185fd-6366-44e3-ac2c-95ca96eaeadd")
+		)
+		(pin "2"
+			(uuid "c3996232-20ed-40f4-a6b9-3113160e7ce2")
+		)
+		(pin "3"
+			(uuid "f9aad110-7952-4af1-938f-11b0e2034e6d")
+		)
+		(instances
+			(project ""
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "U6")
+					(unit 1)
+				)
+			)
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "U10")
 					(unit 1)
 				)
 			)
@@ -4570,7 +5988,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8d6375e7-2620-411a-8eb1-8ebee7c8aafd")
-		(property "Reference" "R18"
+		(property "Reference" "R19"
 			(at 223.52 22.86 90)
 			(effects
 				(font
@@ -4578,7 +5996,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "6.8M"
 			(at 223.52 25.4 90)
 			(effects
 				(font
@@ -4586,7 +6004,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 223.52 30.988 90)
 			(effects
 				(font
@@ -4613,6 +6031,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "RC0603JR-076M8L"
+			(at 223.52 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9ef21f45-96ac-4136-92c0-5abe4955ed17")
 		)
@@ -4620,9 +6047,239 @@
 			(uuid "852e1fd2-94f2-4e97-85c1-942da749a562")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R9")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R18")
+					(reference "R19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensors:MCP6042")
+		(at 223.52 54.61 0)
+		(mirror x)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8f0d6a81-5b63-406f-9ca1-bf80f2f4e417")
+		(property "Reference" "U8"
+			(at 223.52 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6042"
+			(at 223.52 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 223.52 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual operational amplifier"
+			(at 223.52 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 223.52 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 223.52 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 223.52 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 223.52 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "MCP6042T-I/SN"
+			(at 223.52 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4ab95707-1aee-4f09-ad52-d3497e564c1a")
+		)
+		(pin "4"
+			(uuid "4e757d6a-0c37-4011-899f-6d6c65df6235")
+		)
+		(pin "7"
+			(uuid "25b02580-0116-459d-af95-661b4a83b7ec")
+		)
+		(pin "1"
+			(uuid "7ff68166-7e8f-4b3f-bb89-49899a156024")
+		)
+		(pin "6"
+			(uuid "61f0a471-3242-43e6-9b85-034a1649038e")
+		)
+		(pin "5"
+			(uuid "ac86ad5f-0251-463a-8e64-d3f892081922")
+		)
+		(pin "8"
+			(uuid "36660e84-20f4-494a-8f0d-b9dd8b37d99f")
+		)
+		(pin "3"
+			(uuid "1515769f-adc1-446b-91e5-8456ea70ec40")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "U8")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:FerriteBead")
+		(at 182.88 146.05 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "94504112-1a67-41b9-a689-f926fbecf746")
+		(property "Reference" "FB1"
+			(at 182.8292 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "600"
+			(at 182.8292 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Inductor_SMD:L_1206_3216Metric"
+			(at 182.88 147.828 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 182.88 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Ferrite bead"
+			(at 182.88 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Field5" ""
+			(at 182.88 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "742792133"
+			(at 182.88 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "611a540a-d333-4e32-98fd-4a07caaa83dd")
+		)
+		(pin "1"
+			(uuid "32c3f8be-8773-496d-bcd4-e74f6427dce6")
+		)
+		(instances
+			(project ""
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "FB1")
+					(unit 1)
+				)
+			)
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "FB1")
 					(unit 1)
 				)
 			)
@@ -4638,7 +6295,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "95091342-a02f-495e-a7fe-670ac0fbf35f")
-		(property "Reference" "U5"
+		(property "Reference" "U6"
 			(at 43.18 58.4199 0)
 			(effects
 				(font
@@ -4683,6 +6340,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "BME688"
+			(at 54.61 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "6"
 			(uuid "6206afec-d441-4749-ab51-614cc530f3e2")
 		)
@@ -4708,9 +6374,15 @@
 			(uuid "fd6984f5-f801-4632-966b-ca7962aaa408")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "U2")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "U5")
+					(reference "U6")
 					(unit 1)
 				)
 			)
@@ -4718,7 +6390,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 229.87 137.16 0)
+		(at 212.09 138.43 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4726,8 +6398,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "966ad39b-51a3-47b1-9f4b-c2d897a2d5a0")
-		(property "Reference" "#PWR044"
-			(at 229.87 140.97 0)
+		(property "Reference" "#PWR043"
+			(at 212.09 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4736,7 +6408,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 229.87 132.08 0)
+			(at 212.09 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4744,7 +6416,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 229.87 137.16 0)
+			(at 212.09 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4753,7 +6425,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 229.87 137.16 0)
+			(at 212.09 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4762,7 +6434,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 229.87 137.16 0)
+			(at 212.09 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4774,9 +6446,15 @@
 			(uuid "f78ef391-2883-426d-8bab-a823fe2b2c52")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR016")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR044")
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -4792,7 +6470,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9982bb75-65ab-4aaa-a4b2-ccb94d7fc07f")
-		(property "Reference" "#PWR019"
+		(property "Reference" "#PWR033"
 			(at 73.66 132.08 0)
 			(effects
 				(font
@@ -4840,9 +6518,15 @@
 			(uuid "b6a4bc16-e3f0-475a-8369-cdc709eb57fd")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR019")
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -4858,7 +6542,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9ce5070f-07b5-436e-b4f8-95b0168cc179")
-		(property "Reference" "#PWR036"
+		(property "Reference" "#PWR026"
 			(at 30.48 132.08 0)
 			(effects
 				(font
@@ -4906,9 +6590,147 @@
 			(uuid "56850431-d9a1-4525-8bc4-4d3f7bceb6b7")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR02")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR036")
+					(reference "#PWR026")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensors:MCP6042")
+		(at 134.62 44.45 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a0833eda-560a-4228-abf3-c139ebc37720")
+		(property "Reference" "U8"
+			(at 134.62 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6042"
+			(at 134.62 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 134.62 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 134.62 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual operational amplifier"
+			(at 134.62 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 134.62 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 134.62 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 134.62 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 134.62 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "MCP6042T-I/SN"
+			(at 134.62 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4ab95707-1aee-4f09-ad52-d3497e564c1a")
+		)
+		(pin "4"
+			(uuid "4e757d6a-0c37-4011-899f-6d6c65df6235")
+		)
+		(pin "7"
+			(uuid "25b02580-0116-459d-af95-661b4a83b7ec")
+		)
+		(pin "1"
+			(uuid "7ff68166-7e8f-4b3f-bb89-49899a156024")
+		)
+		(pin "6"
+			(uuid "61f0a471-3242-43e6-9b85-034a1649038e")
+		)
+		(pin "5"
+			(uuid "ac86ad5f-0251-463a-8e64-d3f892081922")
+		)
+		(pin "8"
+			(uuid "36660e84-20f4-494a-8f0d-b9dd8b37d99f")
+		)
+		(pin "3"
+			(uuid "1515769f-adc1-446b-91e5-8456ea70ec40")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "U8")
 					(unit 1)
 				)
 			)
@@ -4924,7 +6746,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a8ff615f-70d6-4b56-8e3a-7da7e456c091")
-		(property "Reference" "#PWR021"
+		(property "Reference" "#PWR029"
 			(at 41.91 157.48 0)
 			(effects
 				(font
@@ -4972,9 +6794,15 @@
 			(uuid "71e702ef-070b-4510-8368-d69603ae2cbb")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR021")
+					(reference "#PWR029")
 					(unit 1)
 				)
 			)
@@ -4990,7 +6818,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "abe88344-9f0b-4800-9184-273963c6650c")
-		(property "Reference" "#PWR042"
+		(property "Reference" "#PWR050"
 			(at 270.51 162.56 0)
 			(effects
 				(font
@@ -5038,9 +6866,177 @@
 			(uuid "2e36bf02-df8e-4b54-84c2-deb96035a337")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR023")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR042")
+					(reference "#PWR050")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Zener")
+		(at 175.26 153.67 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b07dc1da-f8d3-43e5-a533-899ba0c67e0e")
+		(property "Reference" "D3"
+			(at 177.8 152.3999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SMF5.0A"
+			(at 177.8 154.9399 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SOD-123"
+			(at 175.26 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 175.26 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Zener diode"
+			(at 175.26 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "SMF5.0A"
+			(at 175.26 153.67 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b0cbf8da-529a-4f3a-8da3-241edaae979b")
+		)
+		(pin "2"
+			(uuid "ecd15e7d-dda7-4850-ab41-4528ece2b5ff")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 168.91 146.05 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b1ec9552-8176-45bf-a03d-e12cfd7a86af")
+		(property "Reference" "F1"
+			(at 168.91 139.7 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "125mA"
+			(at 168.91 142.24 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_0603_1608Metric"
+			(at 168.91 147.828 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 168.91 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 168.91 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "F0603G0R12FNTR"
+			(at 168.91 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f161cd38-24d8-4f0a-82a0-d6a1eec9d9b8")
+		)
+		(pin "1"
+			(uuid "e45d037a-0cd7-41de-88a0-aa2d5a369b27")
+		)
+		(instances
+			(project ""
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "F1")
 					(unit 1)
 				)
 			)
@@ -5056,7 +7052,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b35009d5-8474-4bbe-8180-7ec2e3039701")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR032"
 			(at 66.04 46.99 0)
 			(effects
 				(font
@@ -5104,9 +7100,15 @@
 			(uuid "9b6a86b9-3448-4a18-a505-dd2c32f883be")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR014")
+					(reference "#PWR032")
 					(unit 1)
 				)
 			)
@@ -5122,7 +7124,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ba4d313b-f7ae-4406-9893-69f888fcd2b1")
-		(property "Reference" "#PWR041"
+		(property "Reference" "#PWR048"
 			(at 252.73 162.56 0)
 			(effects
 				(font
@@ -5170,42 +7172,32 @@
 			(uuid "b156011c-29d5-4893-ab39-512b13975786")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR021")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR041")
+					(reference "#PWR048")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Opamp_Dual")
-		(at 223.52 116.84 0)
-		(mirror x)
-		(unit 2)
+		(lib_id "power:GND")
+		(at 163.83 165.1 0)
+		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "c5bcd915-e25b-4421-bb82-c7821d7eb0e3")
-		(property "Reference" "U7"
-			(at 223.52 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "MCP6042"
-			(at 223.52 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 223.52 116.84 0)
+		(fields_autoplaced yes)
+		(uuid "bea31db0-1afc-4a32-b4a1-13d0102c1ae1")
+		(property "Reference" "#PWR037"
+			(at 163.83 171.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5213,8 +7205,16 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 223.52 116.84 0)
+		(property "Value" "GND"
+			(at 163.83 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5222,8 +7222,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Dual operational amplifier"
-			(at 223.52 116.84 0)
+		(property "Datasheet" ""
+			(at 163.83 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5231,71 +7231,29 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 223.52 116.84 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 163.83 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_dual"
-			(at 223.52 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 223.52 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
-			(at 223.52 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "8"
-			(uuid "874e821a-9deb-40c7-ba20-f31ff2e6eb41")
-		)
-		(pin "2"
-			(uuid "ad560f2d-22cc-4ef7-9c43-467e8d533429")
-		)
-		(pin "4"
-			(uuid "3dcba0cb-9022-41e7-8ca0-e923f78e13d1")
-		)
-		(pin "6"
-			(uuid "b60f45de-dd62-479a-b7e9-042f8b3b8c3b")
-		)
-		(pin "5"
-			(uuid "e00251c2-12ac-4c89-8b39-4a55cc68efe1")
-		)
-		(pin "7"
-			(uuid "23ff8bd3-6db6-4222-8651-ff065fbe5a58")
-		)
-		(pin "3"
-			(uuid "7d292676-f465-4534-8124-e32a86ca7366")
 		)
 		(pin "1"
-			(uuid "85d27a58-7b93-4deb-8eae-c86b500e01d1")
+			(uuid "fef0f57b-85cb-450b-a84d-53090e281a62")
 		)
 		(instances
+			(project ""
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR013")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "U7")
-					(unit 2)
+					(reference "#PWR037")
+					(unit 1)
 				)
 			)
 		)
@@ -5310,7 +7268,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c74c2567-24d2-404b-9ba8-a3deccf06e29")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR027"
 			(at 39.37 49.53 0)
 			(effects
 				(font
@@ -5358,10 +7316,150 @@
 			(uuid "06f58dfd-3391-4f9a-95b2-dbeb36c25eec")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR08")
+					(reference "#PWR027")
 					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensors:MCP6042")
+		(at 273.05 148.59 0)
+		(mirror x)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c7893265-30b3-4520-9ab8-a8140e14d7f9")
+		(property "Reference" "U8"
+			(at 269.24 147.3199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "MCP6042"
+			(at 269.24 149.8599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 273.05 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 273.05 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual operational amplifier"
+			(at 273.05 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 273.05 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 273.05 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 273.05 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 273.05 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "MCP6042T-I/SN"
+			(at 273.05 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4ab95707-1aee-4f09-ad52-d3497e564c1a")
+		)
+		(pin "4"
+			(uuid "4e757d6a-0c37-4011-899f-6d6c65df6235")
+		)
+		(pin "7"
+			(uuid "25b02580-0116-459d-af95-661b4a83b7ec")
+		)
+		(pin "1"
+			(uuid "7ff68166-7e8f-4b3f-bb89-49899a156024")
+		)
+		(pin "6"
+			(uuid "61f0a471-3242-43e6-9b85-034a1649038e")
+		)
+		(pin "5"
+			(uuid "ac86ad5f-0251-463a-8e64-d3f892081922")
+		)
+		(pin "8"
+			(uuid "36660e84-20f4-494a-8f0d-b9dd8b37d99f")
+		)
+		(pin "3"
+			(uuid "1515769f-adc1-446b-91e5-8456ea70ec40")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "U8")
+					(unit 3)
 				)
 			)
 		)
@@ -5376,7 +7474,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c92a94f1-da82-4bcb-98de-7d7259ac27e4")
-		(property "Reference" "R22"
+		(property "Reference" "R20"
 			(at 223.52 85.09 90)
 			(effects
 				(font
@@ -5384,7 +7482,7 @@
 				)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "100k"
 			(at 223.52 87.63 90)
 			(effects
 				(font
@@ -5392,7 +7490,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 223.52 93.218 90)
 			(effects
 				(font
@@ -5419,6 +7517,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "RC0603FR-07100KL"
+			(at 223.52 91.44 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "eb573871-f57b-4709-b222-38ee48247574")
 		)
@@ -5426,9 +7533,15 @@
 			(uuid "59ff9e81-fef3-46b0-b786-6ab31069b426")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R10")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R22")
+					(reference "R20")
 					(unit 1)
 				)
 			)
@@ -5444,7 +7557,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ce2ad304-1f4f-42cd-9c21-0d0ba8f201cd")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR034"
 			(at 78.74 67.31 0)
 			(effects
 				(font
@@ -5493,9 +7606,15 @@
 			(uuid "63961aae-4a43-4072-9e27-e0c9355176a5")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR015")
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -5511,7 +7630,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d9e3a7db-c2e2-4948-8042-27ce6c32be0b")
-		(property "Reference" "R13"
+		(property "Reference" "R15"
 			(at 204.47 50.8 90)
 			(effects
 				(font
@@ -5519,7 +7638,7 @@
 				)
 			)
 		)
-		(property "Value" "103k"
+		(property "Value" "102k"
 			(at 204.47 53.34 90)
 			(effects
 				(font
@@ -5527,7 +7646,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 204.47 55.372 90)
 			(effects
 				(font
@@ -5554,6 +7673,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "RC0603FR-07102KL"
+			(at 204.47 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5707fbe3-dd40-4a97-b313-609f2f8696d2")
 		)
@@ -5561,9 +7689,15 @@
 			(uuid "8107761a-6f06-43a3-ae86-481f9f8928d2")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R5")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R13")
+					(reference "R15")
 					(unit 1)
 				)
 			)
@@ -5579,7 +7713,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "da968774-7446-4a78-be8e-2e2cc55acdc1")
-		(property "Reference" "C4"
+		(property "Reference" "C6"
 			(at 69.85 35.5599 0)
 			(effects
 				(font
@@ -5588,7 +7722,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "0.1uF"
 			(at 69.85 38.0999 0)
 			(effects
 				(font
@@ -5597,7 +7731,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 67.0052 40.64 0)
 			(effects
 				(font
@@ -5624,6 +7758,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "C0805F104K1RACAUTO"
+			(at 66.04 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "06760b93-075b-4eb1-938a-3b20eb2610a9")
 		)
@@ -5631,9 +7774,15 @@
 			(uuid "3fbcab4d-1fa7-44b9-a015-ae597b822f5a")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "C3")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "C4")
+					(reference "C6")
 					(unit 1)
 				)
 			)
@@ -5649,7 +7798,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dfe45178-080e-4f4b-9984-70872cd838ef")
-		(property "Reference" "R19"
+		(property "Reference" "R14"
 			(at 201.93 97.79 90)
 			(effects
 				(font
@@ -5665,7 +7814,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 201.93 105.918 90)
 			(effects
 				(font
@@ -5692,6 +7841,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "ERA-3AEB151V"
+			(at 201.93 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0c40efc2-0fac-496b-a7ae-ba4499e73365")
 		)
@@ -5699,9 +7857,15 @@
 			(uuid "a48a84b6-051f-474b-8064-db998b43449a")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R4")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R19")
+					(reference "R14")
 					(unit 1)
 				)
 			)
@@ -5717,7 +7881,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e6dd9a34-b62d-4b83-a4fe-e56a03aad7c1")
-		(property "Reference" "C10"
+		(property "Reference" "C11"
 			(at 223.52 96.52 90)
 			(effects
 				(font
@@ -5733,7 +7897,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 227.33 103.1748 0)
 			(effects
 				(font
@@ -5760,6 +7924,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "C0805F104K1RACAUTO"
+			(at 223.52 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0ace2d28-1177-403e-92cb-ea36e1b09cef")
 		)
@@ -5767,9 +7940,15 @@
 			(uuid "48d1c335-b7a3-4af1-aa20-97a6833ed6b1")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "C7")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "C10")
+					(reference "C11")
 					(unit 1)
 				)
 			)
@@ -5785,7 +7964,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e727be74-e236-49d7-8799-d8e089a99133")
-		(property "Reference" "#PWR023"
+		(property "Reference" "#PWR025"
 			(at 30.48 121.92 0)
 			(effects
 				(font
@@ -5833,9 +8012,15 @@
 			(uuid "96959527-09d3-43e7-be81-df7bf7017573")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR01")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR023")
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -5851,7 +8036,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e8ae4291-e2fb-4d52-a0dc-45c090997fc1")
-		(property "Reference" "U10"
+		(property "Reference" "U12"
 			(at 177.8 93.98 0)
 			(effects
 				(font
@@ -5876,7 +8061,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.spec-sensors.com/wp-content/uploads/2016/10/3SP_H2S_50-P-Package-110-303.pdf"
 			(at 177.8 104.14 0)
 			(effects
 				(font
@@ -5922,9 +8107,15 @@
 			(uuid "ca30a009-dd09-42bb-aab2-dfc974992e89")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "U8")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "U10")
+					(reference "U12")
 					(unit 1)
 				)
 			)
@@ -5932,7 +8123,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 229.87 140.97 180)
+		(at 212.09 142.24 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5940,8 +8131,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e8cd71e2-eebd-4ea5-948d-bdc9e834d8ed")
-		(property "Reference" "R15"
-			(at 232.41 139.6999 0)
+		(property "Reference" "R17"
+			(at 214.63 140.9699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5950,7 +8141,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 232.41 142.2399 0)
+			(at 214.63 143.5099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5958,8 +8149,8 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
-			(at 231.648 140.97 90)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 213.868 142.24 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5968,7 +8159,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 229.87 140.97 0)
+			(at 212.09 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5977,7 +8168,16 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 229.87 140.97 0)
+			(at 212.09 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "RC0603FR-07100KL"
+			(at 212.09 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5992,9 +8192,15 @@
 			(uuid "23cc9327-3234-4936-a6a8-3b070fca0c4c")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R7")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R15")
+					(reference "R17")
 					(unit 1)
 				)
 			)
@@ -6010,7 +8216,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eb2429b2-d8df-4780-a879-9dbedd3bfaef")
-		(property "Reference" "#PWR020"
+		(property "Reference" "#PWR036"
 			(at 87.63 149.86 0)
 			(effects
 				(font
@@ -6058,9 +8264,15 @@
 			(uuid "b46cb0aa-f4c0-4c04-865a-caff2d858253")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR020")
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
@@ -6076,7 +8288,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f107e7cc-e685-4fab-a3a4-f0cae8a150c2")
-		(property "Reference" "R11"
+		(property "Reference" "R12"
 			(at 87.63 46.9899 0)
 			(effects
 				(font
@@ -6094,7 +8306,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 83.312 48.26 90)
 			(effects
 				(font
@@ -6121,6 +8333,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "RR1220P-103-D"
+			(at 85.09 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "7b6dfac8-42cd-4a85-8d54-4e32f6d1ce6f")
 		)
@@ -6128,9 +8349,15 @@
 			(uuid "4ed7b1c1-6621-486a-b6ee-fded46fcbb9a")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "R2")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "R11")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -6146,7 +8373,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f33631bf-cbf9-4fce-8eaa-2a38c13845c4")
-		(property "Reference" "#PWR039"
+		(property "Reference" "#PWR047"
 			(at 252.73 144.78 0)
 			(effects
 				(font
@@ -6194,9 +8421,147 @@
 			(uuid "94e0e830-7dee-49cf-b465-55a3111a9bbf")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR020")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR039")
+					(reference "#PWR047")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensors:MCP6042")
+		(at 134.62 106.68 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f6e711db-b689-49b1-ae4e-16d4d4bf6002")
+		(property "Reference" "U9"
+			(at 134.62 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6042"
+			(at 134.62 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Dual operational amplifier"
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "MCP6042T-I/SN"
+			(at 134.62 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "8"
+			(uuid "3c01ef9b-5b19-46e7-9515-25d46be4cab2")
+		)
+		(pin "6"
+			(uuid "aacc6fbe-67fd-4a38-a2f2-eee8f814ce94")
+		)
+		(pin "5"
+			(uuid "1d40161e-444f-489e-b6ae-33a4790346bd")
+		)
+		(pin "2"
+			(uuid "37560345-3145-45ca-9e67-2c99ae1e4b94")
+		)
+		(pin "3"
+			(uuid "1ce832f7-a5ce-4f4c-80b6-a462df9d07c4")
+		)
+		(pin "1"
+			(uuid "95d7174f-851d-4737-8f5b-25afa881d072")
+		)
+		(pin "7"
+			(uuid "a5bb267c-87a1-4e4c-880e-ff4850dc52a5")
+		)
+		(pin "4"
+			(uuid "2e7b1e4b-1240-4043-b5ec-648021298690")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
+					(reference "U9")
 					(unit 1)
 				)
 			)
@@ -6212,7 +8577,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f8186763-1f7b-4b9b-a237-54205317e4b9")
-		(property "Reference" "C9"
+		(property "Reference" "C8"
 			(at 151.13 96.5199 0)
 			(effects
 				(font
@@ -6230,7 +8595,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 148.2852 101.6 0)
 			(effects
 				(font
@@ -6257,6 +8622,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer Part Number" "C0805F104K1RACAUTO"
+			(at 147.32 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "79e8612f-a942-440c-a06d-eafd145fac65")
 		)
@@ -6264,9 +8638,15 @@
 			(uuid "53890efe-61e8-4947-bd09-5e518114d8ab")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "C5")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "C9")
+					(reference "C8")
 					(unit 1)
 				)
 			)
@@ -6274,7 +8654,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 229.87 156.21 0)
+		(at 212.09 157.48 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6282,8 +8662,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fa48cafe-7302-47b4-92d8-98d39fb9339d")
-		(property "Reference" "#PWR043"
-			(at 229.87 162.56 0)
+		(property "Reference" "#PWR044"
+			(at 212.09 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6292,7 +8672,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 229.87 161.29 0)
+			(at 212.09 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6300,7 +8680,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 229.87 156.21 0)
+			(at 212.09 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6309,7 +8689,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 229.87 156.21 0)
+			(at 212.09 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6318,7 +8698,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 229.87 156.21 0)
+			(at 212.09 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6330,9 +8710,15 @@
 			(uuid "a9eabe76-27c2-46d0-9e0f-15bf2df12163")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "#PWR017")
+					(unit 1)
+				)
+			)
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "#PWR043")
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -6348,7 +8734,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "faa240c4-ee5f-4a93-8481-e88e99da2fb8")
-		(property "Reference" "U6"
+		(property "Reference" "U11"
 			(at 177.8 31.75 0)
 			(effects
 				(font
@@ -6373,7 +8759,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2299/110-507_P_Pkg_8-25-17.pdf"
 			(at 177.8 41.91 0)
 			(effects
 				(font
@@ -6419,12 +8805,24 @@
 			(uuid "eb58f44d-2a93-4ffc-b47e-8e921886d47b")
 		)
 		(instances
+			(project "sensors"
+				(path "/90c7ae83-ab09-4739-9215-c197de766320"
+					(reference "U7")
+					(unit 1)
+				)
+			)
 			(project ""
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
-					(reference "U6")
+					(reference "U11")
 					(unit 1)
 				)
 			)
 		)
 	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
 )

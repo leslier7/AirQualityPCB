@@ -6,13 +6,183 @@
 	(paper "A4")
 	(title_block
 		(title "AirQualityPCB")
-		(date "2026-03-18")
-		(rev "0.1")
+		(date "2026-03-22")
+		(rev "1.0")
 		(company "Cornell University")
 		(comment 1 "Robbie Leslie")
 		(comment 2 "Designed By")
 	)
 	(lib_symbols
+		(symbol "Connector:Conn_Coaxial"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0.254 3.048 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_Coaxial"
+				(at 2.921 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "BNC SMA SMB SMC LEMO coaxial connector CINCH RCA MCX MMCX U.FL UMRF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO* *UMRF* *MCX* *U.FL*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_Coaxial_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -0.508 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.778 0)
+					(mid 0.222 -1.8079)
+					(end -1.778 -0.508)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -1.778 0.508)
+					(mid 0.2221 1.8084)
+					(end 1.778 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 0.508)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Conn_Coaxial_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "In"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "Ext"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Connector:USB_C_Receptacle_USB2.0_16P"
 			(pin_names
 				(offset 1.016)
@@ -2134,7 +2304,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "RF_Module:ESP32-C3-WROOM-02U"
+		(symbol "RF_Module:ESP32-C3-WROOM-02"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2146,16 +2316,16 @@
 					)
 				)
 			)
-			(property "Value" "ESP32-C3-WROOM-02U"
-				(at 12.7 21.336 0)
+			(property "Value" "ESP32-C3-WROOM-02"
+				(at 12.192 21.336 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" "RF_Module:ESP32-C3-WROOM-02U"
-				(at 0 -0.635 0)
+			(property "Footprint" "RF_Module:ESP32-C3-WROOM-02"
+				(at 0 0.635 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2164,7 +2334,7 @@
 				)
 			)
 			(property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c3-wroom-02_datasheet_en.pdf"
-				(at 0 -0.635 0)
+				(at 0 0.635 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2173,7 +2343,7 @@
 				)
 			)
 			(property "Description" "802.11 b/g/n Wi­Fi and Bluetooth 5 module, ESP32­C3 SoC, RISC­V microprocessor, On-board antenna"
-				(at 0 -0.635 0)
+				(at 0 0.635 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2190,7 +2360,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "ESP32?C3*WROOM?02U*"
+			(property "ki_fp_filters" "ESP32?C3*WROOM?02*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2199,7 +2369,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "ESP32-C3-WROOM-02U_1_1"
+			(symbol "ESP32-C3-WROOM-02_1_1"
 				(rectangle
 					(start -12.7 20.32)
 					(end 12.7 -20.32)
@@ -2547,6 +2717,381 @@
 						)
 					)
 					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Sensors:RFM95WCW"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -10.414 11.684 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "RFM95WCW"
+				(at 1.524 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at -83.82 41.91 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.hoperf.com/data/upload/portal/20181127/5bfcbea20e9ef.pdf"
+				(at -83.82 41.91 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Low power long range transceiver module, SPI and parallel interface, 868 MHz, spreading factor 6 to12, bandwidth 7.8 to 500kHz, -111 to -148 dBm, SMD-16, DIP-16"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Low power long range transceiver module"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "HOPERF*RFM9XW*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "RFM95WCW_0_1"
+				(rectangle
+					(start -10.16 10.16)
+					(end 10.16 -12.7)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "RFM95WCW_1_1"
+				(pin input line
+					(at -12.7 7.62 0)
+					(length 2.54)
+					(name "SCK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 5.08 0)
+					(length 2.54)
+					(name "MOSI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -12.7 2.54 0)
+					(length 2.54)
+					(name "MISO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 0 0)
+					(length 2.54)
+					(name "NSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -12.7 -5.08 0)
+					(length 2.54)
+					(name "RESET"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -2.54 -15.24 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 12.7 270)
+					(length 2.54)
+					(name "3.3V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -15.24 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 2.54 -15.24 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 7.62 180)
+					(length 2.54)
+					(name "ANT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 2.54 180)
+					(length 2.54)
+					(name "DIO5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 0 180)
+					(length 2.54)
+					(name "DIO4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 -2.54 180)
+					(length 2.54)
+					(name "DIO3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 -5.08 180)
+					(length 2.54)
+					(name "DIO2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 -7.62 180)
+					(length 2.54)
+					(name "DIO1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 -10.16 180)
+					(length 2.54)
+					(name "DIO0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2959,6 +3504,16 @@
 		)
 		(uuid "5fd2fd2a-2ec3-41b2-b63c-da8013058481")
 	)
+	(text "Use UART1\nfor these"
+		(exclude_from_sim no)
+		(at 183.642 56.388 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "766f3abf-0698-4d60-af2b-77b8ed377455")
+	)
 	(text "Programming Points"
 		(exclude_from_sim no)
 		(at 188.976 152.146 0)
@@ -3069,6 +3624,22 @@
 		(color 0 0 0 0)
 		(uuid "ecd6c393-60b8-4ae2-8359-17e9ecc4608b")
 	)
+	(junction
+		(at 137.16 134.62)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "efa096b4-c4ac-4dbb-84dc-d13f1b700abf")
+	)
+	(wire
+		(pts
+			(xy 149.86 120.65) (xy 153.67 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03e29e64-e11d-4fac-81ed-305660cb74ac")
+	)
 	(wire
 		(pts
 			(xy 204.47 111.76) (xy 210.82 111.76)
@@ -3088,6 +3659,16 @@
 			(type default)
 		)
 		(uuid "06594632-30a1-4c29-8ec7-6afe86c78548")
+	)
+	(wire
+		(pts
+			(xy 210.82 73.66) (xy 218.44 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07341800-8c1b-4c30-848a-ae8dd6c3611d")
 	)
 	(wire
 		(pts
@@ -3111,6 +3692,16 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 83.82) (xy 80.01 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d3e2629-e2e9-43eb-adf5-56967b14fb17")
+	)
+	(wire
+		(pts
 			(xy 210.82 83.82) (xy 218.44 83.82)
 		)
 		(stroke
@@ -3128,6 +3719,26 @@
 			(type default)
 		)
 		(uuid "0ffecc6d-573a-4801-9225-2493232935c5")
+	)
+	(wire
+		(pts
+			(xy 113.03 113.03) (xy 124.46 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1328f854-04d7-4daf-b236-42397adbbe02")
+	)
+	(wire
+		(pts
+			(xy 113.03 105.41) (xy 124.46 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1385c1e6-7c4f-4390-8389-879695495687")
 	)
 	(wire
 		(pts
@@ -3171,6 +3782,16 @@
 	)
 	(wire
 		(pts
+			(xy 139.7 134.62) (xy 139.7 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "220ec4b2-7345-436d-97df-9c86c1a6c3f9")
+	)
+	(wire
+		(pts
 			(xy 196.85 101.6) (xy 196.85 113.03)
 		)
 		(stroke
@@ -3191,6 +3812,16 @@
 	)
 	(wire
 		(pts
+			(xy 80.01 88.9) (xy 95.25 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29fdea74-e9de-4018-b7be-412935ef7671")
+	)
+	(wire
+		(pts
 			(xy 162.56 63.5) (xy 162.56 68.58)
 		)
 		(stroke
@@ -3201,13 +3832,23 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 104.14) (xy 175.26 111.76)
+			(xy 248.92 53.34) (xy 260.35 53.34)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "33200fa3-4fa7-45a4-9178-074ce82905a9")
+		(uuid "3121a9d4-442c-4d4a-89ac-22214174eb66")
+	)
+	(wire
+		(pts
+			(xy 137.16 134.62) (xy 139.7 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32657fb2-3da7-47cf-adf9-87b36e5535b3")
 	)
 	(wire
 		(pts
@@ -3218,6 +3859,16 @@
 			(type default)
 		)
 		(uuid "34b564cc-1fc6-49d7-b54d-c1a34b59480a")
+	)
+	(wire
+		(pts
+			(xy 149.86 105.41) (xy 158.75 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3554da91-8e86-4930-b2d6-8e39bd165220")
 	)
 	(wire
 		(pts
@@ -3251,6 +3902,16 @@
 	)
 	(wire
 		(pts
+			(xy 278.13 66.04) (xy 278.13 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ef6963c-68b6-4131-821d-1ea38392de4a")
+	)
+	(wire
+		(pts
 			(xy 196.85 50.8) (xy 194.31 50.8)
 		)
 		(stroke
@@ -3261,6 +3922,16 @@
 	)
 	(wire
 		(pts
+			(xy 210.82 71.12) (xy 218.44 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "412fbb48-824e-4361-b5e2-b167cd4e7f9b")
+	)
+	(wire
+		(pts
 			(xy 53.34 152.4) (xy 57.15 152.4)
 		)
 		(stroke
@@ -3268,6 +3939,26 @@
 			(type default)
 		)
 		(uuid "41ef96dc-303e-4fa2-93e7-7c380d60fea9")
+	)
+	(wire
+		(pts
+			(xy 153.67 123.19) (xy 149.86 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "48242354-46b9-4da4-bc1d-ccff21de77c5")
+	)
+	(wire
+		(pts
+			(xy 137.16 128.27) (xy 137.16 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4929bb91-1f38-4eca-aca0-41476b634533")
 	)
 	(wire
 		(pts
@@ -3291,7 +3982,7 @@
 	)
 	(wire
 		(pts
-			(xy 193.04 76.2) (xy 203.2 76.2)
+			(xy 176.53 76.2) (xy 186.69 76.2)
 		)
 		(stroke
 			(width 0)
@@ -3308,6 +3999,16 @@
 			(type default)
 		)
 		(uuid "5363dee8-9c28-4975-b1ff-7f4e3bf880ea")
+	)
+	(wire
+		(pts
+			(xy 189.23 58.42) (xy 218.44 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "537c3b25-f76c-47ba-8535-6dfa3bf0ad21")
 	)
 	(wire
 		(pts
@@ -3361,23 +4062,13 @@
 	)
 	(wire
 		(pts
-			(xy 218.44 81.28) (xy 175.26 81.28)
+			(xy 134.62 128.27) (xy 134.62 134.62)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5ef99e99-f1ea-4b8c-a8a4-f42e4a6219f6")
-	)
-	(wire
-		(pts
-			(xy 218.44 71.12) (xy 162.56 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "63a2dca8-19cc-4e35-974f-96f9e93b8d2c")
+		(uuid "5c63230e-2636-4204-8135-0dc4520677e2")
 	)
 	(wire
 		(pts
@@ -3391,6 +4082,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 50.8) (xy 260.35 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a519335-0d52-4220-bf91-33c497c0051a")
+	)
+	(wire
+		(pts
 			(xy 74.93 137.16) (xy 74.93 139.7)
 		)
 		(stroke
@@ -3398,6 +4099,26 @@
 			(type default)
 		)
 		(uuid "6a8fd42d-7420-4eb5-a129-4859e8d7bfa2")
+	)
+	(wire
+		(pts
+			(xy 134.62 134.62) (xy 137.16 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c10e6de-89aa-493c-8ef1-eff2a8b38be0")
+	)
+	(wire
+		(pts
+			(xy 80.01 91.44) (xy 95.25 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c46ca27-219e-4943-b029-ca919e095857")
 	)
 	(wire
 		(pts
@@ -3451,13 +4172,23 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 86.36) (xy 162.56 90.17)
+			(xy 80.01 86.36) (xy 95.25 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "91de8ab7-678d-4a04-88e2-ac19673b37fa")
+		(uuid "90bef776-8a2f-4b14-b54d-1c9e247212e0")
+	)
+	(wire
+		(pts
+			(xy 113.03 110.49) (xy 124.46 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9527b409-98b9-4d88-b5f7-dbcb561f275c")
 	)
 	(wire
 		(pts
@@ -3468,6 +4199,26 @@
 			(type default)
 		)
 		(uuid "986aec40-47fc-4144-bd24-ddaca16980d8")
+	)
+	(wire
+		(pts
+			(xy 149.86 118.11) (xy 153.67 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e79c135-9fdb-4284-ad7e-6fcfb7cbc3b7")
+	)
+	(wire
+		(pts
+			(xy 278.13 50.8) (xy 278.13 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f168fd7-fc2d-4d7f-80ae-f126cf925366")
 	)
 	(wire
 		(pts
@@ -3488,6 +4239,16 @@
 			(type default)
 		)
 		(uuid "a4988103-68c7-46f7-a9f7-4dc7df2a0c1c")
+	)
+	(wire
+		(pts
+			(xy 278.13 77.47) (xy 278.13 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a59bff7f-4518-471b-a480-6a8e2273677b")
 	)
 	(wire
 		(pts
@@ -3521,7 +4282,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 76.2) (xy 218.44 76.2)
+			(xy 194.31 76.2) (xy 218.44 76.2)
 		)
 		(stroke
 			(width 0)
@@ -3558,16 +4319,6 @@
 			(type default)
 		)
 		(uuid "b6344657-4707-4066-86cc-0813cf0c0224")
-	)
-	(wire
-		(pts
-			(xy 175.26 92.71) (xy 175.26 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b6d29c10-9582-4880-9c04-1650c1f7e0dc")
 	)
 	(wire
 		(pts
@@ -3641,16 +4392,6 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 71.12) (xy 162.56 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cbe08d00-f030-4b2a-a603-f80ebca1001e")
-	)
-	(wire
-		(pts
 			(xy 210.82 92.71) (xy 210.82 109.22)
 		)
 		(stroke
@@ -3658,6 +4399,16 @@
 			(type default)
 		)
 		(uuid "ce3a2c7e-6659-48d7-bf37-d82c66660351")
+	)
+	(wire
+		(pts
+			(xy 210.82 81.28) (xy 218.44 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce898e00-68a6-4d5d-bd28-febf298df899")
 	)
 	(wire
 		(pts
@@ -3671,13 +4422,23 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 81.28) (xy 175.26 85.09)
+			(xy 113.03 107.95) (xy 124.46 107.95)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d007eb2b-4f03-49eb-b176-ce96d2a65012")
+		(uuid "d0046918-8f0a-4c33-8bc8-86fb1bc5f7ae")
+	)
+	(wire
+		(pts
+			(xy 189.23 55.88) (xy 218.44 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d03d77a8-0581-48f5-b764-6bd7aab96345")
 	)
 	(wire
 		(pts
@@ -3721,16 +4482,6 @@
 	)
 	(wire
 		(pts
-			(xy 162.56 97.79) (xy 162.56 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ddadd540-cb68-4d76-b3f2-27f34f2f1126")
-	)
-	(wire
-		(pts
 			(xy 194.31 40.64) (xy 196.85 40.64)
 		)
 		(stroke
@@ -3768,6 +4519,16 @@
 			(type default)
 		)
 		(uuid "e9c37241-6269-4497-a54d-3d0abe7355ac")
+	)
+	(wire
+		(pts
+			(xy 210.82 63.5) (xy 218.44 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f290774e-da53-4208-9545-bbbd89874676")
 	)
 	(wire
 		(pts
@@ -3809,6 +4570,16 @@
 		)
 		(uuid "0993b1e5-6e16-450d-aa16-f803c60ff68f")
 	)
+	(label "SCK"
+		(at 210.82 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0f52a6b0-6559-4217-aa98-7d3efcb4464a")
+	)
 	(label "ProgGND"
 		(at 220.98 138.43 0)
 		(effects
@@ -3818,6 +4589,16 @@
 			(justify left bottom)
 		)
 		(uuid "1f0e2b9d-bf76-4320-bd1e-3fe5020aa5f3")
+	)
+	(label "SCK"
+		(at 113.03 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "295be7f5-1633-46b5-898b-8b2094d3d7ac")
 	)
 	(label "D_P"
 		(at 93.98 41.91 0)
@@ -3839,6 +4620,16 @@
 		)
 		(uuid "44894566-be56-4117-b9ca-64e982eaebab")
 	)
+	(label "CS"
+		(at 113.03 113.03 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "46411cee-6557-4adf-9125-0c932cb0c565")
+	)
 	(label "D_N"
 		(at 220.98 160.02 0)
 		(effects
@@ -3848,6 +4639,26 @@
 			(justify left bottom)
 		)
 		(uuid "49f4e056-e598-4931-b8d3-9d7472a9ec14")
+	)
+	(label "CS"
+		(at 210.82 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "52ad64fb-b1ac-48b4-965d-a70ff44adc7b")
+	)
+	(label "DIO1"
+		(at 260.35 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5ebabdab-6e47-4adb-9572-f6a9b26517fc")
 	)
 	(label "D_N"
 		(at 93.98 39.37 0)
@@ -3859,6 +4670,46 @@
 		)
 		(uuid "66046f75-82de-40f5-9690-1ff1beb24661")
 	)
+	(label "MOSI"
+		(at 210.82 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "67d92725-5b57-41b5-9a56-e321f3060952")
+	)
+	(label "Sensor_RX"
+		(at 95.25 88.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6d0a9d41-d181-4d06-ab41-8547755fce46")
+	)
+	(label "MOSI"
+		(at 113.03 107.95 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7b1906a1-b06f-4a28-8fee-45364e8b7beb")
+	)
+	(label "DIO0"
+		(at 260.35 53.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "84c06140-4e3d-437b-b2a9-4005a0bb5390")
+	)
 	(label "D+"
 		(at 210.82 86.36 0)
 		(effects
@@ -3868,6 +4719,16 @@
 			(justify left bottom)
 		)
 		(uuid "8ed3b8d5-15b0-4de0-b88c-ee28394fe644")
+	)
+	(label "MISO"
+		(at 210.82 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "93655eed-58b4-46db-8838-a65d048b9633")
 	)
 	(label "SDA"
 		(at 175.26 66.04 0)
@@ -3899,6 +4760,16 @@
 		)
 		(uuid "9e0580be-246b-4d18-ba5e-081f1147febc")
 	)
+	(label "LED"
+		(at 198.12 76.2 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a5a2d950-7009-41ec-93cc-0a7ce5b45439")
+	)
 	(label "D_N"
 		(at 60.96 148.59 0)
 		(effects
@@ -3918,6 +4789,106 @@
 			(justify left bottom)
 		)
 		(uuid "ac23d120-a286-4fb3-a59a-a6b71ee20bb9")
+	)
+	(label "LED"
+		(at 278.13 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "aef37382-07ff-488e-83eb-677833ad8b97")
+	)
+	(label "MISO"
+		(at 113.03 110.49 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b4e9583c-0762-4498-bdc0-2156fcf61277")
+	)
+	(label "DIO2"
+		(at 153.6423 118.11 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c9ebe305-6879-474e-93c0-91201351c802")
+	)
+	(label "SCL"
+		(at 95.25 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cd7372e5-7bf2-4cbd-9fae-c2b2d52fe19e")
+	)
+	(label "Sensor_TX"
+		(at 189.23 58.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d1014b8b-2ef1-4e48-9de3-66c2540fb97a")
+	)
+	(label "DIO1"
+		(at 153.67 120.65 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d1dbd543-d06c-4ae8-8c12-6fbea2aa8dc4")
+	)
+	(label "SDA"
+		(at 95.25 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dced61f3-12d6-4a81-9dd7-1fb643a2e110")
+	)
+	(label "DIO0"
+		(at 153.67 123.19 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e73979b0-3488-4a36-a264-39ae24e8e4c5")
+	)
+	(label "Sensor_TX"
+		(at 95.25 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f15e683b-bb47-42f7-9f6d-64cb7ceba6cb")
+	)
+	(label "Sensor_RX"
+		(at 189.23 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fc2d732c-3609-45c4-9358-570b975cc988")
 	)
 	(label "D+"
 		(at 111.76 41.91 0)
@@ -3950,7 +4921,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "07bc2970-b113-4fc6-a9c9-681cf5ae8d3e")
-		(property "Reference" "#PWR01"
+		(property "Reference" "#PWR010"
 			(at 123.19 160.02 0)
 			(effects
 				(font
@@ -4001,7 +4972,73 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR01")
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 137.16 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0d6f5323-6eba-4a9e-842b-34c545dd8eed")
+		(property "Reference" "#PWR052"
+			(at 137.16 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 137.16 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 137.16 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137.16 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 137.16 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c0d39efe-836d-4df6-a2f2-ac548e9c9ee4")
+		)
+		(instances
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "#PWR052")
 					(unit 1)
 				)
 			)
@@ -4172,7 +5209,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1beacfae-8dc6-4586-8895-70ebb17e7160")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR05"
 			(at 59.69 134.62 0)
 			(effects
 				(font
@@ -4223,7 +5260,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR011")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -4304,7 +5341,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 207.01 76.2 90)
+		(at 190.5 76.2 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4313,7 +5350,7 @@
 		(fields_autoplaced yes)
 		(uuid "2729a229-6a40-40be-8494-e385d696a5b6")
 		(property "Reference" "R10"
-			(at 207.01 69.85 90)
+			(at 190.5 69.85 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4321,7 +5358,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 207.01 72.39 90)
+			(at 190.5 72.39 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4329,7 +5366,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 207.01 77.978 90)
+			(at 190.5 77.978 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4338,7 +5375,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 207.01 76.2 0)
+			(at 190.5 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4347,7 +5384,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 207.01 76.2 0)
+			(at 190.5 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4356,7 +5393,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" "RR1220P-103-D"
-			(at 207.01 76.2 0)
+			(at 190.5 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4380,136 +5417,6 @@
 		)
 	)
 	(symbol
-		(lib_id "RF_Module:ESP32-C3-WROOM-02U")
-		(at 233.68 68.58 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2964f39e-9b38-4b2a-ac60-167245199432")
-		(property "Reference" "U4"
-			(at 235.8741 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ESP32-C3-WROOM-02U"
-			(at 235.8741 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "RF_Module:ESP32-C3-WROOM-02U"
-			(at 233.68 69.215 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c3-wroom-02_datasheet_en.pdf"
-			(at 233.68 69.215 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "802.11 b/g/n Wi­Fi and Bluetooth 5 module, ESP32­C3 SoC, RISC­V microprocessor, On-board antenna"
-			(at 233.68 69.215 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part Number" "ESP32-C3-WROOM-02U-N4"
-			(at 233.68 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "84ed9eb7-3ef0-43a7-bef2-aa9fdf63ad50")
-		)
-		(pin "8"
-			(uuid "294d0968-81e2-42a6-af98-d1ef68bd9884")
-		)
-		(pin "4"
-			(uuid "8496f9dc-44a2-4b52-bce6-891f5970dd97")
-		)
-		(pin "17"
-			(uuid "70a0eb7d-95f5-4af6-bd14-97a6f8732a6b")
-		)
-		(pin "16"
-			(uuid "5e44a916-67cd-49be-ac78-a9e889d2f7c7")
-		)
-		(pin "12"
-			(uuid "2dbdb71a-befd-42d6-b6f7-5c386265de54")
-		)
-		(pin "19"
-			(uuid "5230356d-0d97-4c54-8a63-86b6634a3223")
-		)
-		(pin "15"
-			(uuid "19d178b7-ad14-4f19-9e06-b24860b94ab7")
-		)
-		(pin "14"
-			(uuid "33400399-999b-4637-a827-67d263eef2e2")
-		)
-		(pin "1"
-			(uuid "d4545bed-de0c-40c0-9501-28d31a53555c")
-		)
-		(pin "18"
-			(uuid "16df3a0f-de0b-4a49-87d3-6ee398269e22")
-		)
-		(pin "2"
-			(uuid "ea74ec48-f6e0-465f-b384-2242c4c43275")
-		)
-		(pin "5"
-			(uuid "7d97f285-fcc2-4a59-8c6e-78f5373e5eb4")
-		)
-		(pin "10"
-			(uuid "81eb4a11-bc37-4fbe-b04b-51970b8f6c46")
-		)
-		(pin "13"
-			(uuid "f20f134f-89a0-4aba-be99-f84c2f1ca468")
-		)
-		(pin "11"
-			(uuid "48aaa653-03e8-4613-a2dc-bff978745b0e")
-		)
-		(pin "3"
-			(uuid "ebfabe2f-b05b-4441-9381-9d7bf7793263")
-		)
-		(pin "7"
-			(uuid "62398997-0702-461b-a8db-2a2934f2a89e")
-		)
-		(pin "9"
-			(uuid "b8dcb077-8f39-4024-bfb7-0b39c3f077fe")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "U4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:VBUS")
 		(at 102.87 34.29 0)
 		(unit 1)
@@ -4519,7 +5426,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2e3f1cc9-9d53-4acf-92b8-c429d0eef4fe")
-		(property "Reference" "#PWR016"
+		(property "Reference" "#PWR08"
 			(at 102.87 38.1 0)
 			(effects
 				(font
@@ -4569,7 +5476,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR016")
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -4585,7 +5492,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2f60d520-525c-4220-8990-6431ea7344da")
-		(property "Reference" "#PWR033"
+		(property "Reference" "#PWR022"
 			(at 233.68 97.79 0)
 			(effects
 				(font
@@ -4635,7 +5542,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR033")
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -4651,7 +5558,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "304556e7-221b-4343-9612-7164dc0061be")
-		(property "Reference" "J10"
+		(property "Reference" "J9"
 			(at 236.22 132.08 0)
 			(effects
 				(font
@@ -4718,7 +5625,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J10")
+					(reference "J9")
 					(unit 1)
 				)
 			)
@@ -4734,7 +5641,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "30eb0944-878a-40a3-b948-dd7de04d7e6d")
-		(property "Reference" "J6"
+		(property "Reference" "J5"
 			(at 215.9 121.92 0)
 			(effects
 				(font
@@ -4801,7 +5708,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J6")
+					(reference "J5")
 					(unit 1)
 				)
 			)
@@ -4911,7 +5818,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "37098636-4cdd-490f-a094-b494beea25b4")
-		(property "Reference" "J2"
+		(property "Reference" "J1"
 			(at 38.1 127 0)
 			(effects
 				(font
@@ -5017,7 +5924,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J2")
+					(reference "J1")
 					(unit 1)
 				)
 			)
@@ -5033,7 +5940,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3a0391c8-74f1-4390-ae04-eecd5c0a8d5c")
-		(property "Reference" "#PWR030"
+		(property "Reference" "#PWR019"
 			(at 196.85 109.22 0)
 			(effects
 				(font
@@ -5083,7 +5990,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR030")
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -5099,7 +6006,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3c264dd2-15ca-4eb2-ab37-ee707b0db928")
-		(property "Reference" "#PWR027"
+		(property "Reference" "#PWR016"
 			(at 193.04 40.64 0)
 			(effects
 				(font
@@ -5150,7 +6057,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR027")
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
@@ -5315,7 +6222,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "41b721e8-f50b-487a-968e-dbe44ba29315")
-		(property "Reference" "#PWR034"
+		(property "Reference" "#PWR023"
 			(at 247.65 138.43 0)
 			(effects
 				(font
@@ -5366,7 +6273,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR034")
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -5467,7 +6374,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "43f55e8f-fe43-46ff-b926-4058dfec1751")
-		(property "Reference" "#PWR032"
+		(property "Reference" "#PWR021"
 			(at 233.68 40.64 0)
 			(effects
 				(font
@@ -5517,7 +6424,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR032")
+					(reference "#PWR021")
 					(unit 1)
 				)
 			)
@@ -5610,7 +6517,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "48e2f3ac-266b-4825-8100-7ed62d762211")
-		(property "Reference" "J8"
+		(property "Reference" "J7"
 			(at 215.9 143.51 0)
 			(effects
 				(font
@@ -5677,7 +6584,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J8")
+					(reference "J7")
 					(unit 1)
 				)
 			)
@@ -5693,7 +6600,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4cf26f7b-db61-4913-94f3-003ab8b40330")
-		(property "Reference" "#PWR025"
+		(property "Reference" "#PWR014"
 			(at 167.64 52.07 0)
 			(effects
 				(font
@@ -5743,7 +6650,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR025")
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -5759,7 +6666,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4dcbca77-01cb-455c-81e1-bae3dc177473")
-		(property "Reference" "J9"
+		(property "Reference" "J8"
 			(at 215.9 153.67 0)
 			(effects
 				(font
@@ -5826,7 +6733,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J9")
+					(reference "J8")
 					(unit 1)
 				)
 			)
@@ -5834,7 +6741,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 193.04 76.2 90)
+		(at 176.53 76.2 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5842,8 +6749,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "515f5f06-aeb4-4e4b-849a-a9eb5d831893")
-		(property "Reference" "#PWR029"
-			(at 196.85 76.2 0)
+		(property "Reference" "#PWR018"
+			(at 180.34 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5852,7 +6759,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 189.23 76.1999 90)
+			(at 172.72 76.1999 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5861,7 +6768,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 193.04 76.2 0)
+			(at 176.53 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5870,7 +6777,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 193.04 76.2 0)
+			(at 176.53 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5879,7 +6786,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 193.04 76.2 0)
+			(at 176.53 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5893,7 +6800,128 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR029")
+					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensors:RFM95WCW")
+		(at 137.16 113.03 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5e0ecaca-3df2-4a6b-8f73-50bdaac77596")
+		(property "Reference" "U4"
+			(at 139.3033 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "RFM95WCW"
+			(at 139.3033 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "RF_Module:HOPERF_RFM9XW_SMD"
+			(at 53.34 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.hoperf.com/data/upload/portal/20181127/5bfcbea20e9ef.pdf"
+			(at 53.34 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Low power long range transceiver module, SPI and parallel interface, 868 MHz, spreading factor 6 to12, bandwidth 7.8 to 500kHz, -111 to -148 dBm, SMD-16, DIP-16"
+			(at 137.16 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "COM-18085"
+			(at 137.16 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "16"
+			(uuid "0049890a-9dde-4caf-92d7-06b69f12b26a")
+		)
+		(pin "7"
+			(uuid "3ea836b7-2451-4c95-a48b-43cfc5f888e0")
+		)
+		(pin "10"
+			(uuid "0aebeac6-1e6a-4ea5-a226-1758861d060b")
+		)
+		(pin "11"
+			(uuid "b8c03f5e-479c-4065-a057-8b76ec261bb5")
+		)
+		(pin "13"
+			(uuid "8ca4abc7-4e71-4fbe-b841-b74bef822fe2")
+		)
+		(pin "14"
+			(uuid "1a82dfd1-5b16-44fb-9134-30d00fd17873")
+		)
+		(pin "2"
+			(uuid "b9c859ae-edf5-40dc-9682-3f469472752f")
+		)
+		(pin "9"
+			(uuid "a32795d4-a723-462e-91bd-fa419c190082")
+		)
+		(pin "12"
+			(uuid "3fb2057d-f5c7-49d0-a24a-298b15b188cb")
+		)
+		(pin "15"
+			(uuid "ac00cb02-d4f1-48b6-9c7b-4822c9676757")
+		)
+		(pin "5"
+			(uuid "e9de024f-975f-4e2e-a1bc-effddb2b55a0")
+		)
+		(pin "6"
+			(uuid "5b2779ba-18d8-4191-8514-82f73ae250a8")
+		)
+		(pin "4"
+			(uuid "47da7dd4-2306-4a47-9c7a-83d81e24e639")
+		)
+		(pin "3"
+			(uuid "b3c5b15b-3c36-49de-adf1-47d4c359fdb1")
+		)
+		(pin "1"
+			(uuid "148e6b9f-5a51-4e8d-9ea2-a19012a975d6")
+		)
+		(pin "8"
+			(uuid "1e5693e6-fc54-4c4d-a383-862752ce5c9e")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "U4")
 					(unit 1)
 				)
 			)
@@ -5901,7 +6929,8 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 162.56 82.55 180)
+		(at 278.13 62.23 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5910,7 +6939,7 @@
 		(fields_autoplaced yes)
 		(uuid "5f5b954f-1760-4b91-975b-f4ddfc0ebf74")
 		(property "Reference" "R4"
-			(at 165.1 81.2799 0)
+			(at 275.59 60.9599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5918,8 +6947,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "75"
-			(at 165.1 83.8199 0)
+		(property "Value" "1k"
+			(at 275.59 63.4999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5928,7 +6957,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 164.338 82.55 90)
+			(at 276.352 62.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5937,7 +6966,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 162.56 82.55 0)
+			(at 278.13 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5946,7 +6975,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 162.56 82.55 0)
+			(at 278.13 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5954,8 +6983,8 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" "CRCW120675R0FKEA"
-			(at 162.56 82.55 0)
+		(property "Manufacturer Part Number" "RC1206FR-071KL"
+			(at 278.13 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6067,7 +7096,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6b9a99e2-9b00-47fb-bf74-4e1da5d54fc0")
-		(property "Reference" "#PWR03"
+		(property "Reference" "#PWR02"
 			(at 38.1 179.07 0)
 			(effects
 				(font
@@ -6117,7 +7146,86 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR03")
+					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_Coaxial")
+		(at 163.83 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6dab7235-c09d-4c9b-9b13-30cca1c2ddbe")
+		(property "Reference" "J10"
+			(at 167.64 104.4331 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SMA-J-P-H-ST-EM1"
+			(at 167.64 106.9731 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_Coaxial:SMA_Samtec_SMA-J-P-H-ST-EM1_EdgeMount"
+			(at 163.83 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 163.83 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "SMA-J-P-H-ST-EM1"
+			(at 163.83 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "02d6a69d-cf04-49d0-abb2-a09aab4248ba")
+		)
+		(pin "1"
+			(uuid "9db045e1-b805-43b7-961e-4005625a072e")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "J10")
 					(unit 1)
 				)
 			)
@@ -6133,7 +7241,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6f342c3b-a854-4598-b3b2-decbc8927db5")
-		(property "Reference" "#PWR04"
+		(property "Reference" "#PWR03"
 			(at 43.18 57.15 0)
 			(effects
 				(font
@@ -6183,73 +7291,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR04")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 175.26 111.76 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "71d88673-3f64-4ca5-91de-fbf1176d4bc3")
-		(property "Reference" "#PWR026"
-			(at 175.26 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 175.26 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 175.26 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 175.26 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 175.26 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0490b368-ae90-4d9f-a2c5-5af38419389a")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR026")
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -6348,7 +7390,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "777345a6-1e9d-40cb-8579-42cf198f225f")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR011"
 			(at 133.35 171.45 0)
 			(effects
 				(font
@@ -6399,86 +7441,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR07")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 175.26 88.9 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7e543f84-0457-43bc-af25-549bc62587cb")
-		(property "Reference" "R6"
-			(at 177.8 87.6299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "75"
-			(at 177.8 90.1699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 177.038 88.9 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 175.26 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 175.26 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part Number" "CRCW120675R0FKEA"
-			(at 175.26 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "39eba32e-788e-49f9-901e-cb8ee6bd581e")
-		)
-		(pin "2"
-			(uuid "8a2e9667-d859-46bd-888e-388216e58355")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "R6")
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -6494,7 +7457,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7e693b51-bf16-43cf-80c8-436cabb1aa12")
-		(property "Reference" "#PWR017"
+		(property "Reference" "#PWR09"
 			(at 102.87 53.34 0)
 			(effects
 				(font
@@ -6544,86 +7507,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR017")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:LED")
-		(at 175.26 100.33 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8089263f-4328-42c9-b15c-30c599f04fd9")
-		(property "Reference" "D2"
-			(at 179.07 100.6474 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RED LED"
-			(at 179.07 103.1874 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 175.26 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 175.26 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Light emitting diode"
-			(at 175.26 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part Number" "SML-D12U1WT86"
-			(at 175.26 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "edd6d2aa-bd12-49a8-a0f0-cc6424cd595d")
-		)
-		(pin "2"
-			(uuid "6b241b36-8a22-482d-a690-0c18c8259b02")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "D2")
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -6798,7 +7682,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "90b33ce8-4d09-49d7-8d47-97a67230eb72")
-		(property "Reference" "J1"
+		(property "Reference" "J2"
 			(at 119.38 158.7499 0)
 			(effects
 				(font
@@ -6867,7 +7751,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J1")
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -6883,7 +7767,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "925b08a7-c85b-403d-ad42-e54a1e014a5b")
-		(property "Reference" "J7"
+		(property "Reference" "J6"
 			(at 215.9 132.08 0)
 			(effects
 				(font
@@ -6950,7 +7834,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J7")
+					(reference "J6")
 					(unit 1)
 				)
 			)
@@ -7045,7 +7929,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9a8a7091-0180-4abc-9cd9-2fc123734cbe")
-		(property "Reference" "#PWR031"
+		(property "Reference" "#PWR020"
 			(at 217.17 128.27 0)
 			(effects
 				(font
@@ -7096,7 +7980,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR031")
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -7187,6 +8071,138 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 163.83 110.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a37884d0-5555-4ba2-9214-704e780744f0")
+		(property "Reference" "#PWR053"
+			(at 163.83 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 163.83 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 163.83 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "178053c3-ab4e-4629-81e6-d5937214978e")
+		)
+		(instances
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "#PWR053")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 137.16 100.33 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "aa15a7d6-c29c-4d9c-97fb-9143ff2b6ca6")
+		(property "Reference" "#PWR051"
+			(at 137.16 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 137.16 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 137.16 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137.16 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 137.16 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "54c2112e-db92-4d87-a9a0-fe4757a386b2")
+		)
+		(instances
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "#PWR051")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_01x01")
 		(at 121.92 182.88 180)
 		(unit 1)
@@ -7271,16 +8287,15 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 162.56 93.98 90)
+		(at 278.13 73.66 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "b8282cc3-837e-470c-b5bc-53cd461577d6")
 		(property "Reference" "D1"
-			(at 166.37 94.2974 90)
+			(at 281.94 73.9774 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7289,7 +8304,7 @@
 			)
 		)
 		(property "Value" "GREEN LED"
-			(at 166.37 96.8374 90)
+			(at 281.94 76.5174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7298,7 +8313,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_1206_3216Metric"
-			(at 162.56 93.98 0)
+			(at 278.13 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7307,7 +8322,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 162.56 93.98 0)
+			(at 278.13 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7316,7 +8331,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 162.56 93.98 0)
+			(at 278.13 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7325,7 +8340,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" "HSMG-C150"
-			(at 162.56 93.98 0)
+			(at 278.13 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7431,7 +8446,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bbf799b0-e155-48b0-8fc0-b200dc79cf4a")
-		(property "Reference" "#PWR028"
+		(property "Reference" "#PWR017"
 			(at 196.85 60.96 0)
 			(effects
 				(font
@@ -7482,7 +8497,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR028")
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -7571,7 +8586,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "da0401a8-de92-4e68-acca-cd72dcbf5ac0")
-		(property "Reference" "C6"
+		(property "Reference" "C3"
 			(at 200.66 33.02 90)
 			(effects
 				(font
@@ -7632,7 +8647,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "C6")
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -7640,7 +8655,8 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 162.56 105.41 0)
+		(at 278.13 85.09 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7648,8 +8664,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "da8bcd6a-351b-4151-b44a-21ad74a9df5e")
-		(property "Reference" "#PWR024"
-			(at 162.56 111.76 0)
+		(property "Reference" "#PWR013"
+			(at 278.13 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7658,7 +8674,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 162.56 110.49 0)
+			(at 278.13 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7666,7 +8682,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 162.56 105.41 0)
+			(at 278.13 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7675,7 +8691,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 162.56 105.41 0)
+			(at 278.13 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7684,7 +8700,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 162.56 105.41 0)
+			(at 278.13 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7698,7 +8714,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR024")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -7714,7 +8730,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e9ce7b7c-9590-449d-899f-561264be63bf")
-		(property "Reference" "#PWR09"
+		(property "Reference" "#PWR04"
 			(at 54.61 33.02 0)
 			(effects
 				(font
@@ -7765,7 +8781,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR09")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -7858,7 +8874,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f05edc54-3cd0-419f-a93e-d8b7a69193d6")
-		(property "Reference" "#PWR02"
+		(property "Reference" "#PWR01"
 			(at 31.75 34.29 0)
 			(effects
 				(font
@@ -7909,7 +8925,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR02")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -7925,7 +8941,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f1ce5a79-d686-4ffc-8f0b-e7ce4720ce59")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR07"
 			(at 95.25 144.78 0)
 			(effects
 				(font
@@ -7976,7 +8992,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR013")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -7992,7 +9008,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f56aa084-daa5-4974-8822-70c71b7112bb")
-		(property "Reference" "#PWR035"
+		(property "Reference" "#PWR024"
 			(at 265.43 109.22 0)
 			(effects
 				(font
@@ -8043,7 +9059,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR035")
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -8059,7 +9075,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f5a1940d-80a2-48b2-bb51-e3c89fdbc482")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR06"
 			(at 95.25 137.16 0)
 			(effects
 				(font
@@ -8110,7 +9126,7 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR012")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -8126,7 +9142,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f85eef89-b80e-4380-9d88-a0e7005a91cb")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR012"
 			(at 123.19 182.88 0)
 			(effects
 				(font
@@ -8177,7 +9193,137 @@
 		(instances
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR010")
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RF_Module:ESP32-C3-WROOM-02")
+		(at 233.68 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f8e0f9ec-5359-4f5e-89c5-b369a895d0bd")
+		(property "Reference" "U13"
+			(at 235.8233 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ESP32-C3-WROOM-02"
+			(at 235.8233 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "RF_Module:ESP32-C3-WROOM-02"
+			(at 233.68 67.945 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c3-wroom-02_datasheet_en.pdf"
+			(at 233.68 67.945 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "802.11 b/g/n Wi­Fi and Bluetooth 5 module, ESP32­C3 SoC, RISC­V microprocessor, On-board antenna"
+			(at 233.68 67.945 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "ESP32-C3-WROOM-02-N4"
+			(at 233.68 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "19"
+			(uuid "dfb66f12-da8b-4263-9ae7-7a58b03a72d2")
+		)
+		(pin "16"
+			(uuid "b6522428-d7e8-425d-981b-5e7cac56705e")
+		)
+		(pin "13"
+			(uuid "8b03db2d-355b-4c52-9e76-db8d5c1b9367")
+		)
+		(pin "15"
+			(uuid "71745973-787b-415d-9292-d46a8f35991c")
+		)
+		(pin "9"
+			(uuid "da89015b-3d27-4110-8607-2c5ccf3b4b0b")
+		)
+		(pin "8"
+			(uuid "0f16ee00-360f-495e-b282-f91ca0229ee0")
+		)
+		(pin "1"
+			(uuid "e2265c6b-a6b9-405a-94ab-3b7c4336dcc0")
+		)
+		(pin "10"
+			(uuid "fde13705-b409-4294-8896-3b5ae6abe8fa")
+		)
+		(pin "3"
+			(uuid "107605e9-179b-4840-8121-9be11eeb462f")
+		)
+		(pin "7"
+			(uuid "035941c0-836e-4697-a1d6-e43737b69b2a")
+		)
+		(pin "17"
+			(uuid "c2b328ad-443e-480c-8d2f-616b0833f121")
+		)
+		(pin "12"
+			(uuid "8d980a55-250b-4dae-9fdb-14ee67d933f5")
+		)
+		(pin "11"
+			(uuid "5e2030d0-093e-4a68-b6af-b6cc661533fc")
+		)
+		(pin "18"
+			(uuid "d3122b7e-b4f0-4557-a703-a81ddcac81e4")
+		)
+		(pin "4"
+			(uuid "e09feaea-4239-4118-bb9a-3f0422952560")
+		)
+		(pin "2"
+			(uuid "8ba438e9-a711-4770-b75e-061394006344")
+		)
+		(pin "5"
+			(uuid "68310dfd-2f84-4744-b89f-4f16d370f014")
+		)
+		(pin "14"
+			(uuid "9f7fdcf3-b02f-47dc-97ff-1c486016f879")
+		)
+		(pin "6"
+			(uuid "fbed9443-0f9f-487e-8707-6836c249900f")
+		)
+		(instances
+			(project ""
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "U13")
 					(unit 1)
 				)
 			)
@@ -8215,6 +9361,46 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+			)
+		)
+		(pin "SCL" input
+			(at 80.01 83.82 0)
+			(uuid "6409dd1a-2406-4629-b059-89962c6a413b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "SDA" input
+			(at 80.01 86.36 0)
+			(uuid "a184420e-1cac-40e8-8fe8-8f4fbe6a7290")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "Sensor_RX" input
+			(at 80.01 88.9 0)
+			(uuid "74cafa87-0489-4a99-8be8-ba6ff311eab2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "Sensor_TX" input
+			(at 80.01 91.44 0)
+			(uuid "3165b88f-f81c-4603-9893-9bb7834530a4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances
