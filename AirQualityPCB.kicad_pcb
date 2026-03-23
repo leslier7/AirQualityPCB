@@ -14731,6 +14731,19 @@
 			(justify bottom mirror)
 		)
 	)
+	(gr_text "LoRa Antenna"
+		(at 150 65 0)
+		(layer "B.SilkS")
+		(uuid "0b01d2bd-a8e0-4f34-a44d-a6a2def87c83")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom mirror)
+		)
+	)
 	(dimension
 		(type orthogonal)
 		(layer "Dwgs.User")
