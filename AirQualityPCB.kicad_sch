@@ -3464,26 +3464,6 @@
 		)
 		(uuid "0268eef7-f615-49a8-a264-bb9f37ecc48b")
 	)
-	(text "These points will be used to program the ESP32 for the first time \nusing a programming jig"
-		(exclude_from_sim no)
-		(at 219.456 164.338 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "06dc16d7-aa2b-4eb2-8f44-8136d744fab3")
-	)
-	(text "The programming jig will connect the two \nground points, but I wanted to make sure \nthat I didn't permanently bridge P9"
-		(exclude_from_sim no)
-		(at 251.968 146.304 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "271a0b16-907a-48a3-acca-314089018c6e")
-	)
 	(text "5V to 3.3V Regulator"
 		(exclude_from_sim no)
 		(at 43.942 21.082 0)
@@ -3513,16 +3493,6 @@
 			)
 		)
 		(uuid "766f3abf-0698-4d60-af2b-77b8ed377455")
-	)
-	(text "Programming Points"
-		(exclude_from_sim no)
-		(at 188.976 152.146 0)
-		(effects
-			(font
-				(size 2.54 2.54)
-			)
-		)
-		(uuid "7b4c16f0-7956-4fbb-9699-0c79e652cd7b")
 	)
 	(text "Mounting Holes"
 		(exclude_from_sim no)
@@ -4560,16 +4530,6 @@
 		)
 		(uuid "fe7de07f-112d-463a-9a34-01d3d5a555bb")
 	)
-	(label "D_P"
-		(at 220.98 149.86 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0993b1e5-6e16-450d-aa16-f803c60ff68f")
-	)
 	(label "SCK"
 		(at 210.82 63.5 0)
 		(effects
@@ -4579,16 +4539,6 @@
 			(justify left bottom)
 		)
 		(uuid "0f52a6b0-6559-4217-aa98-7d3efcb4464a")
-	)
-	(label "ProgGND"
-		(at 220.98 138.43 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1f0e2b9d-bf76-4320-bd1e-3fe5020aa5f3")
 	)
 	(label "SCK"
 		(at 113.03 105.41 0)
@@ -4630,16 +4580,6 @@
 		)
 		(uuid "46411cee-6557-4adf-9125-0c932cb0c565")
 	)
-	(label "D_N"
-		(at 220.98 160.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "49f4e056-e598-4931-b8d3-9d7472a9ec14")
-	)
 	(label "CS"
 		(at 210.82 81.28 0)
 		(effects
@@ -4649,6 +4589,16 @@
 			(justify left bottom)
 		)
 		(uuid "52ad64fb-b1ac-48b4-965d-a70ff44adc7b")
+	)
+	(label "ANT"
+		(at 154.94 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5a6b1d4e-3b3d-4dde-8bf8-d3d954d0501d")
 	)
 	(label "DIO1"
 		(at 260.35 50.8 0)
@@ -5267,6 +5217,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 125.73 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1cda488f-8561-4588-a7cd-6f33ede9cc4f")
+		(property "Reference" "#PWR054"
+			(at 125.73 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 125.73 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 125.73 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 125.73 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 125.73 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "15118ba6-2e3d-476f-85d4-829e3333383b")
+		)
+		(instances
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "#PWR054")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Mechanical:MountingHole")
 		(at 38.1 194.31 0)
 		(unit 1)
@@ -5543,172 +5559,6 @@
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
 					(reference "#PWR022")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x01")
-		(at 236.22 138.43 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "304556e7-221b-4343-9612-7164dc0061be")
-		(property "Reference" "J9"
-			(at 236.22 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ProgPoint GND"
-			(at 236.22 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 236.22 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 236.22 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 236.22 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part Number" ""
-			(at 236.22 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ProgPoint" "PGND"
-			(at 236.22 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5711aa9e-8649-45e4-86d9-e155edba99e7")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x01")
-		(at 215.9 128.27 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "30eb0944-878a-40a3-b948-dd7de04d7e6d")
-		(property "Reference" "J5"
-			(at 215.9 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ProgPoint 5V"
-			(at 215.9 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 215.9 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 215.9 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 215.9 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part Number" ""
-			(at 215.9 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ProgPoint" "5V"
-			(at 215.9 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0dabb8e3-953c-4098-aa9e-b5d505420fe8")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J5")
 					(unit 1)
 				)
 			)
@@ -6213,73 +6063,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 241.3 138.43 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "41b721e8-f50b-487a-968e-dbe44ba29315")
-		(property "Reference" "#PWR023"
-			(at 247.65 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 245.11 138.4299 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 241.3 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 241.3 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 241.3 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6745b466-ec8c-4c26-ab8e-e62809ad23fd")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR023")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "PTS526SK15SMTR2 LFS:PTS526_SK15_SMTR2_LFS")
 		(at 210.82 109.22 0)
 		(unit 1)
@@ -6508,89 +6291,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x01")
-		(at 215.9 149.86 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "48e2f3ac-266b-4825-8100-7ed62d762211")
-		(property "Reference" "J7"
-			(at 215.9 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ProgPointPoint D_P"
-			(at 215.9 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 215.9 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 215.9 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 215.9 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part Number" ""
-			(at 215.9 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ProgPoint" "D_P"
-			(at 215.9 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "259b7fb4-66be-4b7a-a756-efe143b0e2e2")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3.3V")
 		(at 167.64 48.26 0)
 		(unit 1)
@@ -6651,89 +6351,6 @@
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
 					(reference "#PWR014")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x01")
-		(at 215.9 160.02 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4dcbca77-01cb-455c-81e1-bae3dc177473")
-		(property "Reference" "J8"
-			(at 215.9 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ProgPoint D_N"
-			(at 215.9 156.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 215.9 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 215.9 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 215.9 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part Number" ""
-			(at 215.9 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ProgPoint" "D_N"
-			(at 215.9 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fab0d391-80c1-4a29-8907-ad01ba3d1451")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J8")
 					(unit 1)
 				)
 			)
@@ -6919,7 +6536,7 @@
 			(uuid "1e5693e6-fc54-4c4d-a383-862752ce5c9e")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
 					(reference "U4")
 					(unit 1)
@@ -7223,7 +6840,7 @@
 			(uuid "9db045e1-b805-43b7-961e-4005625a072e")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
 					(reference "J10")
 					(unit 1)
@@ -7515,6 +7132,85 @@
 	)
 	(symbol
 		(lib_id "Device:C")
+		(at 125.73 92.71 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "847b815c-ee8c-4016-b9c5-4d420f4b3500")
+		(property "Reference" "C12"
+			(at 129.54 91.4399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10uF"
+			(at 129.54 93.9799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 124.7648 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 125.73 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 125.73 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" "TMK316BJ106KL-T"
+			(at 125.73 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "eebb537b-4ab2-4c64-89ce-9d633857606a")
+		)
+		(pin "1"
+			(uuid "f1cf19af-4efc-406c-ad2a-b84d1abfba75")
+		)
+		(instances
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "C12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
 		(at 58.42 41.91 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7758,89 +7454,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x01")
-		(at 215.9 138.43 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "925b08a7-c85b-403d-ad42-e54a1e014a5b")
-		(property "Reference" "J6"
-			(at 215.9 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ProgPoint P9 GND"
-			(at 215.9 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 215.9 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 215.9 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 215.9 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part Number" ""
-			(at 215.9 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ProgPoint" "GND"
-			(at 215.9 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cc1d03b8-d884-4305-963a-5fe4d425cda0")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "J6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 171.45 59.69 180)
 		(unit 1)
@@ -7914,73 +7527,6 @@
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
 					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VBUS")
-		(at 220.98 128.27 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9a8a7091-0180-4abc-9cd9-2fc123734cbe")
-		(property "Reference" "#PWR020"
-			(at 217.17 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VBUS"
-			(at 224.79 128.2699 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 220.98 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 220.98 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VBUS\""
-			(at 220.98 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0c281c1e-df37-437b-8d97-cd27f0f2ea25")
-		)
-		(instances
-			(project "AirQualityPCB"
-				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
-					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -8571,6 +8117,72 @@
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
 					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 125.73 88.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d73ccef4-dfd8-409d-b518-a2b851c7a1a7")
+		(property "Reference" "#PWR015"
+			(at 125.73 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 125.73 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 125.73 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 125.73 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 125.73 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "956d5c99-0af2-497d-a7f4-cfd4c236e4fa")
+		)
+		(instances
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -9321,7 +8933,7 @@
 			(uuid "fbed9443-0f9f-487e-8707-6836c249900f")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
 					(reference "U13")
 					(unit 1)

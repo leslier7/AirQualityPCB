@@ -2277,16 +2277,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "TODO should I make an analog power unit as well?"
-		(exclude_from_sim no)
-		(at 44.196 108.204 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "17b33274-78d5-4c5a-b9cc-e6fcb54cd3a2")
-	)
 	(text "NO2"
 		(exclude_from_sim no)
 		(at 177.546 26.416 0)
@@ -3995,7 +3985,7 @@
 			(uuid "2e7b1e4b-1240-4043-b5ec-648021298690")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U9")
 					(unit 2)
@@ -4031,7 +4021,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 31.4452 125.73 0)
 			(effects
 				(font
@@ -4058,7 +4048,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" "CL21A106KOQNNNE"
+		(property "Manufacturer Part Number" "TMK316BJ106KL-T"
 			(at 30.48 121.92 0)
 			(effects
 				(font
@@ -4080,7 +4070,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "C4")
 					(unit 1)
@@ -4182,7 +4172,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 194.0052 157.48 0)
 			(effects
 				(font
@@ -4209,7 +4199,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" "CL21A106KOQNNNE"
+		(property "Manufacturer Part Number" "TMK316BJ106KL-T"
 			(at 193.04 153.67 0)
 			(effects
 				(font
@@ -4225,7 +4215,7 @@
 			(uuid "a81b3101-aa84-4edd-909d-ba21b9e0fafc")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "C9")
 					(unit 1)
@@ -4429,7 +4419,7 @@
 			(uuid "3709a473-9afb-4801-ba07-1888b8ad8a69")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U7")
 					(unit 3)
@@ -5037,7 +5027,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "R13")
 					(unit 1)
@@ -5284,7 +5274,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U5")
 					(unit 1)
@@ -5369,7 +5359,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "C7")
 					(unit 1)
@@ -5479,31 +5469,31 @@
 			)
 		)
 		(pin "8"
-			(uuid "3c01ef9b-5b19-46e7-9515-25d46be4cab2")
+			(uuid "3c01ef9b-5b19-46e7-9515-25d46be4cab3")
 		)
 		(pin "6"
-			(uuid "aacc6fbe-67fd-4a38-a2f2-eee8f814ce94")
+			(uuid "aacc6fbe-67fd-4a38-a2f2-eee8f814ce95")
 		)
 		(pin "5"
-			(uuid "1d40161e-444f-489e-b6ae-33a4790346bd")
+			(uuid "1d40161e-444f-489e-b6ae-33a4790346be")
 		)
 		(pin "2"
-			(uuid "37560345-3145-45ca-9e67-2c99ae1e4b94")
+			(uuid "37560345-3145-45ca-9e67-2c99ae1e4b95")
 		)
 		(pin "3"
-			(uuid "1ce832f7-a5ce-4f4c-80b6-a462df9d07c4")
+			(uuid "1ce832f7-a5ce-4f4c-80b6-a462df9d07c5")
 		)
 		(pin "1"
-			(uuid "95d7174f-851d-4737-8f5b-25afa881d072")
+			(uuid "95d7174f-851d-4737-8f5b-25afa881d073")
 		)
 		(pin "7"
-			(uuid "a5bb267c-87a1-4e4c-880e-ff4850dc52a5")
+			(uuid "a5bb267c-87a1-4e4c-880e-ff4850dc52a6")
 		)
 		(pin "4"
-			(uuid "2e7b1e4b-1240-4043-b5ec-648021298690")
+			(uuid "2e7b1e4b-1240-4043-b5ec-648021298691")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U9")
 					(unit 3)
@@ -5575,7 +5565,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "#PWR031")
 					(unit 1)
@@ -5682,31 +5672,31 @@
 			)
 		)
 		(pin "5"
-			(uuid "40e529cc-ab2e-4d0e-9819-e83fa144b719")
+			(uuid "40e529cc-ab2e-4d0e-9819-e83fa144b71a")
 		)
 		(pin "1"
-			(uuid "e6e2d10c-88e7-4cd2-a590-7a01481c96ce")
+			(uuid "e6e2d10c-88e7-4cd2-a590-7a01481c96cf")
 		)
 		(pin "6"
-			(uuid "573b4d81-31f8-4975-8939-66021a291776")
+			(uuid "573b4d81-31f8-4975-8939-66021a291777")
 		)
 		(pin "2"
-			(uuid "d6818e4e-e164-4477-aaad-39ceef48d786")
+			(uuid "d6818e4e-e164-4477-aaad-39ceef48d787")
 		)
 		(pin "7"
-			(uuid "75b0387f-d5e9-407e-9bf9-1c9b489f6d92")
+			(uuid "75b0387f-d5e9-407e-9bf9-1c9b489f6d93")
 		)
 		(pin "4"
-			(uuid "8bcda96e-6348-4c2f-bc91-26859d50d7f1")
+			(uuid "8bcda96e-6348-4c2f-bc91-26859d50d7f2")
 		)
 		(pin "3"
-			(uuid "80a7db10-e8aa-4d72-9d6b-db01f6572aa0")
+			(uuid "80a7db10-e8aa-4d72-9d6b-db01f6572aa1")
 		)
 		(pin "8"
-			(uuid "3709a473-9afb-4801-ba07-1888b8ad8a69")
+			(uuid "3709a473-9afb-4801-ba07-1888b8ad8a6a")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U7")
 					(unit 1)
@@ -5863,7 +5853,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "C5")
 					(unit 1)
@@ -6185,7 +6175,7 @@
 			(uuid "1515769f-adc1-446b-91e5-8456ea70ec40")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U8")
 					(unit 2)
@@ -6380,7 +6370,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U6")
 					(unit 1)
@@ -6704,31 +6694,31 @@
 			)
 		)
 		(pin "2"
-			(uuid "4ab95707-1aee-4f09-ad52-d3497e564c1a")
+			(uuid "4ab95707-1aee-4f09-ad52-d3497e564c1b")
 		)
 		(pin "4"
-			(uuid "4e757d6a-0c37-4011-899f-6d6c65df6235")
+			(uuid "4e757d6a-0c37-4011-899f-6d6c65df6236")
 		)
 		(pin "7"
-			(uuid "25b02580-0116-459d-af95-661b4a83b7ec")
+			(uuid "25b02580-0116-459d-af95-661b4a83b7ed")
 		)
 		(pin "1"
-			(uuid "7ff68166-7e8f-4b3f-bb89-49899a156024")
+			(uuid "7ff68166-7e8f-4b3f-bb89-49899a156025")
 		)
 		(pin "6"
-			(uuid "61f0a471-3242-43e6-9b85-034a1649038e")
+			(uuid "61f0a471-3242-43e6-9b85-034a1649038f")
 		)
 		(pin "5"
-			(uuid "ac86ad5f-0251-463a-8e64-d3f892081922")
+			(uuid "ac86ad5f-0251-463a-8e64-d3f892081923")
 		)
 		(pin "8"
-			(uuid "36660e84-20f4-494a-8f0d-b9dd8b37d99f")
+			(uuid "36660e84-20f4-494a-8f0d-b9dd8b37d9a0")
 		)
 		(pin "3"
-			(uuid "1515769f-adc1-446b-91e5-8456ea70ec40")
+			(uuid "1515769f-adc1-446b-91e5-8456ea70ec41")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U8")
 					(unit 1)
@@ -6800,7 +6790,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "#PWR029")
 					(unit 1)
@@ -6951,7 +6941,7 @@
 			(uuid "ecd15e7d-dda7-4850-ab41-4528ece2b5ff")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "D3")
 					(unit 1)
@@ -7432,31 +7422,31 @@
 			)
 		)
 		(pin "2"
-			(uuid "4ab95707-1aee-4f09-ad52-d3497e564c1a")
+			(uuid "4ab95707-1aee-4f09-ad52-d3497e564c1c")
 		)
 		(pin "4"
-			(uuid "4e757d6a-0c37-4011-899f-6d6c65df6235")
+			(uuid "4e757d6a-0c37-4011-899f-6d6c65df6237")
 		)
 		(pin "7"
-			(uuid "25b02580-0116-459d-af95-661b4a83b7ec")
+			(uuid "25b02580-0116-459d-af95-661b4a83b7ee")
 		)
 		(pin "1"
-			(uuid "7ff68166-7e8f-4b3f-bb89-49899a156024")
+			(uuid "7ff68166-7e8f-4b3f-bb89-49899a156026")
 		)
 		(pin "6"
-			(uuid "61f0a471-3242-43e6-9b85-034a1649038e")
+			(uuid "61f0a471-3242-43e6-9b85-034a16490390")
 		)
 		(pin "5"
-			(uuid "ac86ad5f-0251-463a-8e64-d3f892081922")
+			(uuid "ac86ad5f-0251-463a-8e64-d3f892081924")
 		)
 		(pin "8"
-			(uuid "36660e84-20f4-494a-8f0d-b9dd8b37d99f")
+			(uuid "36660e84-20f4-494a-8f0d-b9dd8b37d9a1")
 		)
 		(pin "3"
-			(uuid "1515769f-adc1-446b-91e5-8456ea70ec40")
+			(uuid "1515769f-adc1-446b-91e5-8456ea70ec42")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U8")
 					(unit 3)
@@ -8113,7 +8103,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U12")
 					(unit 1)
@@ -8355,7 +8345,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "R12")
 					(unit 1)
@@ -8535,31 +8525,31 @@
 			)
 		)
 		(pin "8"
-			(uuid "3c01ef9b-5b19-46e7-9515-25d46be4cab2")
+			(uuid "3c01ef9b-5b19-46e7-9515-25d46be4cab4")
 		)
 		(pin "6"
-			(uuid "aacc6fbe-67fd-4a38-a2f2-eee8f814ce94")
+			(uuid "aacc6fbe-67fd-4a38-a2f2-eee8f814ce96")
 		)
 		(pin "5"
-			(uuid "1d40161e-444f-489e-b6ae-33a4790346bd")
+			(uuid "1d40161e-444f-489e-b6ae-33a4790346bf")
 		)
 		(pin "2"
-			(uuid "37560345-3145-45ca-9e67-2c99ae1e4b94")
+			(uuid "37560345-3145-45ca-9e67-2c99ae1e4b96")
 		)
 		(pin "3"
-			(uuid "1ce832f7-a5ce-4f4c-80b6-a462df9d07c4")
+			(uuid "1ce832f7-a5ce-4f4c-80b6-a462df9d07c6")
 		)
 		(pin "1"
-			(uuid "95d7174f-851d-4737-8f5b-25afa881d072")
+			(uuid "95d7174f-851d-4737-8f5b-25afa881d074")
 		)
 		(pin "7"
-			(uuid "a5bb267c-87a1-4e4c-880e-ff4850dc52a5")
+			(uuid "a5bb267c-87a1-4e4c-880e-ff4850dc52a7")
 		)
 		(pin "4"
-			(uuid "2e7b1e4b-1240-4043-b5ec-648021298690")
+			(uuid "2e7b1e4b-1240-4043-b5ec-648021298692")
 		)
 		(instances
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U9")
 					(unit 1)
@@ -8811,7 +8801,7 @@
 					(unit 1)
 				)
 			)
-			(project ""
+			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5/7e08e9d5-6e56-40af-b2c7-a3b6d3605d5b"
 					(reference "U11")
 					(unit 1)

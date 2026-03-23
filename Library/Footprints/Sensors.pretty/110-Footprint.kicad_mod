@@ -54,6 +54,17 @@
 		)
 	)
 	(attr smd)
+	(fp_rect
+		(start -13 -12)
+		(end 13 12)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "fa933063-bdd9-4c5b-afd5-2ad89a4df785")
+	)
 	(fp_text user "${REFERENCE}"
 		(at 0 2.5 0)
 		(unlocked yes)
@@ -68,7 +79,7 @@
 	)
 	(dimension
 		(type orthogonal)
-		(layer "Dwgs.User")
+		(layer "F.Fab")
 		(uuid "5de2524a-47c9-4cd7-ad3e-10e1d4469cf1")
 		(pts
 			(xy 0 8.89) (xy 0 -8.89)
@@ -94,7 +105,7 @@
 		)
 		(gr_text "17.78"
 			(at 6.39 0 90)
-			(layer "Dwgs.User")
+			(layer "F.Fab")
 			(uuid "5de2524a-47c9-4cd7-ad3e-10e1d4469cf1")
 			(effects
 				(font
@@ -106,7 +117,7 @@
 	)
 	(dimension
 		(type orthogonal)
-		(layer "Dwgs.User")
+		(layer "F.Fab")
 		(uuid "8aff36e0-2fec-4b92-9138-73605d1d89a2")
 		(pts
 			(xy 0 0) (xy -8.89 0)
@@ -132,7 +143,7 @@
 		)
 		(gr_text "8.89"
 			(at -4.445 -6.17 0)
-			(layer "Dwgs.User")
+			(layer "F.Fab")
 			(uuid "8aff36e0-2fec-4b92-9138-73605d1d89a2")
 			(effects
 				(font
@@ -144,7 +155,7 @@
 	)
 	(dimension
 		(type orthogonal)
-		(layer "Dwgs.User")
+		(layer "F.Fab")
 		(uuid "cce9c47d-a781-4d23-a2b2-e1edea2c6455")
 		(pts
 			(xy 0 0) (xy 0.12 8.89)
@@ -170,7 +181,7 @@
 		)
 		(gr_text "8.89"
 			(at -1.1 4.445 90)
-			(layer "Dwgs.User")
+			(layer "F.Fab")
 			(uuid "cce9c47d-a781-4d23-a2b2-e1edea2c6455")
 			(effects
 				(font
