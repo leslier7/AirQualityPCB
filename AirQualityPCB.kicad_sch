@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "AirQualityPCB")
-		(date "2026-03-22")
+		(date "2026-03-25")
 		(rev "1.0")
 		(company "Cornell University")
 		(comment 1 "Robbie Leslie")
@@ -6383,6 +6383,72 @@
 			(project "AirQualityPCB"
 				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
 					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 30.48 172.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4fb924a3-96b2-498f-a841-8776541a4899")
+		(property "Reference" "#PWR020"
+			(at 30.48 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 30.48 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 30.48 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 30.48 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 30.48 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "371387db-35dd-4552-be84-57790af408ec")
+		)
+		(instances
+			(project "AirQualityPCB"
+				(path "/91f71406-0d85-449c-a1a7-616be8373eb5"
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
