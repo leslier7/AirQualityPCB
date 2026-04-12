@@ -107,3 +107,11 @@ GerberFiles.zip
 # Exported BOM files
 *.xml
 *.csv
+
+.DS_Store
+.pio
+build
+wifi_secrets.h
+venv
+.idea
+.vscode
