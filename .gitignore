@@ -61,6 +61,7 @@ Project Logs for *
 Project Outputs for *
 *-backups
 Outputs
+production
 
 
 # Format documentation: https://kicad.org/help/file-formats/
@@ -106,3 +107,11 @@ GerberFiles.zip
 # Exported BOM files
 *.xml
 *.csv
+
+.DS_Store
+.pio
+build
+wifi_secrets.h
+venv
+.idea
+.vscode
