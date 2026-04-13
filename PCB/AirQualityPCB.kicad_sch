@@ -4672,6 +4672,16 @@
 		)
 		(uuid "6d0a9d41-d181-4d06-ab41-8547755fce46")
 	)
+	(label "LED"
+		(at 210.8333 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7091be85-9469-41ba-b2c8-f3191394b24b")
+	)
 	(label "MOSI"
 		(at 113.03 107.95 0)
 		(effects
@@ -4741,16 +4751,6 @@
 			(justify left bottom)
 		)
 		(uuid "9e0580be-246b-4d18-ba5e-081f1147febc")
-	)
-	(label "LED"
-		(at 198.12 76.2 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a5a2d950-7009-41ec-93cc-0a7ce5b45439")
 	)
 	(label "D_N"
 		(at 60.96 148.59 0)
