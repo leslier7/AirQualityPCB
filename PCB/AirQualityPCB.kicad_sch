@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "AirQualityPCB")
-		(date "2026-03-25")
+		(date "2026-04-13")
 		(rev "1.0")
 		(company "Cornell University")
 		(comment 1 "Robbie Leslie")
@@ -3654,13 +3654,13 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 144.78) (xy 88.9 144.78)
+			(xy 53.34 139.7) (xy 71.12 139.7)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "07f384cc-a74c-4c6b-bbb8-a6b7f9fd5f7e")
+		(uuid "086958a4-c670-4175-9d4c-0ff69d20efe9")
 	)
 	(wire
 		(pts
@@ -3681,6 +3681,16 @@
 			(type default)
 		)
 		(uuid "0d3e2629-e2e9-43eb-adf5-56967b14fb17")
+	)
+	(wire
+		(pts
+			(xy 71.12 144.78) (xy 71.12 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0dd4b440-6c59-4300-a55d-5bf3bfe3df5b")
 	)
 	(wire
 		(pts
@@ -3774,6 +3784,16 @@
 	)
 	(wire
 		(pts
+			(xy 77.47 144.78) (xy 71.12 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26fa2c38-9a65-48c5-ac7c-07e3bb83ec47")
+	)
+	(wire
+		(pts
 			(xy 196.85 101.6) (xy 196.85 113.03)
 		)
 		(stroke
@@ -3834,6 +3854,16 @@
 	)
 	(wire
 		(pts
+			(xy 85.09 137.16) (xy 88.9 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "337d26a8-d766-47be-a568-dd17dacc8b83")
+	)
+	(wire
+		(pts
 			(xy 50.8 35.56) (xy 58.42 35.56)
 		)
 		(stroke
@@ -3861,16 +3891,6 @@
 			(type default)
 		)
 		(uuid "357554e5-fbeb-4073-8bd4-4af6621b2733")
-	)
-	(wire
-		(pts
-			(xy 83.82 137.16) (xy 88.9 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "35c3fa5c-1540-4a2f-a61f-6ac42fd5a3a4")
 	)
 	(wire
 		(pts
@@ -4024,16 +4044,6 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 139.7) (xy 53.34 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "59dc3273-5e07-4036-9b69-efd6080be37a")
-	)
-	(wire
-		(pts
 			(xy 196.85 78.74) (xy 196.85 92.71)
 		)
 		(stroke
@@ -4054,6 +4064,16 @@
 	)
 	(wire
 		(pts
+			(xy 71.12 142.24) (xy 53.34 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f624879-032a-487d-8399-062df509601d")
+	)
+	(wire
+		(pts
 			(xy 53.34 134.62) (xy 63.5 134.62)
 		)
 		(stroke
@@ -4071,16 +4091,6 @@
 			(type default)
 		)
 		(uuid "6a519335-0d52-4220-bf91-33c497c0051a")
-	)
-	(wire
-		(pts
-			(xy 74.93 137.16) (xy 74.93 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6a8fd42d-7420-4eb5-a129-4859e8d7bfa2")
 	)
 	(wire
 		(pts
@@ -4114,6 +4124,16 @@
 	)
 	(wire
 		(pts
+			(xy 71.12 137.16) (xy 77.47 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80406275-c293-4c6c-b622-2f3d0e39c864")
+	)
+	(wire
+		(pts
 			(xy 189.23 40.64) (xy 194.31 40.64)
 		)
 		(stroke
@@ -4121,6 +4141,16 @@
 			(type default)
 		)
 		(uuid "81fa9520-67e8-4b8f-a99a-dbacb7b30d37")
+	)
+	(wire
+		(pts
+			(xy 71.12 137.16) (xy 71.12 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8245c931-345f-45a2-9feb-7b9bfc4da972")
 	)
 	(wire
 		(pts
@@ -4171,16 +4201,6 @@
 			(type default)
 		)
 		(uuid "9527b409-98b9-4d88-b5f7-dbcb561f275c")
-	)
-	(wire
-		(pts
-			(xy 74.93 137.16) (xy 76.2 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "986aec40-47fc-4144-bd24-ddaca16980d8")
 	)
 	(wire
 		(pts
@@ -4334,6 +4354,16 @@
 	)
 	(wire
 		(pts
+			(xy 85.09 144.78) (xy 88.9 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bcf7e5e6-f6b1-487e-b60b-d0aad158cbfa")
+	)
+	(wire
+		(pts
 			(xy 57.15 153.67) (xy 60.96 153.67)
 		)
 		(stroke
@@ -4371,16 +4401,6 @@
 			(type default)
 		)
 		(uuid "c53f4323-76e7-4268-8db5-60c934f7a79d")
-	)
-	(wire
-		(pts
-			(xy 74.93 144.78) (xy 76.2 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c8618578-1768-408d-a2e7-42eca393ca66")
 	)
 	(wire
 		(pts
@@ -4444,16 +4464,6 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 144.78) (xy 74.93 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d69face5-4746-4fec-945f-265898a78caf")
-	)
-	(wire
-		(pts
 			(xy 58.42 35.56) (xy 58.42 38.1)
 		)
 		(stroke
@@ -4511,16 +4521,6 @@
 			(type default)
 		)
 		(uuid "e7b64fd2-4845-4ee7-a443-a103ef628247")
-	)
-	(wire
-		(pts
-			(xy 74.93 142.24) (xy 53.34 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e9c37241-6269-4497-a54d-3d0abe7355ac")
 	)
 	(wire
 		(pts
@@ -5107,7 +5107,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 80.01 144.78 270)
+		(at 81.28 137.16 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5115,7 +5115,7 @@
 		(dnp no)
 		(uuid "19e5cd0c-e4a6-402d-a0ac-40912c6d28f3")
 		(property "Reference" "R2"
-			(at 80.01 140.716 90)
+			(at 81.28 133.096 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5123,7 +5123,7 @@
 			)
 		)
 		(property "Value" "5.1k"
-			(at 80.01 142.494 90)
+			(at 81.28 134.874 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5131,7 +5131,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 80.01 143.002 90)
+			(at 81.28 135.382 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5140,7 +5140,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 80.01 144.78 0)
+			(at 81.28 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5149,7 +5149,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 80.01 144.78 0)
+			(at 81.28 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5158,7 +5158,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" "CRCW12065K10FKEA"
-			(at 80.01 144.78 0)
+			(at 81.28 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6020,7 +6020,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 80.01 137.16 270)
+		(at 81.28 144.78 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6028,7 +6028,7 @@
 		(dnp no)
 		(uuid "41985723-10df-4681-96be-725b5a1483f0")
 		(property "Reference" "R1"
-			(at 80.01 132.842 90)
+			(at 81.28 140.462 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6036,7 +6036,7 @@
 			)
 		)
 		(property "Value" "5.1k"
-			(at 80.01 134.874 90)
+			(at 81.28 142.494 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6044,7 +6044,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 80.01 135.382 90)
+			(at 81.28 143.002 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6053,7 +6053,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 80.01 137.16 0)
+			(at 81.28 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6062,7 +6062,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 80.01 137.16 0)
+			(at 81.28 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6071,7 +6071,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" "CRCW12065K10FKEA"
-			(at 80.01 137.16 0)
+			(at 81.28 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
