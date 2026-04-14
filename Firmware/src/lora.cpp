@@ -3,33 +3,126 @@
 
 #include <Arduino.h>
 #include <SPI.h>
+#include <arduino_lmic.h>
 #include "lora.h"
+#include "keys.h"
 
-const lmic_pinmap lmic_pins = {
-    .nss  = PIN_CS,               // IO10
-    .rxtx = LMIC_UNUSED_PIN,      // not used for RFM95
-    .rst  = LMIC_UNUSED_PIN,              // your reset pin, or LMIC_UNUSED_PIN
-    .dio  = { PIN_DIO0, PIN_DIO1, LMIC_UNUSED_PIN },
+cMyLoRaWAN myLoRaWAN;
+
+static const cMyLoRaWAN::lmic_pinmap myPinMap = {
+    .nss            = PIN_CS,
+    .rxtx           = cMyLoRaWAN::lmic_pinmap::LMIC_UNUSED_PIN,
+    .rst            = cMyLoRaWAN::lmic_pinmap::LMIC_UNUSED_PIN,
+    .dio            = { PIN_DIO0, PIN_DIO1, cMyLoRaWAN::lmic_pinmap::LMIC_UNUSED_PIN },
+    .rxtx_rx_active = 0,
+    .rssi_cal       = 0,
+    .spi_freq       = 8000000,
 };
 
-static uint8_t readRegister(uint8_t address) {
-    SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0));
-    digitalWrite(PIN_CS, LOW);
-    SPI.transfer(address & 0x7F);  // MSB=0 means read
-    uint8_t value = SPI.transfer(0x00);
-    digitalWrite(PIN_CS, HIGH);
-    SPI.endTransaction();
-    return value;
+static void sendCallback(void *pCtx, bool fSuccess) {
+    if (fSuccess) {
+        Serial.printf("TX succeeded (devaddr=0x%08X, fcnt=%d, dr=%d, txpow=%d)\n",
+            LMIC.devaddr, LMIC.seqnoUp, LMIC.datarate, LMIC.txpow);
+    } else {
+        Serial.printf("TX failed (devaddr=0x%08X)\n", LMIC.devaddr);
+        Serial.printf("  Frame counter : %d\n", LMIC.seqnoUp);
+        Serial.printf("  Data rate     : DR%d\n", LMIC.datarate);
+        Serial.printf("  TX power      : %d dBm\n", LMIC.txpow);
+        Serial.printf("  opmode        : 0x%04X\n", LMIC.opmode);
+
+        // Decode opmode bitmask
+        if (LMIC.opmode & OP_TXDATA)    Serial.println("  [OP_TXDATA]    data waiting to send");
+        if (LMIC.opmode & OP_JOINING)   Serial.println("  [OP_JOINING]   join in progress");
+        if (LMIC.opmode & OP_TXRXPEND)  Serial.println("  [OP_TXRXPEND]  waiting for RX window");
+        if (LMIC.opmode & OP_UNJOIN)    Serial.println("  [OP_UNJOIN]    lost network, re-joining");
+        if (LMIC.opmode & OP_SHUTDOWN)  Serial.println("  [OP_SHUTDOWN]  radio shut down");
+        if (LMIC.opmode & OP_NEXTCHNL)  Serial.println("  [OP_NEXTCHNL]  waiting for next channel");
+        if (LMIC.opmode & OP_LINKDEAD)  Serial.println("  [OP_LINKDEAD]  no downlinks received, link may be dead");
+
+        // The most useful one for your situation:
+        if (LMIC.opmode & OP_LINKDEAD) {
+            Serial.println("  >>> Link dead: confirmed uplinks not ACKed, gateway may not be hearing you");
+        }
+    }
 }
 
-bool setup_lora(){
-    pinMode(PIN_CS, OUTPUT);
-    digitalWrite(PIN_CS, HIGH);
-
+bool setup_lora() {
+    Serial.println("LoRa: initializing SPI...");
     SPI.begin(PIN_SCLK, PIN_MISO, PIN_MOSI, PIN_CS);
+    Serial.printf("LoRa: SPI started (SCLK=%d MISO=%d MOSI=%d CS=%d)\n",
+                  PIN_SCLK, PIN_MISO, PIN_MOSI, PIN_CS);
 
-    uint8_t version = readRegister(0x42);
-    Serial.printf("RFM95 version register: 0x%02X (expect 0x12)\n", version);
+    Serial.println("LoRa: calling begin()...");
+    bool ok = myLoRaWAN.begin(myPinMap);
+    Serial.printf("LoRa: begin() returned %s\n", ok ? "OK" : "FAIL");
 
-    return version == 0x12;
+    #ifdef LONG_RANGE
+    LMIC_setAdrMode(0);              // Disable ADR so TTN can't dial it back down
+    LMIC_setDrTxpow(DR_SF10, 14);   // SF10, max transmit power 
+    #endif
+
+    return ok;
+}
+
+void send_lora(const pkt_fmt &pkt) {
+
+    Serial.printf("LoRa: queuing TX (intNum=%d floatNum=%.4f thermistor=%.1f digital=%.1f)\n",
+                  pkt.intNum, pkt.floatNum, pkt.thermistorTemp, pkt.digitalTemp);
+
+    LMIC_setAdrMode(0);
+    LMIC_setDrTxpow(DR_SF10, 14);
+    #ifdef DEBUG_LORA
+    myLoRaWAN.SendBuffer(
+        (const uint8_t *) &pkt, sizeof(pkt),
+        sendCallback, nullptr, true, 1   // true = confirmed, TTN sends ACK (can only get 10 a day). Maybe use for prod
+    );
+    #else
+    myLoRaWAN.SendBuffer(
+        (const uint8_t *) &pkt, sizeof(pkt),
+        sendCallback, nullptr, false, 1   // true = confirmed, TTN sends ACK
+    );
+    #endif
+}
+
+bool cMyLoRaWAN::GetOtaaProvisioningInfo(OtaaProvisioningInfo *pInfo) {
+    Serial.println("LoRa: loading OTAA keys");
+    if (pInfo) {
+        memcpy_P(pInfo->AppEUI, APPEUI, 8);
+        memcpy_P(pInfo->DevEUI, DEVEUI, 8);
+        memcpy_P(pInfo->AppKey, APPKEY, 16);
+    }
+    return true;
+}
+
+void cMyLoRaWAN::NetSaveSessionInfo(const SessionInfo &Info, const uint8_t *pExtraInfo, size_t nExtraInfo) {
+    // not persisting — will re-join on reboot
+}
+
+void cMyLoRaWAN::NetSaveSessionState(const SessionState &State) {
+    // not persisting — frame counters reset on reboot
+}
+
+bool cMyLoRaWAN::NetGetSessionState(SessionState &State) {
+    return false;  // no saved state, triggers fresh join
+}
+
+bool cMyLoRaWAN::GetAbpProvisioningInfo(Arduino_LoRaWAN::AbpProvisioningInfo *pInfo) {
+    return false;  // using OTAA only
+}
+
+void onEvent(ev_t ev) {
+    switch(ev) {
+        case EV_JOINING:    Serial.println("LMIC: joining..."); break;
+        case EV_JOINED:     Serial.printf("LMIC: joined (devaddr=0x%08X)\n", LMIC.devaddr); break;
+        case EV_JOIN_FAILED: Serial.println("LMIC: join FAILED"); break;
+        case EV_REJOIN_FAILED: Serial.println("LMIC: rejoin FAILED"); break;
+        case EV_LINK_DEAD:  Serial.println("LMIC: link dead — no ACKs received"); break;
+        case EV_LINK_ALIVE: Serial.println("LMIC: link alive again"); break;
+        case EV_TXCOMPLETE: 
+            Serial.printf("LMIC: TX complete, FCnt=%d\n", LMIC.seqnoUp);
+            if (LMIC.txrxFlags & TXRX_ACK) Serial.println("  ACK received");
+            if (LMIC.txrxFlags & TXRX_NACK) Serial.println("  NACK received");
+            break;
+        default: break;
+    }
 }

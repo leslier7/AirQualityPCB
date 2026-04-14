@@ -112,6 +112,7 @@ GerberFiles.zip
 .pio
 build
 wifi_secrets.h
+keys.h
 venv
 .idea
 .vscode

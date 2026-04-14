@@ -8,11 +8,13 @@
 
 #define LED 8
 
-#define SDA_PIN 4  
-#define SCL_PIN 5 
+#define SDA_PIN 4
+#define SCL_PIN 5
 
 
+pkt_fmt myPkt;
 
+static uint32_t lastTx = 0;
 
 void testPortI2C(TwoWire &i2c) {
     Serial.printf("Scanning... time (ms): %d\n", millis());
@@ -29,6 +31,14 @@ void testPortI2C(TwoWire &i2c) {
         Serial.printf("\tNo device detected!\n");
     }
     Serial.println();
+
+    myPkt.intNum = 0;
+    myPkt.floatNum = 3.141592654;
+    myPkt.digitalTemp = 35;
+    myPkt.thermistorTemp = 25;
+
+    uint8_t myCString[6] = "Hello";
+    memcpy(myPkt.myString, myCString, 6);
 }
 
 void setup() {
@@ -37,22 +47,28 @@ void setup() {
     // digitalWrite(LED, HIGH);
     Serial.begin(115200);
     delay(500);
-    Serial.println("Hello world!");
+    Serial.println("Air Quality Monitor starting");
 
     Wire.begin(SDA_PIN, SCL_PIN);
 
-    if (setup_lora())
-        Serial.println("SPI OK - RFM95 found");
-    else
-        Serial.println("SPI FAIL - check wiring");
+    testPortI2C(Wire);
+
+    if (!setup_lora())
+        Serial.println("LoRaWAN init failed");
+
+    // queue first transmission — library handles join first
+    send_lora(myPkt);
+    lastTx = millis();
 }
 
-
-
 void loop() {
+    myLoRaWAN.loop();
+
     //testPortI2C(Wire);
-    digitalWrite(LED, LOW);
-    delay(1000);
-    digitalWrite(LED, HIGH);
-    delay(1000);
+    if (millis() - lastTx > 60000) {
+        if (LMIC.devaddr != 0) {
+            send_lora(myPkt);
+            lastTx = millis();
+        }
+    }
 }
