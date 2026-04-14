@@ -11411,7 +11411,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "539e73ce-56c7-4d35-8fc8-6743642dc5b4")
+			(uuid "d5e2f2be-0881-47dd-afb8-1812c6062af2")
 		)
 		(fp_line
 			(start 0 -5.2)
@@ -11421,7 +11421,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "87d48ce4-685e-4dac-9304-4fa8c0b3994a")
+			(uuid "4a1d836f-7f4c-486c-9314-8903a812c28d")
 		)
 		(fp_line
 			(start 0 -5.1)
@@ -11431,7 +11431,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "b5038af2-e21b-44d3-9467-3f628f23b045")
+			(uuid "411b75f0-8d04-4efe-be3b-7cf906e4760d")
 		)
 		(fp_line
 			(start 10.42 5.335)
@@ -11441,7 +11441,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "5f3f6933-4dd4-407b-bc52-2136ca995108")
+			(uuid "b6b749f6-84a2-4af8-a468-2978bf6537b8")
 		)
 		(fp_arc
 			(start -9.58 5.335)
@@ -11452,7 +11452,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "6ec6960a-0e53-4793-9146-d0f1311b3b2d")
+			(uuid "13e2f9a3-8a12-4128-8a8d-a5df9848dea5")
 		)
 		(fp_arc
 			(start 0 -5.2)
@@ -11463,7 +11463,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "ea901ef0-a89e-4e7d-b0cd-749ef495e855")
+			(uuid "17bff7c8-fdd1-4e6a-8247-9029fd924901")
 		)
 		(fp_arc
 			(start 0 -5.1)
@@ -11474,7 +11474,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "028a8f29-c463-4514-a417-ebeab482f8df")
+			(uuid "8edc2e10-de57-4a63-921f-050975bb7f58")
 		)
 		(fp_arc
 			(start 10.42 5.335)
@@ -11485,7 +11485,7 @@
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "c6cf024e-161d-4e62-b7f5-5cbf7f561094")
+			(uuid "f99c8b8b-0290-4548-bd0e-baab742310c9")
 		)
 		(fp_line
 			(start -10.58 -5.665)
@@ -11495,7 +11495,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "7a399d55-e41c-4d15-9f20-fc2d0e9cc90b")
+			(uuid "6349dfe2-2357-4bcc-9c4a-e1f357e7ca9f")
 		)
 		(fp_line
 			(start -10.58 16.335)
@@ -11505,7 +11505,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "8082f6bb-fec3-468b-a2b4-469d7ecc73f0")
+			(uuid "367a5b1e-94a2-4f85-bdaa-254f5ddae0cd")
 		)
 		(fp_line
 			(start 11.42 -5.665)
@@ -11515,7 +11515,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "cedd72a5-9da9-47b7-b6e1-3d6a5a924cc7")
+			(uuid "8873d8e9-b2fa-4456-b9b0-77ef584fd347")
 		)
 		(fp_line
 			(start 11.42 16.335)
@@ -11525,7 +11525,7 @@
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "efdd372f-c857-4ea0-96d6-da10ee7737cf")
+			(uuid "d5099b20-83bb-4b8e-9ce0-ede1ffe38de3")
 		)
 		(fp_line
 			(start -9.58 5.335)
@@ -11535,7 +11535,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "d480dc5f-c08a-4347-b7b6-948f601ee32b")
+			(uuid "d79f90a2-23d3-4066-8e75-fdf07b08a026")
 		)
 		(fp_line
 			(start 10.42 5.335)
@@ -11545,7 +11545,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "351e8e27-5a86-42d1-9a8a-7b81197cdcfd")
+			(uuid "9d5f7e93-16b5-4219-9387-38664a518a8c")
 		)
 		(fp_arc
 			(start -9.58 5.335)
@@ -11556,7 +11556,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "d2ea5ef0-2016-4320-ae5f-5159e53ca1e0")
+			(uuid "8fd1d634-2fb2-4278-a498-48c92ed6610c")
 		)
 		(fp_arc
 			(start 10.42 5.335)
@@ -11567,7 +11567,7 @@
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "27656b69-7afa-4c1f-bbd9-b9ddb438faa1")
+			(uuid "f40aea53-1e67-4f9f-855d-7eacd4152b10")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0.42 5.335 0)
@@ -11645,10 +11645,10 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
-		(model "${KIPRJMOD}/Library/3D Models/mill-max-0374-0-43-80-XX-XX-10-0.STEP"
+		(model "${KIPRJMOD}/Library/3D Models/mill-max-9401-0-15-01-23-XX-10-0.step"
 			(offset
 				(xyz 0 0 0.5)
 			)
@@ -11656,10 +11656,10 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 -90 0)
+				(xyz -0 -90 -0)
 			)
 		)
-		(model "${KIPRJMOD}/Library/3D Models/mill-max-0374-0-43-80-XX-XX-10-0.STEP"
+		(model "${KIPRJMOD}/Library/3D Models/mill-max-0364-0-15-01-13-XX-10-0.step"
 			(offset
 				(xyz 3.78 2.8 0.5)
 			)
@@ -11667,10 +11667,10 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 -90 0)
+				(xyz -0 -90 -0)
 			)
 		)
-		(model "${KIPRJMOD}/Library/3D Models/mill-max-0374-0-43-80-XX-XX-10-0.STEP"
+		(model "${KIPRJMOD}/Library/3D Models/mill-max-0364-0-15-01-13-XX-10-0.step"
 			(offset
 				(xyz 3.78 8 0.5)
 			)
@@ -11678,10 +11678,10 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 -90 0)
+				(xyz -0 -90 -0)
 			)
 		)
-		(model "${KIPRJMOD}/Library/3D Models/mill-max-0374-0-43-80-XX-XX-10-0.STEP"
+		(model "${KIPRJMOD}/Library/3D Models/mill-max-0364-0-15-01-13-XX-10-0.step"
 			(offset
 				(xyz -3.9 5.3 0.5)
 			)
@@ -11689,10 +11689,10 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 -90 0)
+				(xyz -0 -90 -0)
 			)
 		)
-		(model "${KIPRJMOD}/Library/3D Models/mill-max-0374-0-43-80-XX-XX-10-0.STEP"
+		(model "${KIPRJMOD}/Library/3D Models/mill-max-0364-0-15-01-13-XX-10-0.step"
 			(offset
 				(xyz 0 10.5 0.5)
 			)
@@ -11700,7 +11700,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 -90 0)
+				(xyz -0 -90 -0)
 			)
 		)
 	)

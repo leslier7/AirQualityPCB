@@ -505,7 +505,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "Outputs/AirQualityPCB.step",
       "svg": "",
       "vrml": ""
     },
