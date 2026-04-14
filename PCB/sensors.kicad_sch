@@ -2300,7 +2300,7 @@
 		)
 		(uuid "32961ddc-28b9-4cea-908c-dc01e29f0608")
 	)
-	(text "Addr: 0x48"
+	(text "Addr: 0x49"
 		(exclude_from_sim no)
 		(at 80.01 148.844 0)
 		(effects
