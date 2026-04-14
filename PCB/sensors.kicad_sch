@@ -7057,7 +7057,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_0603_1608Metric"
+		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
 			(at 168.91 147.828 90)
 			(effects
 				(font
@@ -7084,7 +7084,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer Part Number" "F0603G0R12FNTR"
+		(property "Manufacturer Part Number" "0466.125NRHF"
 			(at 168.91 146.05 90)
 			(effects
 				(font

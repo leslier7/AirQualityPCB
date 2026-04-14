@@ -35,32 +35,35 @@ void setup() {
     uint8_t myCString[6] = "Hello";
     memcpy(myPkt.myString, myCString, 6);
 
-    if (!setup_lora())
-        Serial.println("LoRaWAN init failed");
+    // if (!setup_lora())
+    //     Serial.println("LoRaWAN init failed");
 
     // queue first transmission — library handles join first
-    send_lora(myPkt);
+    //send_lora(myPkt);
     lastTx = millis();
     lastRead = millis();
 
 }
 
 void loop() {
-    myLoRaWAN.loop();
+    //myLoRaWAN.loop();
 
     uint32_t curTime = millis();
 
     if(curTime - lastRead > 5000){
-        int methane = read_methane();
-        Serial.printf("Methane value: %d\n", methane);
+        if(setup_ch4){
+            int methane = read_methane_adc();
+            Serial.printf("Methane value: %d\n", methane);
+        }
+        
         lastRead = curTime;
     }
 
     //testPortI2C(Wire);
-    if (curTime - lastTx > 60000) {
-        if (LMIC.devaddr != 0) {
-            send_lora(myPkt);
-            lastTx = curTime;
-        }
-    }
+    // if (curTime - lastTx > 60000) {
+    //     if (LMIC.devaddr != 0) {
+    //         send_lora(myPkt);
+    //         lastTx = curTime;
+    //     }
+    // }
 }
