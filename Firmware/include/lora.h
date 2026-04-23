@@ -17,14 +17,12 @@
 #define PIN_DIO1  20
 
 struct __attribute__((__packed__)) pkt_fmt {
-      uint8_t intNum; // A 8-bit unsigned integer
-
-      uint8_t myString[6];   // A fixed-size array of 6 bytes to store a short string or byte sequence.
-
-      float floatNum;    // A 32-bit floating-point value
-
-      float thermistorTemp;
-      float digitalTemp;
+    uint16_t ch4;        // 0–10000, scale ×100 → 0.00–100.00 % vol,   res 0.01%
+    uint16_t h2s;        // 0–5000,  scale ×100 → 0.00–50.00 ppm,      res 0.01 ppm
+    uint16_t nox;        // 0–30000, scale ×100 → 0.00–300.00 ppm,     res 0.01 ppm
+    uint16_t vocs;       // 0–500,   IAQ index (BME688 processed output, no scaling)
+    int16_t  temp;       // -4000–8500, scale ×100 → -40.00–85.00 °C,  res 0.01 °C
+    uint16_t humidity;   // 0–10000, scale ×100 → 0.00–100.00 % RH,    res 0.01 %
 };
 
 class cMyLoRaWAN : public Arduino_LoRaWAN_ttn {

@@ -66,8 +66,9 @@ bool setup_lora() {
 
 void send_lora(const pkt_fmt &pkt) {
 
-    Serial.printf("LoRa: queuing TX (intNum=%d floatNum=%.4f thermistor=%.1f digital=%.1f)\n",
-                  pkt.intNum, pkt.floatNum, pkt.thermistorTemp, pkt.digitalTemp);
+    Serial.printf("LoRa: queuing TX (ch4=%.2f%% h2s=%.2fppm nox=%.2fppm vocs=%u temp=%.2fC hum=%.2f%%)\n",
+                  pkt.ch4 / 100.0f, pkt.h2s / 100.0f, pkt.nox / 100.0f,
+                  pkt.vocs, pkt.temp / 100.0f, pkt.humidity / 100.0f);
 
     LMIC_setAdrMode(0);
     LMIC_setDrTxpow(DR_SF10, 14);
