@@ -1,9 +1,9 @@
 // Air Quality Monitoring
 // Robbie Leslie April 2026
 
-// Imports
 #include <Arduino.h>
 #include "sensors.h"
+#include "scheduler.h"
 
 #ifdef LORA
 #include "lora.h"
@@ -17,21 +17,46 @@
 pkt_fmt myPkt;
 #endif
 
-static uint32_t lastTx = 0;
+// --- Scheduled tasks --------------------------------------------------------
 
-static uint32_t lastRead = 0;
+void task_read_bme() {
+    BMEReading bme = get_BME_reading();
+    myPkt.voc_load    = (uint16_t)((1.0f / bme.raw_gas) * 1e6f * 10.0f);  // µS × 10
+    myPkt.temp        = (int16_t)(bme.temperature * 100.0f);
+    myPkt.humidity    = (uint16_t)(bme.humidity * 100.0f);
+    myPkt.pressure    = (uint16_t)(bme.pressure * 10.0f);
+    myPkt.iaq_accuracy = bme.iaq_accuracy;
+    Serial.printf("Voc load: %d\n", myPkt.voc_load);
+}
+
+void task_send_lora() {
+    if (LMIC.devaddr != 0) {
+        send_lora(myPkt);
+        digitalWrite(LED, HIGH);
+        delay(50);
+        digitalWrite(LED, LOW);
+    }
+}
+
+Task tasks[] = {
+    { task_read_bme,   3000,  0 },
+    { task_send_lora,  30000, 0 },
+};
+
+Scheduler scheduler(tasks, sizeof(tasks) / sizeof(tasks[0]));
+
+// ----------------------------------------------------------------------------
 
 void setup() {
-
-    // pinMode(LED, OUTPUT);
-    // digitalWrite(LED, HIGH);
+    digitalWrite(LED, HIGH);
+    delay(50);
+    digitalWrite(LED, LOW);
     Serial.begin(115200);
     delay(500);
     Serial.println("Air Quality Monitor starting");
 
     setup_I2C();
     setup_sensors();
-
     testPortI2C(Wire);
 
     myPkt.ch4 = 40;
@@ -39,43 +64,17 @@ void setup() {
     myPkt.nox = 60;
     myPkt.humidity = 70;
     myPkt.temp = 80;
-    myPkt.vocs = 90;
-
-    //String json_out = generateJsonPacket(100, 100, 100, 100, 100, 100); // Dummy data
-    //Serial.println(json_out);
-
-    // uint8_t myCString[6] = "Hello";
-    // memcpy(myPkt.myString, myCString, 6);
+    myPkt.voc_load = 90;
 
     if (!setup_lora())
         Serial.println("LoRaWAN init failed");
 
-    //queue first transmission — library handles join first
-    send_lora(myPkt);
-    lastTx = millis();
-    lastRead = millis();
-
+    send_lora(myPkt);   // initial transmission before scheduler takes over
+    scheduler.begin();  // start all task clocks from now
 }
 
 void loop() {
     myLoRaWAN.loop();
-
-    uint32_t curTime = millis();
-
-    // if(curTime - lastRead > 5000){
-    //     if(setup_ch4){
-    //         int methane = read_methane_adc();
-    //         Serial.printf("Methane value: %d\n", methane);
-    //     }
-        
-    //     lastRead = curTime;
-    // }
-
-    testPortI2C(Wire);
-    if (curTime - lastTx > 60000) {
-        if (LMIC.devaddr != 0) {
-            send_lora(myPkt);
-            lastTx = curTime;
-        }
-    }
+    update_BME();
+    scheduler.run();
 }

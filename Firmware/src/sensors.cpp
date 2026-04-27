@@ -5,10 +5,105 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <Adafruit_ADS1X15.h>
+#include <bsec2.h>
+#include <Preferences.h>
 
 Adafruit_ADS1015 adc;
+Bsec2 bsec;
+Preferences prefs;
 
 bool setup_ch4 = false;
+
+// Latest BSEC2 outputs — updated every 3s by update_BME(), read hourly for transmission
+static float bme_iaq          = 0.0f;
+static float bme_co2_eq       = 0.0f;
+static float bme_voc_eq       = 0.0f;
+static float bme_temperature  = 0.0f;
+static float bme_humidity     = 0.0f;
+static float bme_pressure     = 0.0f;
+static float bme_raw_gas      = 0.0f;
+static uint8_t bme_iaq_accuracy = 0;  // 0=unreliable, 1=low, 2=medium, 3=high
+
+static bool bme_ready = false;
+
+// BSEC2 state is saved to NVS every 1 hour so calibration survives reboots
+#define BSEC_STATE_KEY             "bsec_state"
+#define BSEC_STATE_SAVE_INTERVAL_MS (60UL * 60UL * 1000UL)  // 1 hour
+static uint32_t last_state_save_ms = 0;
+
+// --------------------------------------------------------------------------
+// BSEC2 state persistence (NVS)
+// --------------------------------------------------------------------------
+
+static void save_bsec_state() {
+    uint8_t state[BSEC_MAX_STATE_BLOB_SIZE];
+    if (bsec.getState(state) != BSEC_OK) {
+        Serial.println("BME688: failed to get BSEC2 state");
+        return;
+    }
+    prefs.begin("bsec", false);
+    prefs.putBytes(BSEC_STATE_KEY, state, BSEC_MAX_STATE_BLOB_SIZE);
+    prefs.end();
+    Serial.println("BME688: BSEC2 state saved to NVS");
+}
+
+static void load_bsec_state() {
+    prefs.begin("bsec", true);
+    size_t len = prefs.getBytesLength(BSEC_STATE_KEY);
+    if (len == BSEC_MAX_STATE_BLOB_SIZE) {
+        uint8_t state[BSEC_MAX_STATE_BLOB_SIZE];
+        prefs.getBytes(BSEC_STATE_KEY, state, len);
+        if (bsec.setState(state) == BSEC_OK) {
+            Serial.println("BME688: BSEC2 state restored from NVS");
+        } else {
+            Serial.println("BME688: BSEC2 setState failed, starting fresh");
+        }
+    } else {
+        Serial.println("BME688: no saved BSEC2 state, starting fresh calibration");
+    }
+    prefs.end();
+}
+
+// --------------------------------------------------------------------------
+// BSEC2 data-ready callback — fires automatically inside bsec.run()
+// --------------------------------------------------------------------------
+
+static void bsec_callback(const bme68xData data, const bsecOutputs outputs, Bsec2 bsec2) {
+    Serial.printf("BME688: callback fired, nOutputs=%d\n", outputs.nOutputs);
+    if (!outputs.nOutputs) return;
+
+    for (uint8_t i = 0; i < outputs.nOutputs; i++) {
+        const bsecData& out = outputs.output[i];
+        switch (out.sensor_id) {
+            // case BSEC_OUTPUT_IAQ:
+            //     bme_iaq          = out.signal;
+            //     bme_iaq_accuracy = out.accuracy;
+            //     break;
+            case BSEC_OUTPUT_CO2_EQUIVALENT:
+                bme_co2_eq = out.signal;
+                break;
+            case BSEC_OUTPUT_BREATH_VOC_EQUIVALENT:
+                bme_voc_eq = out.signal;
+                break;
+            case BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_TEMPERATURE:
+                bme_temperature = out.signal;
+                break;
+            case BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY:
+                bme_humidity = out.signal;
+                break;
+            case BSEC_OUTPUT_RAW_PRESSURE:
+                bme_pressure = out.signal / 100.0f;  // Pa -> hPa
+                break;
+            case BSEC_OUTPUT_RAW_GAS:
+                bme_raw_gas = out.signal;
+                break;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// Public sensor functions
+// --------------------------------------------------------------------------
 
 void testPortI2C(TwoWire &i2c) {
     Serial.printf("Scanning... time (ms): %d\n", millis());
@@ -29,6 +124,68 @@ void testPortI2C(TwoWire &i2c) {
 
 bool setup_I2C(){
     return Wire.begin(SDA_PIN, SCL_PIN);
+}
+
+bool setup_BME() {
+    if (!bsec.begin(0x77, Wire)) {
+        Serial.printf("BME688: BSEC2 init failed (err %d)\n", bsec.status);
+        return false;
+    }
+
+    // Subscribe to the outputs we care about at the 3-second LP sample rate.
+    // IAQ accuracy climbs from 0->3 over ~30 minutes of exposure to varying air.
+    // Don't trust IAQ values until accuracy >= 2.
+    bsecSensor outputs[] = {
+        BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_TEMPERATURE,
+        BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY,
+        BSEC_OUTPUT_RAW_PRESSURE,
+        BSEC_OUTPUT_RAW_GAS,
+    };
+    if (!bsec.updateSubscription(outputs, sizeof(outputs) / sizeof(outputs[0]), BSEC_SAMPLE_RATE_LP)) {
+        Serial.printf("BME688: subscription failed (err %d)\n", bsec.status);
+        return false;
+    }
+
+    bsec.attachCallback(bsec_callback);
+    load_bsec_state();
+
+    bme_ready = true;
+    Serial.println("BME688: BSEC2 ready (IAQ accuracy 0/3 — calibrating)");
+    return true;
+}
+
+// Call this every iteration of loop(). BSEC2 internally gates to its 3s
+// schedule so calling it more often is harmless.
+void update_BME() {
+    if (!bme_ready) return;
+    if (!bsec.run()) {
+        if (bsec.status != BSEC_OK) {
+            Serial.printf("BME688: bsec.run() error %d\n", bsec.status);
+        }
+        return;
+    }
+    Serial.println("BME688: bsec.run() returned true");
+
+    // Periodically persist calibration state to NVS
+    if (millis() - last_state_save_ms >= BSEC_STATE_SAVE_INTERVAL_MS) {
+        save_bsec_state();
+        last_state_save_ms = millis();
+    }
+}
+
+// Snapshot of the latest BSEC2 outputs — call this when building your
+// hourly transmission payload.
+BMEReading get_BME_reading() {
+    return {
+        .iaq          = bme_iaq,
+        .iaq_accuracy = bme_iaq_accuracy,
+        .co2_eq       = bme_co2_eq,
+        .voc_eq       = bme_voc_eq,
+        .temperature  = bme_temperature,
+        .humidity     = bme_humidity,
+        .pressure     = bme_pressure,
+        .raw_gas      = bme_raw_gas,
+    };
 }
 
 // Send a command and wait for [AK] or [NA]. Returns true on ACK.
@@ -73,10 +230,12 @@ bool setup_methane(){
         return false;
     }
     Serial.println("INIR2: streaming started (45s warmup)");
+    return true;
 }
 
 bool setup_sensors(){
-    setup_methane;
+    setup_methane();
+    setup_BME();
 
     return adc.begin(0x49);
 }
