@@ -5,101 +5,41 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <Adafruit_ADS1X15.h>
-#include <bsec2.h>
-#include <Preferences.h>
+#include <bme68xLibrary.h>
+#include <HardwareSerial.h>
+
+// SPEC sensor calibration (sensitivity in nA/ppm)
+#define H2S_SENSITIVITY_NA_PER_PPM   212.0f   // typical for 110-303, replace per-unit
+#define NO2_SENSITIVITY_NA_PER_PPM   -30.0f   // typical for 110-507, NEGATIVE — replace per-unit
+
+// Transimpedance gain resistors (from schematic)
+#define H2S_TIA_GAIN_OHMS   100000.0f   // R20
+#define NO2_TIA_GAIN_OHMS   6800000.0f  // R19
+
+#define DAC_VOLTS 3.3f
+
+#define CH4_RANGE 100
+
+// ADC reference and bias
+#define VREF_VOLTS          1.65f       // half-supply bias from R17/R18 divider
+
+// ADS1015 in default ±2.048V FSR mode: 1 LSB = 1.0 mV (12-bit signed, 11-bit + sign)
+#define ADC_LSB_VOLTS       0.001f
+
+HardwareSerial CH4Serial(0);
 
 Adafruit_ADS1015 adc;
-Bsec2 bsec;
-Preferences prefs;
+Bme68x bme;
 
 bool setup_ch4 = false;
 
-// Latest BSEC2 outputs — updated every 3s by update_BME(), read hourly for transmission
-static float bme_iaq          = 0.0f;
-static float bme_co2_eq       = 0.0f;
-static float bme_voc_eq       = 0.0f;
-static float bme_temperature  = 0.0f;
-static float bme_humidity     = 0.0f;
-static float bme_pressure     = 0.0f;
-static float bme_raw_gas      = 0.0f;
-static uint8_t bme_iaq_accuracy = 0;  // 0=unreliable, 1=low, 2=medium, 3=high
+// Latest BME688 readings — updated by update_BME(), read by get_BME_reading()
+static float bme_temperature = 0.0f;
+static float bme_humidity    = 0.0f;
+static float bme_pressure    = 0.0f;
+static float bme_raw_gas     = 0.0f;
 
 static bool bme_ready = false;
-
-// BSEC2 state is saved to NVS every 1 hour so calibration survives reboots
-#define BSEC_STATE_KEY             "bsec_state"
-#define BSEC_STATE_SAVE_INTERVAL_MS (60UL * 60UL * 1000UL)  // 1 hour
-static uint32_t last_state_save_ms = 0;
-
-// --------------------------------------------------------------------------
-// BSEC2 state persistence (NVS)
-// --------------------------------------------------------------------------
-
-static void save_bsec_state() {
-    uint8_t state[BSEC_MAX_STATE_BLOB_SIZE];
-    if (bsec.getState(state) != BSEC_OK) {
-        Serial.println("BME688: failed to get BSEC2 state");
-        return;
-    }
-    prefs.begin("bsec", false);
-    prefs.putBytes(BSEC_STATE_KEY, state, BSEC_MAX_STATE_BLOB_SIZE);
-    prefs.end();
-    Serial.println("BME688: BSEC2 state saved to NVS");
-}
-
-static void load_bsec_state() {
-    prefs.begin("bsec", true);
-    size_t len = prefs.getBytesLength(BSEC_STATE_KEY);
-    if (len == BSEC_MAX_STATE_BLOB_SIZE) {
-        uint8_t state[BSEC_MAX_STATE_BLOB_SIZE];
-        prefs.getBytes(BSEC_STATE_KEY, state, len);
-        if (bsec.setState(state) == BSEC_OK) {
-            Serial.println("BME688: BSEC2 state restored from NVS");
-        } else {
-            Serial.println("BME688: BSEC2 setState failed, starting fresh");
-        }
-    } else {
-        Serial.println("BME688: no saved BSEC2 state, starting fresh calibration");
-    }
-    prefs.end();
-}
-
-// --------------------------------------------------------------------------
-// BSEC2 data-ready callback — fires automatically inside bsec.run()
-// --------------------------------------------------------------------------
-
-static void bsec_callback(const bme68xData data, const bsecOutputs outputs, Bsec2 bsec2) {
-    Serial.printf("BME688: callback fired, nOutputs=%d\n", outputs.nOutputs);
-    if (!outputs.nOutputs) return;
-
-    for (uint8_t i = 0; i < outputs.nOutputs; i++) {
-        const bsecData& out = outputs.output[i];
-        switch (out.sensor_id) {
-            // case BSEC_OUTPUT_IAQ:
-            //     bme_iaq          = out.signal;
-            //     bme_iaq_accuracy = out.accuracy;
-            //     break;
-            case BSEC_OUTPUT_CO2_EQUIVALENT:
-                bme_co2_eq = out.signal;
-                break;
-            case BSEC_OUTPUT_BREATH_VOC_EQUIVALENT:
-                bme_voc_eq = out.signal;
-                break;
-            case BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_TEMPERATURE:
-                bme_temperature = out.signal;
-                break;
-            case BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY:
-                bme_humidity = out.signal;
-                break;
-            case BSEC_OUTPUT_RAW_PRESSURE:
-                bme_pressure = out.signal / 100.0f;  // Pa -> hPa
-                break;
-            case BSEC_OUTPUT_RAW_GAS:
-                bme_raw_gas = out.signal;
-                break;
-        }
-    }
-}
 
 // --------------------------------------------------------------------------
 // Public sensor functions
@@ -127,88 +67,99 @@ bool setup_I2C(){
 }
 
 bool setup_BME() {
-    if (!bsec.begin(0x77, Wire)) {
-        Serial.printf("BME688: BSEC2 init failed (err %d)\n", bsec.status);
+    bme.begin(0x77, Wire);
+    if (bme.checkStatus() != BME68X_OK) {
+        Serial.printf("BME688: init failed (status %d)\n", bme.checkStatus());
         return false;
     }
 
-    // Subscribe to the outputs we care about at the 3-second LP sample rate.
-    // IAQ accuracy climbs from 0->3 over ~30 minutes of exposure to varying air.
-    // Don't trust IAQ values until accuracy >= 2.
-    bsecSensor outputs[] = {
-        BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_TEMPERATURE,
-        BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY,
-        BSEC_OUTPUT_RAW_PRESSURE,
-        BSEC_OUTPUT_RAW_GAS,
-    };
-    if (!bsec.updateSubscription(outputs, sizeof(outputs) / sizeof(outputs[0]), BSEC_SAMPLE_RATE_LP)) {
-        Serial.printf("BME688: subscription failed (err %d)\n", bsec.status);
-        return false;
-    }
-
-    bsec.attachCallback(bsec_callback);
-    load_bsec_state();
+    // Oversampling: temp x2, pressure x16, humidity x1
+    bme.setTPH(BME68X_OS_2X, BME68X_OS_16X, BME68X_OS_1X);
+    // Heater: 320°C for 150ms — reasonable general-purpose VOC setpoint
+    bme.setHeaterProf(320, 150);
 
     bme_ready = true;
-    Serial.println("BME688: BSEC2 ready (IAQ accuracy 0/3 — calibrating)");
+    Serial.println("BME688: ready");
     return true;
 }
 
-// Call this every iteration of loop(). BSEC2 internally gates to its 3s
-// schedule so calling it more often is harmless.
+// Trigger a forced-mode measurement and store results.
+// Forced mode takes ~175ms total due to the heater dwell + measurement window.
 void update_BME() {
     if (!bme_ready) return;
-    if (!bsec.run()) {
-        if (bsec.status != BSEC_OK) {
-            Serial.printf("BME688: bsec.run() error %d\n", bsec.status);
-        }
-        return;
-    }
-    Serial.println("BME688: bsec.run() returned true");
 
-    // Periodically persist calibration state to NVS
-    if (millis() - last_state_save_ms >= BSEC_STATE_SAVE_INTERVAL_MS) {
-        save_bsec_state();
-        last_state_save_ms = millis();
+    bme.setOpMode(BME68X_FORCED_MODE);
+    delayMicroseconds(bme.getMeasDur());
+
+    bme68xData data;
+    if (bme.fetchData()) {
+        bme.getData(data);  // returns BME68X_OK (0) on success — don't gate on it
+        bme_temperature = data.temperature;
+        bme_humidity    = data.humidity;
+        bme_pressure    = data.pressure / 100.0f;
+        bme_raw_gas     = (data.status & BME68X_GASM_VALID_MSK) ? data.gas_resistance : 0.0f;
     }
 }
 
-// Snapshot of the latest BSEC2 outputs — call this when building your
-// hourly transmission payload.
+// Snapshot of the latest BME688 readings — call this when building your
+// transmission payload.
 BMEReading get_BME_reading() {
     return {
-        .iaq          = bme_iaq,
-        .iaq_accuracy = bme_iaq_accuracy,
-        .co2_eq       = bme_co2_eq,
-        .voc_eq       = bme_voc_eq,
-        .temperature  = bme_temperature,
-        .humidity     = bme_humidity,
-        .pressure     = bme_pressure,
-        .raw_gas      = bme_raw_gas,
+        .temperature = bme_temperature,
+        .humidity    = bme_humidity,
+        .pressure    = bme_pressure,
+        .raw_gas     = bme_raw_gas,
     };
 }
 
 // Send a command and wait for [AK] or [NA]. Returns true on ACK.
 static bool inir_cmd(const char* cmd, uint32_t timeoutMs = 500) {
-    while (Serial1.available()) Serial1.read();  // flush
-    Serial1.print(cmd);
+    while (CH4Serial.available()) CH4Serial.read();  // flush
+    
+    Serial.printf("INIR2: TX bytes for '%s': ", cmd);
+    for (size_t i = 0; cmd[i]; i++) {
+        Serial.printf("0x%02X ", (uint8_t)cmd[i]);
+    }
+    Serial.println();
+    
+    CH4Serial.print(cmd);
 
     String response = "";
     uint32_t start = millis();
+    Serial.print("INIR2: RX bytes: ");
     while (millis() - start < timeoutMs) {
-        if (Serial1.available()) {
-            char c = (char)Serial1.read();
+        if (CH4Serial.available()) {
+            char c = (char)CH4Serial.read();
+            Serial.printf("0x%02X ", (uint8_t)c);
             response += c;
             if (c == ']') break;
         }
     }
+    Serial.printf("\nINIR2: RX as string: '%s'\n", response.c_str());
     return response.indexOf("AK") >= 0;
 }
 
 bool setup_methane(){
-    // Datasheet Table 1: 38400 baud, 8 data bits, no parity, 2 stop bits
-    Serial1.begin(38400, SERIAL_8N2, CH4_TX, CH4_RX);
-    delay(100);
+    CH4Serial.end();
+    delay(50);
+    CH4Serial.setPins(CH4_RX, CH4_TX);
+    CH4Serial.begin(38400, SERIAL_8N1);
+    delay(2000);
+
+    // Datasheet Table 1: 38400 baud, 8 data bits, no parity, 1 stop bits
+    CH4Serial.begin(38400, SERIAL_8N1, CH4_RX, CH4_TX);
+    delay(2000);
+
+    // Listen for any spontaneous output
+    Serial.println("INIR2: listening for 3 seconds...");
+    uint32_t listen_start = millis();
+    while (millis() - listen_start < 3000) {
+        if (CH4Serial.available()) {
+            char c = (char)CH4Serial.read();
+            Serial.printf("0x%02X ", (uint8_t)c);
+        }
+    }
+    Serial.println("\nINIR2: done listening");
 
     // Initialization procedure (datasheet section 1.1.5):
     // Step 1: enter Configuration Mode
@@ -219,9 +170,9 @@ bool setup_methane(){
     }
 
     // Step 2: read back settings for operation check, then flush response
-    Serial1.print("[I]");
+    CH4Serial.print("[I]");
     delay(300);
-    while (Serial1.available()) Serial1.read();
+    while (CH4Serial.available()) CH4Serial.read();
 
     // Step 3: enter Engineering Mode — sensor starts streaming every 1s
     Serial.println("INIR2: [B] engineering mode...");
@@ -240,20 +191,23 @@ bool setup_sensors(){
     return adc.begin(0x49);
 }
 
-int read_methane_adc(){
-    return adc.readADC_SingleEnded(0);
+// Returns %vol
+float read_methane_adc(){
+    int raw = adc.readADC_SingleEnded(0);
+    float ch4 = ((raw/1.25)-1)*CH4_RANGE;
+    return ch4;
 }
 
 int read_methane_uart() {
     // Sensor streams: [0xGGGGGGGG 0xFFFFFFFF 0xTTTTTTTT 0xCCCCCCCC 0xXXXXXXXX]
     // First hex value is concentration in PPM (e.g. 500 PPM = 0x000001F4)
 
-    if (!Serial1.available()) return -1;
+    if (!CH4Serial.available()) return -1;
 
     // Find '[' packet start
     uint32_t start = millis();
     while (millis() - start < 1500) {
-        if (Serial1.available() && Serial1.read() == '[') break;
+        if (CH4Serial.available() && CH4Serial.read() == '[') break;
     }
     if (millis() - start >= 1500) return -1;
 
@@ -261,8 +215,8 @@ int read_methane_uart() {
     String packet = "";
     start = millis();
     while (millis() - start < 1500) {
-        if (Serial1.available()) {
-            char c = (char)Serial1.read();
+        if (CH4Serial.available()) {
+            char c = (char)CH4Serial.read();
             if (c == ']') break;
             packet += c;
         }
@@ -272,4 +226,24 @@ int read_methane_uart() {
     int idx = packet.indexOf("0x");
     if (idx < 0) return -1;
     return (int)strtol(packet.c_str() + idx + 2, nullptr, 16);
+}
+
+float read_h2s_ppm() {
+    int16_t raw = adc.readADC_SingleEnded(1);   // VH2S on AIN1
+    float v_out = raw * ADC_LSB_VOLTS;
+    //Serial.printf("H2S raw=%d v_out=%.3fV (Vref expected 1.65V)\n", raw, v_out);
+    float v_signal = v_out - VREF_VOLTS;        // remove bias
+    float current_amps = v_signal / H2S_TIA_GAIN_OHMS;
+    float current_na = current_amps * 1e9f;
+    return current_na / H2S_SENSITIVITY_NA_PER_PPM;
+}
+
+float read_no2_ppm() {
+    int16_t raw = adc.readADC_SingleEnded(2);   // VNO2 on AIN2
+    float v_out = raw * ADC_LSB_VOLTS;
+    //Serial.printf("NOx raw=%d v_out=%.3fV (Vref expected 1.65V)\n", raw, v_out);
+    float v_signal = v_out - VREF_VOLTS;
+    float current_amps = v_signal / NO2_TIA_GAIN_OHMS;
+    float current_na = current_amps * 1e9f;
+    return current_na / NO2_SENSITIVITY_NA_PER_PPM;  // sensitivity is negative for NO2
 }

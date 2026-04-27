@@ -24,7 +24,6 @@ struct __attribute__((__packed__)) pkt_fmt {
     int16_t  temp;       // -4000–8500, scale ×100 → -40.00–85.00 °C,  res 0.01 °C
     uint16_t humidity;   // 0–10000, scale ×100 → 0.00–100.00 % RH,    res 0.01 %
     uint16_t pressure;
-    uint8_t iaq_accuracy;
 };
 
 class cMyLoRaWAN : public Arduino_LoRaWAN_ttn {
