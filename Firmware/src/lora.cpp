@@ -97,6 +97,7 @@ bool cMyLoRaWAN::GetOtaaProvisioningInfo(OtaaProvisioningInfo *pInfo) {
 }
 
 void cMyLoRaWAN::NetSaveSessionInfo(const SessionInfo &Info, const uint8_t *pExtraInfo, size_t nExtraInfo) {
+    Serial.printf("LoRa: join complete — devaddr=0x%08X\n", LMIC.devaddr);
     // not persisting — will re-join on reboot
 }
 

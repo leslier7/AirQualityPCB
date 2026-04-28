@@ -33,7 +33,7 @@ void task_read_bme() {
 }
 
 void task_read_gases() {
-    float ch4 = read_methane_adc();
+    int ch4 = read_methane_uart();
     float h2s = read_h2s_ppm();
     float no2 = read_no2_ppm();
 
@@ -41,7 +41,7 @@ void task_read_gases() {
     myPkt.h2s = (uint16_t)constrain(h2s * 100.0f, 0, 5000);
     myPkt.nox = (uint16_t)constrain(no2 * 100.0f, 0, 30000);
 
-    Serial.printf("CH4 %%vol: %.2f H2S: %.2f ppm  NO2: %.2f ppm\n", ch4, h2s, no2);
+    Serial.printf("CH4: %d ppm H2S: %.2f ppm  NO2: %.2f ppm\n", ch4, h2s, no2);
 }
 
 void task_send_lora() {
@@ -54,9 +54,9 @@ void task_send_lora() {
 }
 
 Task tasks[] = {
-    { task_read_bme,   3000,  0 },
+    //{ task_read_bme,   3000,  0 },
     { task_read_gases, 3000,  0 },
-    //{ task_send_lora,  30000, 0 },
+    { task_send_lora,  30000, 0 },
 };
 
 Scheduler scheduler(tasks, sizeof(tasks) / sizeof(tasks[0]));
@@ -94,15 +94,15 @@ void setup() {
     myPkt.temp = 80;
     myPkt.voc_load = 90;
 
-    // if (!setup_lora())
-    //     Serial.println("LoRaWAN init failed");
+    if (!setup_lora())
+        Serial.println("LoRaWAN init failed");
 
-    //send_lora(myPkt);   // initial transmission before scheduler takes over
+    send_lora(myPkt);   // initial transmission before scheduler takes over
     scheduler.begin();  // start all task clocks from now
 }
 
 void loop() {
-    //myLoRaWAN.loop();
-    update_BME();
+    myLoRaWAN.loop();
+    //update_BME();
     scheduler.run();
 }

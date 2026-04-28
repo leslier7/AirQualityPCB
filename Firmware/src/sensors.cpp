@@ -26,7 +26,7 @@
 // ADS1015 in default ±2.048V FSR mode: 1 LSB = 1.0 mV (12-bit signed, 11-bit + sign)
 #define ADC_LSB_VOLTS       0.001f
 
-HardwareSerial CH4Serial(0);
+HardwareSerial CH4Serial(1);
 
 Adafruit_ADS1015 adc;
 Bme68x bme;
@@ -83,17 +83,30 @@ bool setup_BME() {
     return true;
 }
 
-// Trigger a forced-mode measurement and store results.
-// Forced mode takes ~175ms total due to the heater dwell + measurement window.
+// Non-blocking forced-mode update. Call every loop() iteration.
+// Triggers a measurement, then returns immediately. On subsequent calls,
+// reads data once the measurement duration has elapsed (~175ms for this heater profile).
+static uint32_t bme_ready_at_us = 0;
+static bool     bme_measuring   = false;
+
 void update_BME() {
     if (!bme_ready) return;
 
-    bme.setOpMode(BME68X_FORCED_MODE);
-    delayMicroseconds(bme.getMeasDur());
+    uint32_t now = micros();
 
+    if (!bme_measuring) {
+        bme.setOpMode(BME68X_FORCED_MODE);
+        bme_ready_at_us = now + bme.getMeasDur();
+        bme_measuring = true;
+        return;
+    }
+
+    if ((int32_t)(now - bme_ready_at_us) < 0) return;
+
+    bme_measuring = false;
     bme68xData data;
     if (bme.fetchData()) {
-        bme.getData(data);  // returns BME68X_OK (0) on success — don't gate on it
+        bme.getData(data);
         bme_temperature = data.temperature;
         bme_humidity    = data.humidity;
         bme_pressure    = data.pressure / 100.0f;
@@ -136,30 +149,28 @@ static bool inir_cmd(const char* cmd, uint32_t timeoutMs = 500) {
         }
     }
     Serial.printf("\nINIR2: RX as string: '%s'\n", response.c_str());
-    return response.indexOf("AK") >= 0;
+    return response.indexOf("414b") >= 0;
 }
 
 bool setup_methane(){
     CH4Serial.end();
     delay(50);
-    CH4Serial.setPins(CH4_RX, CH4_TX);
-    CH4Serial.begin(38400, SERIAL_8N1);
-    delay(2000);
+    CH4Serial.begin(38400, SERIAL_8N1, CH4_TX, CH4_RX);
 
     // Datasheet Table 1: 38400 baud, 8 data bits, no parity, 1 stop bits
-    CH4Serial.begin(38400, SERIAL_8N1, CH4_RX, CH4_TX);
+    //CH4Serial.begin(38400, SERIAL_8N1, CH4_RX, CH4_TX);
     delay(2000);
 
     // Listen for any spontaneous output
-    Serial.println("INIR2: listening for 3 seconds...");
-    uint32_t listen_start = millis();
-    while (millis() - listen_start < 3000) {
-        if (CH4Serial.available()) {
-            char c = (char)CH4Serial.read();
-            Serial.printf("0x%02X ", (uint8_t)c);
-        }
-    }
-    Serial.println("\nINIR2: done listening");
+    // Serial.println("INIR2: listening for 3 seconds...");
+    // uint32_t listen_start = millis();
+    // while (millis() - listen_start < 3000) {
+    //     if (CH4Serial.available()) {
+    //         char c = (char)CH4Serial.read();
+    //         Serial.printf("0x%02X ", (uint8_t)c);
+    //     }
+    // }
+    // Serial.println("\nINIR2: done listening");
 
     // Initialization procedure (datasheet section 1.1.5):
     // Step 1: enter Configuration Mode
@@ -198,34 +209,40 @@ float read_methane_adc(){
     return ch4;
 }
 
-int read_methane_uart() {
-    // Sensor streams: [0xGGGGGGGG 0xFFFFFFFF 0xTTTTTTTT 0xCCCCCCCC 0xXXXXXXXX]
-    // First hex value is concentration in PPM (e.g. 500 PPM = 0x000001F4)
-
-    if (!CH4Serial.available()) return -1;
-
-    // Find '[' packet start
+// Read one 8-char hex token terminated by \r\n. Returns "" on timeout.
+static String inir_read_token(uint32_t timeoutMs = 500) {
+    String token = "";
     uint32_t start = millis();
-    while (millis() - start < 1500) {
-        if (CH4Serial.available() && CH4Serial.read() == '[') break;
-    }
-    if (millis() - start >= 1500) return -1;
-
-    // Read until ']'
-    String packet = "";
-    start = millis();
-    while (millis() - start < 1500) {
+    while (millis() - start < timeoutMs) {
         if (CH4Serial.available()) {
             char c = (char)CH4Serial.read();
-            if (c == ']') break;
-            packet += c;
+            if (c == '\n' || c == '\r') {
+                if (token.length() == 8) return token;
+                token = "";  // skip blank/partial lines
+            } else {
+                token += c;
+                if (token.length() > 8) token = "";  // malformed, reset
+            }
         }
     }
+    return "";
+}
 
-    // Parse first "0x..." value — concentration in PPM
-    int idx = packet.indexOf("0x");
-    if (idx < 0) return -1;
-    return (int)strtol(packet.c_str() + idx + 2, nullptr, 16);
+int read_methane_uart() {
+    if (!CH4Serial.available()) return -1;
+
+    // Hunt for the start token
+    uint32_t deadline = millis() + 2000;
+    while (millis() < deadline) {
+        String tok = inir_read_token(500);
+        if (tok == "0000005b") {           // found '[' start
+            String conc = inir_read_token(500);
+            if (conc.length() == 8)
+                return (int)strtol(conc.c_str(), nullptr, 16);
+            return -1;
+        }
+    }
+    return -1;  // timed out hunting for start
 }
 
 float read_h2s_ppm() {
