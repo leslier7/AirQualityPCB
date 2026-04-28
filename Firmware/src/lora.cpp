@@ -9,6 +9,11 @@
 
 cMyLoRaWAN myLoRaWAN;
 
+bool g_joined = false;
+
+static uint16_t txCount = 0;
+bool confirmed = (++txCount % 24 == 0);
+
 static const cMyLoRaWAN::lmic_pinmap myPinMap = {
     .nss            = PIN_CS,
     .rxtx           = cMyLoRaWAN::lmic_pinmap::LMIC_UNUSED_PIN,
@@ -23,6 +28,9 @@ static void sendCallback(void *pCtx, bool fSuccess) {
     if (fSuccess) {
         Serial.printf("TX succeeded (devaddr=0x%08X, fcnt=%d, dr=%d, txpow=%d)\n",
             LMIC.devaddr, LMIC.seqnoUp, LMIC.datarate, LMIC.txpow);
+        if (LMIC.txrxFlags & TXRX_ACK)  Serial.println("  Downlink: ACK received");
+        if (LMIC.txrxFlags & TXRX_NOPORT && !(LMIC.txrxFlags & TXRX_ACK))
+            Serial.println("  Downlink: unconfirmed TX, no downlink expected");
     } else {
         Serial.printf("TX failed (devaddr=0x%08X)\n", LMIC.devaddr);
         Serial.printf("  Frame counter : %d\n", LMIC.seqnoUp);
@@ -38,6 +46,7 @@ static void sendCallback(void *pCtx, bool fSuccess) {
         if (LMIC.opmode & OP_SHUTDOWN)  Serial.println("  [OP_SHUTDOWN]  radio shut down");
         if (LMIC.opmode & OP_NEXTCHNL)  Serial.println("  [OP_NEXTCHNL]  waiting for next channel");
         if (LMIC.opmode & OP_LINKDEAD)  Serial.println("  [OP_LINKDEAD]  no downlinks received, link may be dead");
+        if (LMIC.txrxFlags & TXRX_NACK) Serial.println("  Downlink: NACK received");
 
         // The most useful one for your situation:
         if (LMIC.opmode & OP_LINKDEAD) {
@@ -56,23 +65,26 @@ bool setup_lora() {
     bool ok = myLoRaWAN.begin(myPinMap);
     Serial.printf("LoRa: begin() returned %s\n", ok ? "OK" : "FAIL");
 
-    #ifdef LONG_RANGE
-    LMIC_setAdrMode(0);              // Disable ADR so TTN can't dial it back down
-    LMIC_setDrTxpow(DR_SF10, 14);   // SF10, max transmit power 
-    #endif
 
     return ok;
 }
 
 void send_lora(const pkt_fmt &pkt) {
 
-    Serial.printf("LoRa: queuing TX (ch4=%.2f%% h2s=%.2fppm nox=%.2fppm vocs=%u temp=%.2fC hum=%.2f%% pres=%.1fhPa)\n",
-                  pkt.ch4 / 100.0f, pkt.h2s / 100.0f, pkt.nox / 100.0f,
+    Serial.printf("LoRa: queuing TX (ch4=%dppm h2s=%.2fppm nox=%.2fppm vocs=%u temp=%.2fC hum=%.2f%% pres=%.1fhPa)\n",
+                  pkt.ch4, pkt.h2s / 100.0f, pkt.nox / 100.0f,
                   pkt.voc_load, pkt.temp / 100.0f, pkt.humidity / 100.0f,
                   pkt.pressure / 10.0f);
 
+    #ifdef LONG_RANGE
+    LMIC_setAdrMode(0);              // Disable ADR so TTN can't dial it back down
+    LMIC_setDrTxpow(DR_SF10, 14);   // SF10, max transmit power 
+    #else
     LMIC_setAdrMode(0);
-    LMIC_setDrTxpow(DR_SF10, 14);
+    LMIC_setDrTxpow(DR_SF8, 14);
+    #endif
+    
+
     #ifdef DEBUG_LORA
     myLoRaWAN.SendBuffer(
         (const uint8_t *) &pkt, sizeof(pkt),
@@ -80,8 +92,8 @@ void send_lora(const pkt_fmt &pkt) {
     );
     #else
     myLoRaWAN.SendBuffer(
-        (const uint8_t *) &pkt, sizeof(pkt),
-        sendCallback, nullptr, false, 1   // true = confirmed, TTN sends ACK
+    (const uint8_t *) &pkt, sizeof(pkt),
+        sendCallback, nullptr, confirmed, 1 //Sends a downlink every 24 msgs. Need to go to 10 msgs per hour to get it to not violate TTN fair use
     );
     #endif
 }
@@ -116,7 +128,7 @@ bool cMyLoRaWAN::GetAbpProvisioningInfo(Arduino_LoRaWAN::AbpProvisioningInfo *pI
 void onEvent(ev_t ev) {
     switch(ev) {
         case EV_JOINING:    Serial.println("LMIC: joining..."); break;
-        case EV_JOINED:     Serial.printf("LMIC: joined (devaddr=0x%08X)\n", LMIC.devaddr); break;
+        case EV_JOINED:     g_joined = true; Serial.printf("LMIC: joined (devaddr=0x%08X)\n", LMIC.devaddr); break;
         case EV_JOIN_FAILED: Serial.println("LMIC: join FAILED"); break;
         case EV_REJOIN_FAILED: Serial.println("LMIC: rejoin FAILED"); break;
         case EV_LINK_DEAD:  Serial.println("LMIC: link dead — no ACKs received"); break;

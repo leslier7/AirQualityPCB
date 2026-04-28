@@ -196,7 +196,8 @@ bool setup_methane(){
 }
 
 bool setup_sensors(){
-    setup_methane();
+    bool methane_setup = setup_methane();
+    Serial.printf("Methane setup: %d\n", methane_setup);
     setup_BME();
 
     return adc.begin(0x49);
@@ -231,18 +232,21 @@ static String inir_read_token(uint32_t timeoutMs = 500) {
 int read_methane_uart() {
     if (!CH4Serial.available()) return -1;
 
-    // Hunt for the start token
     uint32_t deadline = millis() + 2000;
     while (millis() < deadline) {
         String tok = inir_read_token(500);
-        if (tok == "0000005b") {           // found '[' start
+        if (tok == "0000005b") {
             String conc = inir_read_token(500);
-            if (conc.length() == 8)
+            String faults_tok = inir_read_token(500);
+            if (conc.length() == 8) {
+                uint32_t faults = (uint32_t)strtoul(faults_tok.c_str(), nullptr, 16);
+                if ((faults & 0x0F000000) == 0x03000000) return -1; // warm-up
                 return (int)strtol(conc.c_str(), nullptr, 16);
+            }
             return -1;
         }
     }
-    return -1;  // timed out hunting for start
+    return -1;
 }
 
 float read_h2s_ppm() {

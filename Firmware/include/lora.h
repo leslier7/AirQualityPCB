@@ -17,7 +17,7 @@
 #define PIN_DIO1  20
 
 struct __attribute__((__packed__)) pkt_fmt {
-    uint16_t ch4;        // 0–10000, scale ×100 → 0.00–100.00 % vol,   res 0.01%
+    uint16_t ch4;        // ppm
     uint16_t h2s;        // 0–5000,  scale ×100 → 0.00–50.00 ppm,      res 0.01 ppm
     uint16_t nox;        // 0–30000, scale ×100 → 0.00–300.00 ppm,     res 0.01 ppm
     uint16_t voc_load;       // 0–500,   IAQ index (BME688 processed output, no scaling)
@@ -25,6 +25,8 @@ struct __attribute__((__packed__)) pkt_fmt {
     uint16_t humidity;   // 0–10000, scale ×100 → 0.00–100.00 % RH,    res 0.01 %
     uint16_t pressure;
 };
+
+extern bool g_joined;
 
 class cMyLoRaWAN : public Arduino_LoRaWAN_ttn {
     using Super = Arduino_LoRaWAN_ttn;
