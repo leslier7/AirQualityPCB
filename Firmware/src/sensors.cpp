@@ -16,12 +16,15 @@
 #define H2S_TIA_GAIN_OHMS   100000.0f   // R20
 #define NO2_TIA_GAIN_OHMS   6800000.0f  // R19
 
+#define NO2_ZERO_OFFSET_PPM  0.00f  // TODO measure this long term and average it
+
+
 #define DAC_VOLTS 3.3f
 
 #define CH4_RANGE 100
 
 // ADC reference and bias
-#define VREF_VOLTS          1.65f       // half-supply bias from R17/R18 divider
+#define VREF_VOLTS          1.635f       // measured
 
 // ADS1015 in default ±2.048V FSR mode: 1 LSB = 1.0 mV (12-bit signed, 11-bit + sign)
 #define ADC_LSB_VOLTS       0.001f
@@ -200,7 +203,10 @@ bool setup_sensors(){
     Serial.printf("Methane setup: %d\n", methane_setup);
     setup_BME();
 
-    return adc.begin(0x49);
+    bool adc_setup = adc.begin(0x49);
+    adc.setGain(GAIN_TWO);  // ±2.048V FSR, 1mV/LSB — matches ADC_LSB_VOLTS
+
+    return adc_setup;
 }
 
 // Returns %vol
@@ -252,7 +258,7 @@ int read_methane_uart() {
 float read_h2s_ppm() {
     int16_t raw = adc.readADC_SingleEnded(1);   // VH2S on AIN1
     float v_out = raw * ADC_LSB_VOLTS;
-    //Serial.printf("H2S raw=%d v_out=%.3fV (Vref expected 1.65V)\n", raw, v_out);
+    Serial.printf("H2S raw=%d v_out=%.3fV (Vref expected 1.65V)\n", raw, v_out);
     float v_signal = v_out - VREF_VOLTS;        // remove bias
     float current_amps = v_signal / H2S_TIA_GAIN_OHMS;
     float current_na = current_amps * 1e9f;
@@ -266,5 +272,5 @@ float read_no2_ppm() {
     float v_signal = v_out - VREF_VOLTS;
     float current_amps = v_signal / NO2_TIA_GAIN_OHMS;
     float current_na = current_amps * 1e9f;
-    return current_na / NO2_SENSITIVITY_NA_PER_PPM;  // sensitivity is negative for NO2
+    return (current_na / NO2_SENSITIVITY_NA_PER_PPM) - NO2_ZERO_OFFSET_PPM;  // sensitivity is negative for NO2
 }

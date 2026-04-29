@@ -47,15 +47,18 @@ static void reset_accumulators() {
 void task_read_bme() {
     update_BME();
     BMEReading bme = get_BME_reading();
-    if (bme.raw_gas > 0.0f) {
-        myPkt.voc_load = (uint16_t)constrain((1.0f / bme.raw_gas) * 1e6f * 10.0f, 0, 65535);
-    } else {
-        myPkt.voc_load = 0;
-    }
-    myPkt.temp        = (int16_t)(bme.temperature * 100.0f);
-    myPkt.humidity    = (uint16_t)(bme.humidity * 100.0f);
-    myPkt.pressure    = (uint16_t)(bme.pressure * 10.0f);
-    Serial.printf("Voc load: %d\n", myPkt.voc_load);
+    float voc = (bme.raw_gas > 0.0f)
+        ? constrain((1.0f / bme.raw_gas) * 1e6f * 10.0f, 0, 65535)
+        : 0.0f;
+ 
+    bme_acc.voc_load += voc;
+    bme_acc.temp     += bme.temperature;
+    bme_acc.humidity += bme.humidity;
+    bme_acc.pressure += bme.pressure;
+    bme_acc.n++;
+ 
+    Serial.printf("Voc load (raw): %.1f  [%lu samples]\n", voc, bme_acc.n);
+
 }
 
 void task_read_gases() {
@@ -63,13 +66,17 @@ void task_read_gases() {
     float h2s = read_h2s_ppm();
     float no2 = read_no2_ppm();
 
-    if (ch4 != 65535){
-        myPkt.ch4 = ch4;
+    if (ch4 != 65535) {
+        gas_acc.ch4 += ch4;
+        gas_acc.ch4_n++;
     }
-    myPkt.h2s = (uint16_t)constrain(h2s * 100.0f, 0, 5000);
-    myPkt.nox = (uint16_t)constrain(no2 * 100.0f, 0, 30000);
-
+    gas_acc.h2s += h2s;
+    gas_acc.h2s_n++;
+    gas_acc.nox += no2;
+    gas_acc.nox_n++;
+ 
     Serial.printf("CH4: %d ppm H2S: %.2f ppm  NO2: %.2f ppm\n", ch4, h2s, no2);
+
 }
 
 void task_send_lora() {
