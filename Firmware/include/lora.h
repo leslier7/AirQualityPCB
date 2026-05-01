@@ -9,6 +9,9 @@
 #include <arduino_lmic.h>
 #include <hal/hal.h>
 
+#define TX_INTERVAL_MS  900000UL
+#define DOWNLINK_EVERY  ((60 * 60 * 1000UL) / TX_INTERVAL_MS)
+
 #define PIN_SCLK  3
 #define PIN_MOSI  6
 #define PIN_MISO  7
