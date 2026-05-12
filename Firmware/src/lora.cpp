@@ -93,7 +93,7 @@ void send_lora(const pkt_fmt &pkt) {
     #else
     myLoRaWAN.SendBuffer(
     (const uint8_t *) &pkt, sizeof(pkt),
-        sendCallback, nullptr, confirmed, 1 //Sends a downlink every 24 msgs. Need to go to 10 msgs per hour to get it to not violate TTN fair use
+        sendCallback, nullptr, confirmed, 1 // confirmed every DOWNLINK_EVERY uplinks → ≤10 ACK downlinks/day (TTN fair use)
     );
     #endif
 }

@@ -157,12 +157,12 @@ void setup() {
     setup_sensors();
     testPortI2C(Wire);
 
-    myPkt.ch4 = 40;
-    myPkt.h2s = 50;
-    myPkt.nox = 60;
-    myPkt.humidity = 70;
-    myPkt.temp = 80;
-    myPkt.voc_load = 90;
+    myPkt.ch4 = 0;
+    myPkt.h2s = 0;
+    myPkt.nox = 0;
+    myPkt.humidity = 0;
+    myPkt.temp = 0;
+    myPkt.voc_load = 0;
 
     #ifndef TEST
     if (!setup_lora())

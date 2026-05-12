@@ -10,7 +10,7 @@
 #include <hal/hal.h>
 
 #define TX_INTERVAL_MS  900000UL
-#define DOWNLINK_EVERY  ((60 * 60 * 1000UL) / TX_INTERVAL_MS)
+#define DOWNLINK_EVERY  MAX(1, (((24UL * 60 * 60 * 1000) / TX_INTERVAL_MS + 9) / 10))
 
 #define PIN_SCLK  3
 #define PIN_MOSI  6
