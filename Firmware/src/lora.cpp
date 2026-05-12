@@ -93,7 +93,7 @@ void send_lora(const pkt_fmt &pkt) {
     #else
     myLoRaWAN.SendBuffer(
     (const uint8_t *) &pkt, sizeof(pkt),
-        sendCallback, nullptr, confirmed, 1 // confirmed every DOWNLINK_EVERY uplinks → ≤10 ACK downlinks/day (TTN fair use)
+        sendCallback, nullptr, false, 1 // Set the false to confirmed to downlink. Disabling it for now since we dont need it
     );
     #endif
 }
