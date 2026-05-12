@@ -12,7 +12,6 @@ cMyLoRaWAN myLoRaWAN;
 bool g_joined = false;
 
 static uint16_t txCount = 0;
-bool confirmed = (++txCount % 24 == 0);
 
 static const cMyLoRaWAN::lmic_pinmap myPinMap = {
     .nss            = PIN_CS,
@@ -70,6 +69,7 @@ bool setup_lora() {
 }
 
 void send_lora(const pkt_fmt &pkt) {
+    bool confirmed = (++txCount % DOWNLINK_EVERY == 0);
 
     Serial.printf("LoRa: queuing TX (ch4=%dppm h2s=%.2fppm nox=%.2fppm vocs=%u temp=%.2fC hum=%.2f%% pres=%.1fhPa)\n",
                   pkt.ch4, pkt.h2s / 100.0f, pkt.nox / 100.0f,
@@ -81,7 +81,7 @@ void send_lora(const pkt_fmt &pkt) {
     LMIC_setDrTxpow(DR_SF10, 14);   // SF10, max transmit power 
     #else
     LMIC_setAdrMode(0);
-    LMIC_setDrTxpow(DR_SF8, 14);
+    LMIC_setDrTxpow(DR_SF9, 14); //Use SF9 to get better range. Can only transmit every 11 minutes on this
     #endif
     
 
@@ -93,7 +93,7 @@ void send_lora(const pkt_fmt &pkt) {
     #else
     myLoRaWAN.SendBuffer(
     (const uint8_t *) &pkt, sizeof(pkt),
-        sendCallback, nullptr, confirmed, 1 //Sends a downlink every 24 msgs. Need to go to 10 msgs per hour to get it to not violate TTN fair use
+        sendCallback, nullptr, confirmed, 1 // confirmed every DOWNLINK_EVERY uplinks → ≤10 ACK downlinks/day (TTN fair use)
     );
     #endif
 }

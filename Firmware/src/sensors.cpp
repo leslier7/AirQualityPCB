@@ -16,8 +16,9 @@
 #define H2S_TIA_GAIN_OHMS   100000.0f   // R20
 #define NO2_TIA_GAIN_OHMS   6800000.0f  // R19
 
-#define NO2_ZERO_OFFSET_PPM  0.00f  // TODO measure this long term and average it
+#define NO2_ZERO_OFFSET_PPM  0.00f
 
+#define H2S_OFFSET 54
 
 #define DAC_VOLTS 3.3f
 
@@ -199,9 +200,11 @@ bool setup_methane(){
 }
 
 bool setup_sensors(){
+    #ifndef TEST
     bool methane_setup = setup_methane();
     Serial.printf("Methane setup: %d\n", methane_setup);
     setup_BME();
+    #endif
 
     bool adc_setup = adc.begin(0x49);
     adc.setGain(GAIN_TWO);  // ±2.048V FSR, 1mV/LSB — matches ADC_LSB_VOLTS
@@ -262,7 +265,7 @@ float read_h2s_ppm() {
     float v_signal = v_out - VREF_VOLTS;        // remove bias
     float current_amps = v_signal / H2S_TIA_GAIN_OHMS;
     float current_na = current_amps * 1e9f;
-    return current_na / H2S_SENSITIVITY_NA_PER_PPM;
+    return (current_na / H2S_SENSITIVITY_NA_PER_PPM) + H2S_OFFSET;
 }
 
 float read_no2_ppm() {

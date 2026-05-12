@@ -47,18 +47,15 @@ static void reset_accumulators() {
 void task_read_bme() {
     update_BME();
     BMEReading bme = get_BME_reading();
-    float voc = (bme.raw_gas > 0.0f)
-        ? constrain((1.0f / bme.raw_gas) * 1e6f * 10.0f, 0, 65535)
-        : 0.0f;
- 
-    bme_acc.voc_load += voc;
-    bme_acc.temp     += bme.temperature;
-    bme_acc.humidity += bme.humidity;
-    bme_acc.pressure += bme.pressure;
-    bme_acc.n++;
- 
-    Serial.printf("Voc load (raw): %.1f  [%lu samples]\n", voc, bme_acc.n);
-
+    if (bme.raw_gas > 0.0f) {
+        myPkt.voc_load = (uint16_t)constrain((1.0f / bme.raw_gas) * 1e6f * 10.0f, 0, 65535);
+    } else {
+        myPkt.voc_load = 0;
+    }
+    myPkt.temp        = (int16_t)(bme.temperature * 100.0f);
+    myPkt.humidity    = (uint16_t)(bme.humidity * 100.0f);
+    myPkt.pressure    = (uint16_t)(bme.pressure * 10.0f);
+    Serial.printf("Voc load: %d  Temp: %.2f  Humidity: %.2f Pressure: %.2f\n", myPkt.voc_load, bme.temperature, bme.humidity, bme.pressure);
 }
 
 void task_read_gases() {
@@ -82,6 +79,16 @@ void task_read_gases() {
 void task_send_lora() {
     if (!g_joined) return;
     if (LMIC.devaddr != 0) {
+
+        #ifdef TEST
+        myPkt.ch4 = 0;
+        myPkt.h2s = 0;
+        myPkt.nox = 0;
+        myPkt.humidity = 0;
+        myPkt.temp = 0;
+        myPkt.voc_load = 0;
+
+        #else
         // Flush BME averages into packet
         if (bme_acc.n > 0) {
             myPkt.voc_load = (uint16_t)(bme_acc.voc_load / bme_acc.n);
@@ -96,10 +103,17 @@ void task_send_lora() {
             myPkt.h2s = (uint16_t)constrain((gas_acc.h2s / gas_acc.h2s_n) * 100.0f, 0, 5000);
         if (gas_acc.nox_n > 0)
             myPkt.nox = (uint16_t)constrain((gas_acc.nox / gas_acc.nox_n) * 100.0f, 0, 30000);
- 
+        
+        #endif
+
         Serial.printf("TX averages — CH4: %d  H2S: %d  NOx: %d  Temp: %d  Hum: %d  VOC: %d\n",
             myPkt.ch4, myPkt.h2s, myPkt.nox, myPkt.temp, myPkt.humidity, myPkt.voc_load);
         
+        uint8_t *raw = (uint8_t*)&myPkt;
+        Serial.print("RAW PKT: ");
+        for (int i = 0; i < (int)sizeof(myPkt); i++)
+            Serial.printf("%02X ", raw[i]);
+        Serial.println();
         
         send_lora(myPkt);
         reset_accumulators();
@@ -112,9 +126,11 @@ void task_send_lora() {
 
 
 Task tasks[] = {
+    #ifndef TEST
     { task_read_bme,   1500,  0 },
     { task_read_gases, 3000,  0 },
-    { task_send_lora,  360000, 0 }, //TODO transmit this 10 times per hour (360 seconds)
+    #endif
+    { task_send_lora,  TX_INTERVAL_MS, 0 },
 };
 
 Scheduler scheduler(tasks, sizeof(tasks) / sizeof(tasks[0]));
@@ -145,21 +161,29 @@ void setup() {
     setup_sensors();
     testPortI2C(Wire);
 
-    myPkt.ch4 = 40;
-    myPkt.h2s = 50;
-    myPkt.nox = 60;
-    myPkt.humidity = 70;
-    myPkt.temp = 80;
-    myPkt.voc_load = 90;
+    myPkt.ch4 = 0;
+    myPkt.h2s = 0;
+    myPkt.nox = 0;
+    myPkt.humidity = 0;
+    myPkt.temp = 0;
+    myPkt.voc_load = 0;
 
+    #ifndef TEST
     if (!setup_lora())
         Serial.println("LoRaWAN init failed");
+    #endif
 
+    
+
+    #ifndef TEST
     send_lora(myPkt);   // initial transmission before scheduler takes over
+    #endif
     scheduler.begin();  // start all task clocks from now
 }
 
 void loop() {
+    #ifndef TEST
     myLoRaWAN.loop();
+    #endif
     scheduler.run();
 }
