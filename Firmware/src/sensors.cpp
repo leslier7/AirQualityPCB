@@ -18,8 +18,6 @@
 
 #define NO2_ZERO_OFFSET_PPM  0.00f
 
-#define H2S_OFFSET 54
-
 #define DAC_VOLTS 3.3f
 
 #define CH4_RANGE 100
@@ -265,7 +263,7 @@ float read_h2s_ppm() {
     float v_signal = v_out - VREF_VOLTS;        // remove bias
     float current_amps = v_signal / H2S_TIA_GAIN_OHMS;
     float current_na = current_amps * 1e9f;
-    return (current_na / H2S_SENSITIVITY_NA_PER_PPM) + H2S_OFFSET;
+    return (current_na / H2S_SENSITIVITY_NA_PER_PPM);
 }
 
 float read_no2_ppm() {
